@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="acm,容器,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="list的核心是一个双向链表，双向开口。因链表内存空间的不连续，故list不支持随机操作，既没有at()操作也不支持下标访问，只能顺序操作。 1.list的声明和初始化   语句 说明     list(); 创建一个空列表　   vector(const list&amp;amp; x); 创建一个列表，并使用列表x初始化它   vector(size_type n); 创建一个包含n个元素的列表">
+<meta name="keywords" content="acm,容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="列表list">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/列表list/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="list的核心是一个双向链表，双向开口。因链表内存空间的不连续，故list不支持随机操作，既没有at()操作也不支持下标访问，只能顺序操作。 1.list的声明和初始化   语句 说明     list(); 创建一个空列表　   vector(const list&amp;amp; x); 创建一个列表，并使用列表x初始化它   vector(size_type n); 创建一个包含n个元素的列表">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-27T09:19:12.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="列表list">
+<meta name="twitter:description" content="list的核心是一个双向链表，双向开口。因链表内存空间的不连续，故list不支持随机操作，既没有at()操作也不支持下标访问，只能顺序操作。 1.list的声明和初始化   语句 说明     list(); 创建一个空列表　   vector(const list&amp;amp; x); 创建一个列表，并使用列表x初始化它   vector(size_type n); 创建一个包含n个元素的列表">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/02/列表list/">
+
+
+
+
+
+  <title>列表list | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/列表list/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">列表list</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T22:22:10+08:00">
+                2017-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/STL/" itemprop="url" rel="index">
+                    <span itemprop="name">STL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>list的核心是一个双向链表，双向开口。因链表内存空间的不连续，故list不支持随机操作，既没有at()操作也不支持下标访问，只能顺序操作。</p>
+<h2 id="1-list的声明和初始化"><a href="#1-list的声明和初始化" class="headerlink" title="1.list的声明和初始化"></a>1.list的声明和初始化</h2><table>
+<thead>
+<tr>
+<th>语句</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list();</td>
+<td>创建一个空列表　</td>
+</tr>
+<tr>
+<td>vector(const list&amp; x);</td>
+<td>创建一个列表，并使用列表x初始化它</td>
+</tr>
+<tr>
+<td>vector(size_type n);</td>
+<td>创建一个包含n个元素的列表</td>
+</tr>
+<tr>
+<td>template<class inputiterator="">          list(InputIterator _First,InputIterator _Last);</class></td>
+<td>创建一个列表，并以迭代器_First和_Last之间的元素初始化</td>
+</tr>
+</tbody>
+</table>
+<p>另外，list重载了运算符operator=，故用户可以赋值的方式在两个list对象之间复制数据。</p>
+<h2 id="3-数据元素的插入与删除"><a href="#3-数据元素的插入与删除" class="headerlink" title="3.数据元素的插入与删除"></a>3.数据元素的插入与删除</h2><table>
+<thead>
+<tr>
+<th>成员函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void assign(InputIterator _First,InputIterator _Last);    void assign(size_type _Count,const Type&amp; _Val);</td>
+<td>区域赋值函数</td>
+</tr>
+<tr>
+<td>void clear()</td>
+<td>删除所有元素</td>
+</tr>
+<tr>
+<td>iterator erase(iterator _Where);      iterator erase(iterator _First,iterator _Last);</td>
+<td>删除一个元素或一个区域的元素</td>
+</tr>
+<tr>
+<td>void push_back(Type&amp;&amp; _Val)</td>
+<td>添加一个元素到链表尾</td>
+</tr>
+<tr>
+<td>void push_front(Type&amp;&amp; _Val)</td>
+<td>添加一个元素到链表头</td>
+</tr>
+<tr>
+<td>void pop_back()</td>
+<td>删除链表尾的一个元素</td>
+</tr>
+<tr>
+<td>void pop_front()</td>
+<td>删除链表头的一个元素</td>
+</tr>
+<tr>
+<td>void remove(const Type&amp; _Val);</td>
+<td>删除链表中匹配值的元素</td>
+</tr>
+<tr>
+<td>reference front();   const_reference front() const;</td>
+<td>返回第一个元素的引用</td>
+</tr>
+</tbody>
+</table>
+<p>以下为观察push_front(),push_back(),以及assign()函数的功能的简单代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//定义一个列表迭代器</span></span><br><span class="line">	<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;::const_iterator cIter;</span><br><span class="line">	<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;c1;</span><br><span class="line">	c1.push_back(<span class="number">10</span>);<span class="comment">//尾部赋值</span></span><br><span class="line">	c1.push_front(<span class="number">20</span>);<span class="comment">//头部赋值</span></span><br><span class="line">	c1.push_front(<span class="number">30</span>);<span class="comment">//头部赋值</span></span><br><span class="line">	<span class="comment">//显示c1内容</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:c1)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;i;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//定义列表c2并在尾部赋值</span></span><br><span class="line">	<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;c2;</span><br><span class="line">	c2.push_back(<span class="number">400</span>);</span><br><span class="line">	c2.push_back(<span class="number">500</span>);</span><br><span class="line">	c2.push_back(<span class="number">600</span>);</span><br><span class="line">	<span class="comment">//清空列表c1，并使用列表c2的后两个元素为c1赋值</span></span><br><span class="line">	c1.assign(++c2.begin(),c2.end());</span><br><span class="line">	<span class="comment">//显示c1内容</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:c1)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;i;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//清空列表c1，赋值7个4</span></span><br><span class="line">	c1.assign(<span class="number">7</span>,<span class="number">4</span>);</span><br><span class="line">	<span class="comment">//显示c1内容</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:c1)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;i;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//使用&#123;&#125;列表重新为c1赋值</span></span><br><span class="line">	c1=&#123;<span class="number">9</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>&#125;;</span><br><span class="line">	<span class="comment">//显示c1内容</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:c1)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;i;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-描述自身状态的成员函数"><a href="#4-描述自身状态的成员函数" class="headerlink" title="4.描述自身状态的成员函数"></a>4.描述自身状态的成员函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明　</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size_type capacity() const;</td>
+<td>返回在当前存储空间下，容器可容纳元素的数目</td>
+</tr>
+<tr>
+<td>bool empty() const;</td>
+<td>若容器为空，返回true；否则返回false</td>
+</tr>
+<tr>
+<td>size_type size() const;</td>
+<td>当前链表中元素个数</td>
+</tr>
+<tr>
+<td>size_type max_size() const;</td>
+<td>返回链表最大可能长度</td>
+</tr>
+<tr>
+<td>void resize (size_type n,value_type val=value_type());</td>
+<td>重新定义链表长度</td>
+</tr>
+<tr>
+<td>void reverse()</td>
+<td>反转链表</td>
+</tr>
+<tr>
+<td>void sort();</td>
+<td>对链表排序(默认升序)</td>
+</tr>
+<tr>
+<td>void merge(list&amp; x);    template<class compare="">    void merge(list&amp; x,Compare comp);</class></td>
+<td>合并两个有序链表并使之有序</td>
+</tr>
+<tr>
+<td>void swap(list &amp;x);</td>
+<td>交换两个链表</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/acm/" rel="tag"># acm</a>
+          
+            <a href="/tags/容器/" rel="tag"># 容器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/02/向量vector/" rel="next" title="向量vector">
+                <i class="fa fa-chevron-left"></i> 向量vector
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/10/SCAU16级第一、二场专项训练/" rel="prev" title="SCAU16级第一、二场排位赛">
+                SCAU16级第一、二场排位赛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">122</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-list的声明和初始化"><span class="nav-number">1.</span> <span class="nav-text">1.list的声明和初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数据元素的插入与删除"><span class="nav-number">2.</span> <span class="nav-text">3.数据元素的插入与删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-描述自身状态的成员函数"><span class="nav-number">3.</span> <span class="nav-text">4.描述自身状态的成员函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
