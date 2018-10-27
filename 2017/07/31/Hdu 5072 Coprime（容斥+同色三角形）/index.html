@@ -6,6 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,10 +57,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -83,7 +84,7 @@
 <meta name="keywords" content="acm,contest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hdu 5072 Coprime（容斥+同色三角形）">
-<meta property="og:url" content="http://yoursite.com/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/index.html">
+<meta property="og:url" content="http://litost.coding.me/litost/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/index.html">
 <meta property="og:site_name" content="Litost&#39;s Blog">
 <meta property="og:description" content="https://vjudge.net/problem/59310/origin 题意选出三个数，要求两两互质或是两两不互质。求有多少组这样的三个数。 分析同色三角形n个点 每两个点连一条边（可以为红色或者黑色），求形成的三条边颜色相同的三角形的个数反面考虑这个问题，只需要c(n,3)减去不同色的三角形个数即可对于每一个点，所形成的不同色三角形即为 红色边的数量*黑色边的数量，所以可以O(n)地算出">
 <meta property="og:locale" content="zh-Hans">
@@ -120,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/">
+  <link rel="canonical" href="http://litost.coding.me/litost/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/">
 
 
 
@@ -137,7 +138,7 @@
 
 
 </head>
-
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
@@ -147,6 +148,8 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -263,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/">
+    <link itemprop="mainEntityOfPage" href="http://litost.coding.me/litost/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fang Hantao">
@@ -346,6 +349,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  673
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
 
           
 
@@ -384,9 +418,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/acm/" rel="tag"># acm</a>
+            <a href="/tags/acm/" rel="tag"><i class="fa fa-tag"></i> acm</a>
           
-            <a href="/tags/contest/" rel="tag"># contest</a>
+            <a href="/tags/contest/" rel="tag"><i class="fa fa-tag"></i> contest</a>
           
         </div>
       
@@ -399,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/30/HDU - 4135 Co-prime/" rel="next" title="HDU - 4135 Co-prime(容斥原理)">
-                <i class="fa fa-chevron-left"></i> HDU - 4135 Co-prime(容斥原理)
+              <a href="/2017/07/31/HDU - 5117 Fluorescent(状压dp+思维)/" rel="next" title="HDU - 5117 Fluorescent(状压dp+思维)">
+                <i class="fa fa-chevron-left"></i> HDU - 5117 Fluorescent(状压dp+思维)
               </a>
             
           </div>
@@ -409,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/31/HDU - 5117 Fluorescent(状压dp+思维)/" rel="prev" title="HDU - 5117 Fluorescent(状压dp+思维)">
-                HDU - 5117 Fluorescent(状压dp+思维) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/01/GYM 101173 F.Free Figurines（贪心，并查集）/" rel="prev" title="GYM 101173 F.Free Figurines（贪心||并查集）">
+                GYM 101173 F.Free Figurines（贪心||并查集） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,7 +671,8 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -647,6 +682,13 @@ var jiathis_config={
 </div>
 
 
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
@@ -659,7 +701,10 @@ var jiathis_config={
 
 
 
-
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共137k字</span>
+</div>
         
 
 
@@ -787,7 +832,7 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/';
+          this.page.url = 'http://litost.coding.me/litost/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/';
           this.page.identifier = '2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/';
           this.page.title = 'Hdu 5072 Coprime（容斥+同色三角形）';
         };
@@ -814,10 +859,18 @@ var jiathis_config={
 
 
 
-
   
-
-
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
