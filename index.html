@@ -265,6 +265,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ph9c7j2aa.bkt.clouddn.com/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/" itemprop="url">IDEA+Maven+Spring MVC HelloWorld示例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T21:44:00+08:00">
+                2018-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="用Maven创建Web项目"><a href="#用Maven创建Web项目" class="headerlink" title="用Maven创建Web项目"></a>用Maven创建Web项目</h2><p>选择webapp模板<br><img src="http://ph9c7j2aa.bkt.clouddn.com/1.PNG" alt=""><br><img src="http://ph9c7j2aa.bkt.clouddn.com/2.PNG" alt=""></p>
+<p>创建成功后点Enable Auto-Import<br><img src="http://ph9c7j2aa.bkt.clouddn.com/3.PNG" alt=""></p>
+<p>idea给我们创建出来的结构是这样的，这还不标准，需要自己修改。<br><img src="http://ph9c7j2aa.bkt.clouddn.com/4.PNG" alt=""></p>
+<p>在main文件夹下创建java文件夹，这是放置源码的地方，标记为sources。创建resources文件夹且标记为resource。<br><img src="http://ph9c7j2aa.bkt.clouddn.com/5.PNG" alt=""></p>
+<p>初始结构如下。<br><img src="http://ph9c7j2aa.bkt.clouddn.com/6.PNG" alt=""></p>
+<h2 id="配置Spring"><a href="#配置Spring" class="headerlink" title="配置Spring"></a>配置Spring</h2><h3 id="pom-xml的配置"><a href="#pom-xml的配置" class="headerlink" title="pom.xml的配置"></a>pom.xml的配置</h3><p>在&lt;dependecies>与&lt;/dependecies>之间插入以下代码，添加依赖包。</p>
+<pre><code> &lt;dependency&gt;
+  &lt;groupId&gt;junit&lt;/groupId&gt;
+  &lt;artifactId&gt;junit&lt;/artifactId&gt;
+  &lt;version&gt;3.8.1&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Servlet Library --&gt;
+&lt;!-- http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+  &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+  &lt;version&gt;3.1.0&lt;/version&gt;
+  &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Spring dependencies --&gt;
+&lt;!-- http://mvnrepository.com/artifact/org.springframework/spring-core --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+  &lt;version&gt;4.1.4.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- http://mvnrepository.com/artifact/org.springframework/spring-web --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+  &lt;version&gt;4.1.4.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- http://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+  &lt;version&gt;4.1.4.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="配置web-xml"><a href="#配置web-xml" class="headerlink" title="配置web.xml"></a>配置web.xml</h3><pre><code>&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;
+     xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaeehttp://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;
+     id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;&gt;
+  &lt;display-name&gt;HelloWorldSpring&lt;/display-name&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;spring-mvc&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;
+      org.springframework.web.servlet.DispatcherServlet
+    &lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;spring-mvc&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;!-- Other XML Configuration --&gt;
+  &lt;!-- Load by Spring ContextLoaderListener --&gt;
+  &lt;context-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;/WEB-INF/root-context.xml&lt;/param-value&gt;
+  &lt;/context-param&gt;
+
+  &lt;!-- Spring ContextLoaderListener --&gt;
+  &lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+  &lt;/listener&gt;
+
+&lt;/web-app&gt;
+</code></pre><p>Spring MVC的 <strong>DispatcherServlet</strong> 将根据默认原则读取XML配置文件： 在<strong>/WEB-INF</strong>文件夹下搜寻<strong>{servlet-name}-servlet.xml</strong>，在这里则是 <strong>spring-mvc-servlet.xml</strong></p>
+<p>接下来，<servlet-mapping>标记指示哪些URL将由DispatcherServlet处理。 这里所有为/的HTTP请求都将由spring-mvc DispatcherServlet处理。</servlet-mapping></p>
+<p>在Spring应用程序 ContextLoaderListener 将读取其他 XML 配置文件(如下的 abc.xml 和 root-context.xml 两个文件)。 可能不需要配置 ContextLoaderListener，如果你的应用程序并不需要读取其他XML配置文件。</p>
+<pre><code>&lt;!-- web.xml --&gt;
+&lt;!-- Spring ContextLoaderListener --&gt;
+&lt;listener&gt;
+&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+
+&lt;!-- Load by Spring ContextLoaderListener --&gt;
+&lt;context-param&gt;
+&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+&lt;param-value&gt;
+       /WEB-INF/root-context.xml,
+       /WEB-INF/abc.xml
+ &lt;/param-value&gt;
+&lt;/context-param&gt;
+</code></pre><p>下面添加了一个root-context.xml配置文件，仅仅是为了用于学习这功能。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+&lt;!-- Empty --&gt;
+
+&lt;/beans&gt;
+</code></pre><h3 id="配置spring-mvc-servlet-xml"><a href="#配置spring-mvc-servlet-xml" class="headerlink" title="配置spring-mvc-servlet.xml"></a>配置spring-mvc-servlet.xml</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+   xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+   xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+   xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-4.1.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd&quot;&gt;
+
+&lt;context:component-scan base-package=&quot;com.fang.controller&quot;/&gt;
+
+&lt;context:annotation-config/&gt;
+
+&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+    &lt;property name=&quot;prefix&quot;&gt;
+        &lt;value&gt;/WEB-INF/jsp/&lt;/value&gt;
+    &lt;/property&gt;
+
+    &lt;property name=&quot;suffix&quot;&gt;
+        &lt;value&gt;.jsp&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre><p>[servlet-name]-servlet.xml文件将用于创建定义的bean，它会覆盖在全局范围中使用相同名称定义的任何bean的定义。</p>
+<p>&lt;context：component-scan …&gt;标签将用于激活Spring MVC注释扫描功能，允许使用@Controller和@RequestMapping等注释。</p>
+<p>InternalResourceViewResolver将定义用于解析视图名称的规则。根据上面定义的规则，hello的逻辑视图将委托给位于/WEB-INF/jsp/hello.jsp这个视图来实现。</p>
+<h2 id="创建控制器Controller"><a href="#创建控制器Controller" class="headerlink" title="创建控制器Controller"></a>创建控制器Controller</h2><p>在java文件夹下创建包<strong>com.fang.controller</strong>,用于放置controller。<br>创建HelloWorldController类</p>
+<pre><code>package com.fang.controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelloWorldController {
+    @RequestMapping(&quot;/hello&quot;)
+    public String hello(Model model){
+        model.addAttribute(&quot;greeting&quot;,&quot;Hello Spring MVC&quot;);
+        return &quot;helloworld&quot;;
+    }
+}
+</code></pre><p>value属性指示处理程序方法映射到的URL。</p>
+<p>定义的服务方法可以返回一个String，它包含要用于渲染模型的视图的名称。此示例将“helloworld”返回为逻辑视图名称。</p>
+<h2 id="创建jsp视图"><a href="#创建jsp视图" class="headerlink" title="创建jsp视图"></a>创建jsp视图</h2><p>在WEB-INF文件夹下创建jsp文件夹，然后创建helloworld.jsp。</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;  pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;title&gt;Spring4 MVC -HelloWorld&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;${greeting}&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>这里${greeting}是在Controller中设置的属性。可以在视图中显示多个属性。</p>
+<h2 id="部署tomcat-server服务"><a href="#部署tomcat-server服务" class="headerlink" title="部署tomcat server服务"></a>部署tomcat server服务</h2><p>点击工具栏的run-&gt;edit configurations<br><img src="http://ph9c7j2aa.bkt.clouddn.com/7.PNG" alt=""></p>
+<p>点击+号，选择tomcat-local<br><img src="http://ph9c7j2aa.bkt.clouddn.com/8.PNG" alt=""></p>
+<p>部署tomcat，选择war结尾的那个<br><img src="http://ph9c7j2aa.bkt.clouddn.com/9.PNG" alt=""><br><img src="http://ph9c7j2aa.bkt.clouddn.com/10.PNG" alt=""><br><img src="http://ph9c7j2aa.bkt.clouddn.com/11.PNG" alt=""></p>
+<p>完成后左下角会出现这个<br><img src="http://ph9c7j2aa.bkt.clouddn.com/12.PNG" alt=""></p>
+<p>点击绿色小箭头就运行了<br><img src="http://ph9c7j2aa.bkt.clouddn.com/14.PNG" alt=""></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://ph9c7j2aa.bkt.clouddn.com/16.PNG" alt=""></p>
+<p><img src="http://ph9c7j2aa.bkt.clouddn.com/15.PNG" alt=""></p>
+<p>DispatcherServlet拦截解析请求，发现是/hello，转到HelloWorldController下的hello方法中-&gt;helloworld 将请求转发到/WEB-INF/jsp/helloworld.jsp界面</p>
+<h2 id="项目最终结构图"><a href="#项目最终结构图" class="headerlink" title="项目最终结构图"></a>项目最终结构图</h2><p><img src="http://ph9c7j2aa.bkt.clouddn.com/13.PNG" alt=""></p>
+<h2 id="应用程序的流程"><a href="#应用程序的流程" class="headerlink" title="应用程序的流程"></a>应用程序的流程</h2><p><strong>现在来看看程序的运行流程吧！这很重要！</strong><br><img src="http://www.yiibai.com/uploads/tutorial/20160116/1-16011609514D50.png" alt=""></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.yiibai.com/spring_mvc/spring-mvc-tutorial-for-beginners.html" target="_blank" rel="noopener">Spring4 MVC HelloWord实例</a></p>
+<p><a href="https://www.yiibai.com/spring_mvc/springmvc_overview.html" target="_blank" rel="noopener">Spring MVC概述</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2018/10/27/[kuangbin带你飞]专题一 简单搜索/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1514,191 +1848,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fang Hantao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ph9c7j2aa.bkt.clouddn.com/1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Litost's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/" itemprop="url">POJ 3415 Common Substrings（后缀数组+单调栈）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T13:14:50+08:00">
-                2017-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/poj/" itemprop="url" rel="index">
-                    <span itemprop="name">poj</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  915
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://vjudge.net/problem/POJ-3415" alt="题目链接"></p>
-<h3 id="参考-http-blog-csdn-net-v5zsq-article-details-51303710"><a href="#参考-http-blog-csdn-net-v5zsq-article-details-51303710" class="headerlink" title="参考 http://blog.csdn.net/v5zsq/article/details/51303710"></a>参考 <a href="http://blog.csdn.net/v5zsq/article/details/51303710" target="_blank" rel="noopener">http://blog.csdn.net/v5zsq/article/details/51303710</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给出两个串a和b，求a和b的长度不小于k的公共子串数量 </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>将两串连在一起（中间用隔离字符隔离以避免匹配越界），求出height数组后，按k分组，问题转化为求每一组的sum(lcp(i,j)-k+1)（第i个后缀属于第一个串，第j个后缀属于第二个串），如果常规去固定一个后缀去枚举另一个后缀，虽然rmq预处理可以使得每次操作是O(1)的，但是总复杂度也是O(n^2)的，所以要优化。考虑第i个后缀，假设其属于第一个串，那么这个值对答案的贡献就是sum(min(height[j]~height[i])-k+1)（j=2,3,…,i-1且第j个后缀属于第二个串），而这个最小值数组是非减的，那么考虑构造一个单调递增的栈，将height-k+1这一列数按顺序入栈，如果当前height[i]-k+1值大于等于栈顶元素则将height[i]-k+1入栈，否则就一直更新栈上部元素，将其值变为height[i]-k+1并累加height[i]-k+1-sta[p]（小于0）的值进入num[id[p]]中，id[p]记录第p个后缀属于哪一个串，这样做的意义就是在第i个后缀进栈时，假设在其之前进栈的元素与其的最长公共前缀都是height[i]-k+1，而多计算的部分用num数组来记录并累加到答案中，这样就可以用接近O(n)的复杂度求出答案，具体实现见代码，注意答案用long long记录 </p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 222222</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> t1[maxn],t2[maxn],c[maxn],sa[maxn],rank[maxn],height[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *r,<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> r[a]==r[b]&amp;&amp;r[a+l]==r[b+l];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">da</span><span class="params">(<span class="keyword">int</span> str[],<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">    <span class="keyword">int</span> i,j,p,*x=t1,*y=t2;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[i]=str[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[i]]]=i;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n;j&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=n-j;i&lt;n;i++)y[p++]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(sa[i]&gt;=j)y[p++]=sa[i]-j;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[y[i]]]++;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[y[i]]]]=y[i];</span><br><span class="line">        swap(x,y);</span><br><span class="line">        p=<span class="number">1</span>;x[sa[<span class="number">0</span>]]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        x[sa[i]]=cmp(y,sa[i<span class="number">-1</span>],sa[i],j)?p<span class="number">-1</span>:p++;</span><br><span class="line">        <span class="keyword">if</span>(p&gt;=n)<span class="keyword">break</span>;</span><br><span class="line">        m=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    n--;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++)rank[sa[i]]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k)k--;</span><br><span class="line">            j=sa[rank[i]<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">while</span>(str[i+k]==str[j+k])k++;</span><br><span class="line">            height[rank[i]]=k;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> k,n,a[maxn],id[maxn],sta[maxn],p;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k),k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">        s[len]=<span class="string">'#'</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+len+<span class="number">1</span>);</span><br><span class="line">        n=<span class="built_in">strlen</span>(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)a[i]=s[i];</span><br><span class="line">        a[n]=<span class="number">0</span>;</span><br><span class="line">        da(a,n,<span class="number">200</span>);</span><br><span class="line">        ll ans=<span class="number">0</span>,num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(height[i]&lt;k)</span><br><span class="line">            &#123;</span><br><span class="line">                p=num[<span class="number">1</span>]=num[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> pp=p;pp&amp;&amp;sta[pp]&gt;height[i]-k+<span class="number">1</span>;pp--)</span><br><span class="line">            &#123;</span><br><span class="line">                num[id[pp]]+=height[i]-k+<span class="number">1</span>-sta[pp];</span><br><span class="line">                sta[pp]=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sta[++p]=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(sa[i<span class="number">-1</span>]&lt;len)id[p]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sa[i<span class="number">-1</span>]&gt;len)id[p]=<span class="number">2</span>;</span><br><span class="line">            num[id[p]]+=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(sa[i]&lt;len)ans+=num[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sa[i]&gt;len)ans+=num[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2017/08/28/Gym - 100085G - GCD Guessing Game/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1884,7 +2033,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2017/08/28/HDU - 5884 - Sort/">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fang Hantao">
@@ -1903,7 +2052,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/28/HDU - 5884 - Sort/" itemprop="url">HDU - 5884 - Sort</a></h1>
+                <a class="post-title-link" href="/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/" itemprop="url">POJ 3415 Common Substrings（后缀数组+单调栈）</a></h1>
         
 
         <div class="post-meta">
@@ -1915,7 +2064,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T01:23:50+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T13:14:50+08:00">
                 2017-08-28
               </time>
             
@@ -1938,8 +2087,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/hdu/" itemprop="url" rel="index">
-                    <span itemprop="name">hdu</span>
+                  <a href="/categories/poj/" itemprop="url" rel="index">
+                    <span itemprop="name">poj</span>
                   </a>
                 </span>
 
@@ -1956,8 +2105,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/28/HDU - 5884 - Sort/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/28/HDU - 5884 - Sort/" itemprop="commentCount"></span>
+                <a href="/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1979,7 +2128,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  429
+                  915
                 </span>
               
 
@@ -1995,7 +2144,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  4
                 </span>
               
             </div>
@@ -2018,10 +2167,10 @@
       
         
           
-            <p><img src="https://vjudge.net/problem/496061/origin" alt="题目链接"></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给你n个序列以及序列内元素个数，现要求进行归并，花费为归并过程中序列长度的和，给定一个花费T，问最小的k(每次归并的最大序列个数)为多少。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先应该想到的是二分。然后思考如何check呢。排序，贪心的来，每次都选最小的前若干个。要注意的是，最后k-1个当然是在最后一次归并，那么要满足这样的情况，我们要判断(n-1)%(k-1)是否有剩余，有的话就先进行一次[余数+1]的归并，这样就保持了最优。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> t,n;</span><br><span class="line"><span class="keyword">int</span> a[maxn],sum[maxn];</span><br><span class="line">priority_queue&lt; <span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; , greater&lt;<span class="keyword">int</span>&gt;  &gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>( !q.empty() ) q.pop();</span><br><span class="line">    <span class="keyword">int</span> m=(n<span class="number">-1</span>)%(k<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(m)&#123;</span><br><span class="line">        m++;</span><br><span class="line">        res+=sum[m];</span><br><span class="line">        q.push(res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=m+<span class="number">1</span>;i&lt;=n;i++) q.push(a[i]);</span><br><span class="line">    <span class="keyword">int</span> up=(n<span class="number">-1</span>)/(k<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;up;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> tk=k,tt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(tk--)&#123;</span><br><span class="line">            tt+=q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        res+=tt;</span><br><span class="line">        q.push(tt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(res&gt;t) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;t);</span><br><span class="line">        sum[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">2</span>,r=n,mid;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(mid)) r=mid;</span><br><span class="line">            <span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>) r=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p><img src="https://vjudge.net/problem/POJ-3415" alt="题目链接"></p>
+<h3 id="参考-http-blog-csdn-net-v5zsq-article-details-51303710"><a href="#参考-http-blog-csdn-net-v5zsq-article-details-51303710" class="headerlink" title="参考 http://blog.csdn.net/v5zsq/article/details/51303710"></a>参考 <a href="http://blog.csdn.net/v5zsq/article/details/51303710" target="_blank" rel="noopener">http://blog.csdn.net/v5zsq/article/details/51303710</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给出两个串a和b，求a和b的长度不小于k的公共子串数量 </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>将两串连在一起（中间用隔离字符隔离以避免匹配越界），求出height数组后，按k分组，问题转化为求每一组的sum(lcp(i,j)-k+1)（第i个后缀属于第一个串，第j个后缀属于第二个串），如果常规去固定一个后缀去枚举另一个后缀，虽然rmq预处理可以使得每次操作是O(1)的，但是总复杂度也是O(n^2)的，所以要优化。考虑第i个后缀，假设其属于第一个串，那么这个值对答案的贡献就是sum(min(height[j]~height[i])-k+1)（j=2,3,…,i-1且第j个后缀属于第二个串），而这个最小值数组是非减的，那么考虑构造一个单调递增的栈，将height-k+1这一列数按顺序入栈，如果当前height[i]-k+1值大于等于栈顶元素则将height[i]-k+1入栈，否则就一直更新栈上部元素，将其值变为height[i]-k+1并累加height[i]-k+1-sta[p]（小于0）的值进入num[id[p]]中，id[p]记录第p个后缀属于哪一个串，这样做的意义就是在第i个后缀进栈时，假设在其之前进栈的元素与其的最长公共前缀都是height[i]-k+1，而多计算的部分用num数组来记录并累加到答案中，这样就可以用接近O(n)的复杂度求出答案，具体实现见代码，注意答案用long long记录 </p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 222222</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> t1[maxn],t2[maxn],c[maxn],sa[maxn],rank[maxn],height[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *r,<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> r[a]==r[b]&amp;&amp;r[a+l]==r[b+l];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">da</span><span class="params">(<span class="keyword">int</span> str[],<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">    <span class="keyword">int</span> i,j,p,*x=t1,*y=t2;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[i]=str[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[i]]]=i;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n;j&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=n-j;i&lt;n;i++)y[p++]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(sa[i]&gt;=j)y[p++]=sa[i]-j;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[y[i]]]++;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[y[i]]]]=y[i];</span><br><span class="line">        swap(x,y);</span><br><span class="line">        p=<span class="number">1</span>;x[sa[<span class="number">0</span>]]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        x[sa[i]]=cmp(y,sa[i<span class="number">-1</span>],sa[i],j)?p<span class="number">-1</span>:p++;</span><br><span class="line">        <span class="keyword">if</span>(p&gt;=n)<span class="keyword">break</span>;</span><br><span class="line">        m=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    n--;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++)rank[sa[i]]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k)k--;</span><br><span class="line">            j=sa[rank[i]<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">while</span>(str[i+k]==str[j+k])k++;</span><br><span class="line">            height[rank[i]]=k;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> k,n,a[maxn],id[maxn],sta[maxn],p;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k),k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">        s[len]=<span class="string">'#'</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+len+<span class="number">1</span>);</span><br><span class="line">        n=<span class="built_in">strlen</span>(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)a[i]=s[i];</span><br><span class="line">        a[n]=<span class="number">0</span>;</span><br><span class="line">        da(a,n,<span class="number">200</span>);</span><br><span class="line">        ll ans=<span class="number">0</span>,num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(height[i]&lt;k)</span><br><span class="line">            &#123;</span><br><span class="line">                p=num[<span class="number">1</span>]=num[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> pp=p;pp&amp;&amp;sta[pp]&gt;height[i]-k+<span class="number">1</span>;pp--)</span><br><span class="line">            &#123;</span><br><span class="line">                num[id[pp]]+=height[i]-k+<span class="number">1</span>-sta[pp];</span><br><span class="line">                sta[pp]=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sta[++p]=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(sa[i<span class="number">-1</span>]&lt;len)id[p]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sa[i<span class="number">-1</span>]&gt;len)id[p]=<span class="number">2</span>;</span><br><span class="line">            num[id[p]]+=height[i]-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(sa[i]&lt;len)ans+=num[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sa[i]&gt;len)ans+=num[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2108,7 +2257,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">122</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2130,7 +2279,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -2235,7 +2384,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共137k字</span>
+  <span class="post-count">博客全站共138.6k字</span>
 </div>
         
 
@@ -2408,6 +2557,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
