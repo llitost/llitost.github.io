@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Litost&#39;s Blog">
 <meta property="og:description" content="需求分析设计一个含有IOC的简单Spring，要求含有对象注册、对象管理以及暴露给外部的获取对象功能。 项目设计 对于注册的对象用一个类BeanInfo来描述其信息，包括对象标识、全类名以及属性名与值的Map。 对于IOC容器设定一个顶层接口BeanFactory，定义通过对象标识获取对象示例的方法getBean(String id)。AbstractBeanFactory实现该接口，在该类中实现">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T15:52:50.888Z">
+<meta property="og:updated_time" content="2018-12-12T01:53:52.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现IOC功能的简单Spring框架">
 <meta name="twitter:description" content="需求分析设计一个含有IOC的简单Spring，要求含有对象注册、对象管理以及暴露给外部的获取对象功能。 项目设计 对于注册的对象用一个类BeanInfo来描述其信息，包括对象标识、全类名以及属性名与值的Map。 对于IOC容器设定一个顶层接口BeanFactory，定义通过对象标识获取对象示例的方法getBean(String id)。AbstractBeanFactory实现该接口，在该类中实现">
@@ -271,7 +271,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fang Hantao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ph9c7j2aa.bkt.clouddn.com/1.jpg">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -381,145 +381,10 @@
 <li>对于注册器，提供一个顶层接口<em>SourceReader</em>，并在其中添加加载用户注册的对象的方法<em>loadBeans(String filePath)</em>。本项目中使用读取XML的方式，从XML中读取出注册的对象，并把它们封装成<em>BeanInfo</em>放入Map中。</li>
 <li>设定一个上下文<em>XMLContext</em>，继承<em>AbstractBeanFactor</em>y，负责选择使用哪种注册方式，并决定何时加载注册的对象。</li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="BeanInfo类"><a href="#BeanInfo类" class="headerlink" title="BeanInfo类"></a>BeanInfo类</h3><pre><code>package ex1;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * 该类用于描述注册在容器中的对象
- */
-public class BeanInfo {
-    private String id; //对象ID，名字
-    private String type; //全类名
-       private Map&lt;String, Object&gt; properties = new HashMap&lt;&gt;(); //属性名与值的映射集合
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Map&lt;String, Object&gt; getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Map&lt;String, Object&gt; properties) {
-        this.properties = properties;
-    }
-
-    public void addProperty(String key,Object value) {
-        properties.put(key,value);
-    }
-}
-</code></pre><h3 id="BeanFactory接口"><a href="#BeanFactory接口" class="headerlink" title="BeanFactory接口"></a>BeanFactory接口</h3><pre><code>package ex1;
-
-public interface BeanFactory {
-    /**
-     * 根据对象的名称标识来获取对象实例
-     * @param id 对象名称，即对象描述信息中的对象标识
-     * @return 指定名称的对象实例
-     */
-    Object getBean(String id);
-}
-</code></pre><h3 id="AbstractBeanFactory类"><a href="#AbstractBeanFactory类" class="headerlink" title="AbstractBeanFactory类"></a>AbstractBeanFactory类</h3><pre><code>package ex1;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Map;
-/**
- * 最顶层的IOC实现
- * 该类负责从注册器中取出注册对象
- * 实现从对象描述信息转换为对象实例的过程
- * 实现根据名称获取对象的方法
- */
-public abstract class AbstractBeanFactory implements BeanFactory {
-    private String filePath;  //注册文件路径
-    private Map&lt;String, BeanInfo&gt; container; //注册对象信息Map（IOC容器）
-    protected SourceReader reader; //对象注册读取器
-
-
-    public AbstractBeanFactory(String filePath) {
-        this.filePath = filePath;
-    }
-
-    /**
-     * 抽象方法，需由子类实现，用于指定使用什么样的注册读取器
-     * @param reader 指定的注册读取器
-     */
-    protected abstract void setReader(SourceReader reader);
-
-    //从注册读取器中读取注册对象的信息Map
-    public void registerBeans() {
-        this.container = this.reader.loadBeans(this.filePath);
-    }
-
-    //实现BeanFactory定义的根据名称获取指定对象的方法
-    @Override
-    public Object getBean(String id) {
-        BeanInfo beanInfo = this.container.get(id); //根据对象名称获取该对象的描述信息
-        if (beanInfo == null) {
-            return null;
-        } else {
-            //根据对象信息，解析并生存指定对象实例，返回给用户
-            return this.parseBean(beanInfo);
-        }
-    }
-
-    /**
-     * 解析并生成对象实例
-     * 该方法主要通过反射完成，步骤如下：
-     * 1.根据类名，加载指定类，并获取该类的Class对象clazz
-     * 2.使用clazz实例化该类，获取一个对象，注意，这里采用无参构造方法
-     * 3.逐个设置对象子段的值，这里采用setter Method方式，而不是直接使用Field对象
-     * 4.返回对象实例
-     * @param beanInfo 指定对象的描述信息
-     * @return
-     */
-    protected Object parseBean(BeanInfo beanInfo) {
-        Class clazz;
-        Object bean = null;
-        try {
-            clazz = Class.forName(beanInfo.getType()); //根据对象的全类名，指定类
-            bean = clazz.newInstance(); //使用注册对象的无参构造函数，实例化对象
-            Method[] methods = clazz.getMethods(); //获取所有公共方法（其实Spring获取的是所有方法，包括非公有是）
-            for (String property : beanInfo.getProperties().keySet()) {
-                //首字母大写
-                String name = property.toUpperCase().charAt(0) + property.toLowerCase().substring(1);
-                //获取属性的setter方法名称（命名规范）
-                String setter = &quot;set&quot; + name;
-                for (Method method : methods) {
-                    if (method.getName().equals(setter)) {
-                        Object value = beanInfo.getProperties().get(property);
-                        method.invoke(bean, value); //通过反射对属性赋值
-                        break;
-                    }
-                }
-            }
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return bean;
-    }
-}
-</code></pre><h3 id="SourceReader接口"><a href="#SourceReader接口" class="headerlink" title="SourceReader接口"></a>SourceReader接口</h3><pre><code>package ex1;
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="BeanInfo类"><a href="#BeanInfo类" class="headerlink" title="BeanInfo类"></a>BeanInfo类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ex1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">- 该类用于描述注册在容器中的对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanInfo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String id; <span class="comment">//对象ID，名字</span></span><br><span class="line">	<span class="keyword">private</span> String type; <span class="comment">//全类名</span></span><br><span class="line"></span><br><span class="line">   	<span class="keyword">private</span> Map&lt;String, Object&gt; properties = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">//属性名与值的映射集合</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setType</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getProperties</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> properties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProperties</span><span class="params">(Map&lt;String, Object&gt; properties)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.properties = properties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addProperty</span><span class="params">(String key,Object value)</span> </span>&#123;</span><br><span class="line">        properties.put(key,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="BeanFactory接口"><a href="#BeanFactory接口" class="headerlink" title="BeanFactory接口"></a>BeanFactory接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ex1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据对象的名称标识来获取对象实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id 对象名称，即对象描述信息中的对象标识</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 指定名称的对象实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Object <span class="title">getBean</span><span class="params">(String id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="AbstractBeanFactory类"><a href="#AbstractBeanFactory类" class="headerlink" title="AbstractBeanFactory类"></a>AbstractBeanFactory类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ex1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">- 最顶层的IOC实现</span></span><br><span class="line"><span class="comment">- 该类负责从注册器中取出注册对象</span></span><br><span class="line"><span class="comment">- 实现从对象描述信息转换为对象实例的过程</span></span><br><span class="line"><span class="comment">- 实现根据名称获取对象的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractBeanFactory</span> <span class="keyword">implements</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line"> 	 <span class="keyword">private</span> String filePath;  <span class="comment">//注册文件路径</span></span><br><span class="line">     <span class="keyword">private</span> Map&lt;String, BeanInfo&gt; container; <span class="comment">//注册对象信息Map（IOC容器）</span></span><br><span class="line">      <span class="keyword">protected</span> SourceReader reader; <span class="comment">//对象注册读取器</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbstractBeanFactory</span><span class="params">(String filePath)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.filePath = filePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">- 抽象方法，需由子类实现，用于指定使用什么样的注册读取器</span></span><br><span class="line"><span class="comment">   <span class="doctag">@param</span> reader 指定的注册读取器</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setReader</span><span class="params">(SourceReader reader)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从注册读取器中读取注册对象的信息Map</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeans</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.container = <span class="keyword">this</span>.reader.loadBeans(<span class="keyword">this</span>.filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//实现BeanFactory定义的根据名称获取指定对象的方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        BeanInfo beanInfo = <span class="keyword">this</span>.container.get(id); <span class="comment">//根据对象名称获取该对象的描述信息</span></span><br><span class="line">        <span class="keyword">if</span> (beanInfo == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//根据对象信息，解析并生存指定对象实例，返回给用户</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.parseBean(beanInfo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">- 解析并生成对象实例</span></span><br><span class="line"><span class="comment">   该方法主要通过反射完成，步骤如下：</span></span><br><span class="line"><span class="comment">  - 1.根据类名，加载指定类，并获取该类的Class对象clazz</span></span><br><span class="line"><span class="comment">     2.使用clazz实例化该类，获取一个对象，注意，这里采用无参构造方法</span></span><br><span class="line"><span class="comment">    - 3.逐个设置对象子段的值，这里采用setter Method方式，而不是直接使用Field对象</span></span><br><span class="line"><span class="comment">       4.返回对象实例</span></span><br><span class="line"><span class="comment">      - <span class="doctag">@param</span> beanInfo 指定对象的描述信息</span></span><br><span class="line"><span class="comment">         <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> Object <span class="title">parseBean</span><span class="params">(BeanInfo beanInfo)</span> </span>&#123;</span><br><span class="line">                Class clazz;</span><br><span class="line">                Object bean = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    clazz = Class.forName(beanInfo.getType()); <span class="comment">//根据对象的全类名，指定类</span></span><br><span class="line">                    bean = clazz.newInstance(); <span class="comment">//使用注册对象的无参构造函数，实例化对象</span></span><br><span class="line">                    Method[] methods = clazz.getMethods(); <span class="comment">//获取所有公共方法（其实Spring获取的是所有方法，包括非公有是）</span></span><br><span class="line">                    <span class="keyword">for</span> (String property : beanInfo.getProperties().keySet()) &#123;</span><br><span class="line">           <span class="comment">//首字母大写</span></span><br><span class="line">           String name = property.toUpperCase().charAt(<span class="number">0</span>) + property.toLowerCase().substring(<span class="number">1</span>);</span><br><span class="line">           <span class="comment">//获取属性的setter方法名称（命名规范）</span></span><br><span class="line">           String setter = <span class="string">"set"</span> + name;</span><br><span class="line">           <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">               <span class="keyword">if</span> (method.getName().equals(setter)) &#123;</span><br><span class="line">                   Object value = beanInfo.getProperties().get(property);</span><br><span class="line">                   method.invoke(bean, value); <span class="comment">//通过反射对属性赋值</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SourceReader接口"><a href="#SourceReader接口" class="headerlink" title="SourceReader接口"></a>SourceReader接口</h3><pre><code>package ex1;
 
 import java.util.Map;
 /**
@@ -680,7 +545,7 @@ public class Bootstrap {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/" rel="next" title="IDEA+Maven+Spring MVC HelloWorld示例">
+              <a href="/2018/10/29/IDEA+Maven+Spring-MVC-HelloWorld示例/" rel="next" title="IDEA+Maven+Spring MVC HelloWorld示例">
                 <i class="fa fa-chevron-left"></i> IDEA+Maven+Spring MVC HelloWorld示例
               </a>
             
@@ -790,7 +655,7 @@ var jiathis_config={
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="http://ph9c7j2aa.bkt.clouddn.com/1.jpg" alt="Fang Hantao">
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
             
               <p class="site-author-name" itemprop="name">Fang Hantao</p>
               <p class="site-description motion-element" itemprop="description">share something</p>

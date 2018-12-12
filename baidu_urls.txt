@@ -1,13 +1,13 @@
 http://litost-fht.top/2018/10/30/实现IOC功能的简单Spring框架/
-http://litost-fht.top/2018/10/29/IDEA-Maven-Spring-MVC-HelloWorld示例/
+http://litost-fht.top/2018/10/29/IDEA+Maven+Spring-MVC-HelloWorld示例/
 http://litost-fht.top/2018/10/27/CSU - 1803/
 http://litost-fht.top/2018/10/27/test-my-site/
 http://litost-fht.top/2018/10/27/hello-world/
 http://litost-fht.top/2017/10/15/UVA - 1625 Color Length/
 http://litost-fht.top/2017/10/15/UVA - 11584 Partitioning by Palindromes/
 http://litost-fht.top/2017/10/15/UVA - 11400 Lighting System Design/
-http://litost-fht.top/2017/08/28/Gym - 100085G - GCD Guessing Game/
 http://litost-fht.top/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/
+http://litost-fht.top/2017/08/28/Gym - 100085G - GCD Guessing Game/
 http://litost-fht.top/2017/08/28/HDU - 5884 - Sort/
 http://litost-fht.top/2017/08/12/Gym - 100851F - Froggy Ford（dijkstra）/
 http://litost-fht.top/2017/08/11/UVALive 7143 Room Assignment（组合数学+DP）/
@@ -26,11 +26,11 @@ http://litost-fht.top/2017/07/30/HDU - 5119 Happy Matt Friends(dp)/
 http://litost-fht.top/2017/07/30/HDU - 5115 Dire Wolf(dp)/
 http://litost-fht.top/2017/07/29/HDU - 5071 Chat（模拟）/
 http://litost-fht.top/2017/07/29/Galaxy HDU - 5073 /
-http://litost-fht.top/2017/07/29/HDU - 5179  beautiful number/
 http://litost-fht.top/2017/07/29/HDU - 5172 GTY's gay friends/
+http://litost-fht.top/2017/07/29/HDU - 5179  beautiful number/
 http://litost-fht.top/2017/07/26/CodeForces - 375A Divisible by Seven/
-http://litost-fht.top/2017/07/25/ACdream - 1060 递推数(矩阵+循环节)/
 http://litost-fht.top/2017/07/25/CodeChef - FORESTGA Forest Gathering（二分）/
+http://litost-fht.top/2017/07/25/ACdream - 1060 递推数(矩阵+循环节)/
 http://litost-fht.top/2017/07/25/hdu3555 Bomb ——数位DP入门题/
 http://litost-fht.top/2017/07/23/hdu 3605 Escape【状态压缩+最大流Dinic+建图】/
 http://litost-fht.top/2017/07/22/POJ 3376 Finding Palindromes/
