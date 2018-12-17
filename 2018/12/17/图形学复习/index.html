@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="总结,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[TOC] 图形学简介应用计算机图形硬件 输入设备  键盘  鼠标  操纵杆  触摸屏  数据手套  语音系统    输出设备  视频显示设备  平板显示器  虚拟现实显示系统  增强现实显示系统    打印设备     计算机图形软件•分类 ​    •专用软件 ​    •通用SDK ​        •底层SDK：OpenGL、Direct3D、WebGL（three.js） ​">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学复习">
+<meta property="og:url" content="http://litost-fht.top/2018/12/17/图形学复习/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="[TOC] 图形学简介应用计算机图形硬件 输入设备  键盘  鼠标  操纵杆  触摸屏  数据手套  语音系统    输出设备  视频显示设备  平板显示器  虚拟现实显示系统  增强现实显示系统    打印设备     计算机图形软件•分类 ​    •专用软件 ​    •通用SDK ​        •底层SDK：OpenGL、Direct3D、WebGL（three.js） ​">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752825243.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752917411.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752937377.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752944319.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753009112.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752997252.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753015405.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753025225.png">
+<meta property="og:image" content="http://litost-fht.top/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753096090.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544753732110-1544753732277.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544767629504-1544767629610.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544767084342-1544767084598.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544772068892-1544772069052.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544772075732-1544772075892.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544772204423-1544772204612.png">
+<meta property="og:image" content="http://litost-fht.top/图片md/1544772228709-1544772228948.png">
+<meta property="og:image" content="http://litost-fht.top/1544792839504.png">
+<meta property="og:image" content="http://litost-fht.top/1544792867702.png">
+<meta property="og:image" content="http://litost-fht.top/1544792887030.png">
+<meta property="og:image" content="http://litost-fht.top/1544792923420.png">
+<meta property="og:image" content="http://litost-fht.top/1544792941610.png">
+<meta property="og:image" content="http://litost-fht.top/1544793962034.png">
+<meta property="og:image" content="http://litost-fht.top/1544793987822.png">
+<meta property="og:image" content="http://litost-fht.top/1544794081967.png">
+<meta property="og:image" content="http://litost-fht.top/1544794344826.png">
+<meta property="og:image" content="http://litost-fht.top/1544794375578.png">
+<meta property="og:image" content="http://litost-fht.top/1544794483018.png">
+<meta property="og:image" content="http://litost-fht.top/1544838323979.png">
+<meta property="og:image" content="http://litost-fht.top/1544838526849.png">
+<meta property="og:image" content="http://litost-fht.top/1544838548499.png">
+<meta property="og:image" content="http://litost-fht.top/1544838585852.png">
+<meta property="og:image" content="http://litost-fht.top/1544838603213.png">
+<meta property="og:image" content="http://litost-fht.top/1544840444829.png">
+<meta property="og:image" content="http://litost-fht.top/1544848321043.png">
+<meta property="og:image" content="http://litost-fht.top/1544874098074.png">
+<meta property="og:image" content="http://litost-fht.top/1544875802399.png">
+<meta property="og:image" content="http://litost-fht.top/1544875751203.png">
+<meta property="og:image" content="http://litost-fht.top/1544875767295.png">
+<meta property="og:image" content="http://litost-fht.top/1544875912032.png">
+<meta property="og:image" content="http://litost-fht.top/1544876468893.png">
+<meta property="og:image" content="http://litost-fht.top/1544876534026.png">
+<meta property="og:image" content="http://litost-fht.top/1544877349903.png">
+<meta property="og:image" content="http://litost-fht.top/1544877334052.png">
+<meta property="og:image" content="http://litost-fht.top/1544877595562.png">
+<meta property="og:image" content="http://litost-fht.top/1544878239180.png">
+<meta property="og:image" content="http://litost-fht.top/1544878819072.png">
+<meta property="og:image" content="http://litost-fht.top/1544878830833.png">
+<meta property="og:image" content="http://litost-fht.top/1544878909453.png">
+<meta property="og:image" content="http://litost-fht.top/1544878923968.png">
+<meta property="og:image" content="http://litost-fht.top/1544879455118.png">
+<meta property="og:image" content="http://litost-fht.top/1544879680841.png">
+<meta property="og:image" content="http://litost-fht.top/1544879635496.png">
+<meta property="og:image" content="http://litost-fht.top/1544880006880.png">
+<meta property="og:image" content="http://litost-fht.top/1544880020748.png">
+<meta property="og:image" content="http://litost-fht.top/1544880839220.png">
+<meta property="og:image" content="http://litost-fht.top/1544880860032.png">
+<meta property="og:image" content="http://litost-fht.top/1544880944837.png">
+<meta property="og:image" content="http://litost-fht.top/1544880893586.png">
+<meta property="og:image" content="http://litost-fht.top/1544881117454.png">
+<meta property="og:updated_time" content="2018-12-17T06:12:07.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机图形学复习">
+<meta name="twitter:description" content="[TOC] 图形学简介应用计算机图形硬件 输入设备  键盘  鼠标  操纵杆  触摸屏  数据手套  语音系统    输出设备  视频显示设备  平板显示器  虚拟现实显示系统  增强现实显示系统    打印设备     计算机图形软件•分类 ​    •专用软件 ​    •通用SDK ​        •底层SDK：OpenGL、Direct3D、WebGL（three.js） ​">
+<meta name="twitter:image" content="c:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752825243.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2018/12/17/图形学复习/">
+
+
+
+
+
+  <title>计算机图形学复习 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2018/12/17/图形学复习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机图形学复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T14:16:50+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程复习/" itemprop="url" rel="index">
+                    <span itemprop="name">课程复习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/17/图形学复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/17/图形学复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h2 id="图形学简介"><a href="#图形学简介" class="headerlink" title="图形学简介"></a>图形学简介</h2><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h3 id="计算机图形硬件"><a href="#计算机图形硬件" class="headerlink" title="计算机图形硬件"></a>计算机图形硬件</h3><ul>
+<li><p>输入设备</p>
+<ul>
+<li><p>键盘</p>
+</li>
+<li><p>鼠标</p>
+</li>
+<li><p>操纵杆</p>
+</li>
+<li><p>触摸屏</p>
+</li>
+<li><p>数据手套</p>
+</li>
+<li><p>语音系统</p>
+</li>
+</ul>
+</li>
+<li><p>输出设备</p>
+<ul>
+<li><p>视频显示设备</p>
+<ul>
+<li><p>平板显示器</p>
+</li>
+<li><p>虚拟现实显示系统</p>
+</li>
+<li><p>增强现实显示系统</p>
+</li>
+</ul>
+</li>
+<li><p>打印设备</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="计算机图形软件"><a href="#计算机图形软件" class="headerlink" title="计算机图形软件"></a>计算机图形软件</h3><p>•分类</p>
+<p>​    •专用软件</p>
+<p>​    •通用SDK</p>
+<p>​        •底层SDK：OpenGL、Direct3D、WebGL（three.js）</p>
+<p>​        •高级SDK：Unity3D</p>
+<p>•坐标表示</p>
+<p>​    •模型坐标系</p>
+<p>​    •世界坐标系</p>
+<p>​    •设备坐标系</p>
+<p>•图形功能</p>
+<p>​    •图元：图形的基本构成单元（点、线、面等）</p>
+<p>​    •属性：图元的特性（颜色、线型等）</p>
+<p>​    •几何变换：大小、位置、方向</p>
+<p>​    •…</p>
+<h2 id="OpenGL介绍"><a href="#OpenGL介绍" class="headerlink" title="OpenGL介绍"></a>OpenGL介绍</h2><p>用来描述图元、属性、几何变换和各种图形操作的跨平台函数库</p>
+<h3 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h3><h3 id="OpenGL程序"><a href="#OpenGL程序" class="headerlink" title="OpenGL程序"></a>OpenGL程序</h3><h2 id="直线生成"><a href="#直线生成" class="headerlink" title="直线生成"></a>直线生成</h2><h3 id="画点"><a href="#画点" class="headerlink" title="画点"></a>画点</h3><p><img src="C:\Users\Fang\AppData\Roaming\Typora\typora-user-images\1544752825243.png" alt="1544752825243"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752917411.png" alt="1544752917411"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752937377.png" alt="1544752937377"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752944319.png" alt="1544752944319"></p>
+<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753009112.png" alt="1544753009112"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544752997252.png" alt="1544752997252"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753015405.png" alt="1544753015405"></p>
+<p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753025225.png" alt="1544753025225"></p>
+<h3 id="直线公式"><a href="#直线公式" class="headerlink" title="直线公式"></a>直线公式</h3><p><img src="/C:/Users/Fang/AppData/Roaming/Typora/typora-user-images/1544753096090.png" alt="1544753096090"></p>
+<h3 id="DDA算法"><a href="#DDA算法" class="headerlink" title="DDA算法"></a>DDA算法</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p><img src="/../../图片md/1544753732110-1544753732277.png" alt="1544753732110"></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">int</span>(a+<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DDA</span><span class="params">(<span class="keyword">int</span> x0,<span class="keyword">int</span> y0,<span class="keyword">int</span> xed,<span class="keyword">int</span> yed)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dx = xed-x0, dy = yed-y0, steps;</span><br><span class="line">    <span class="keyword">double</span> x=x0, y=y0, xIncrement, yIncrement;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">abs</span>(dx)&gt;<span class="built_in">abs</span>(dy))&#123;</span><br><span class="line">        steps = <span class="built_in">abs</span>(dx);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        steps = <span class="built_in">abs</span>(dy);</span><br><span class="line">    &#125;</span><br><span class="line">    xIncrement = <span class="keyword">double</span>(dx)/<span class="keyword">double</span>(steps);</span><br><span class="line">    yIncrement = <span class="keyword">double</span>(dy)/<span class="keyword">double</span>(steps);</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=steps;k++)&#123;</span><br><span class="line">        glVertex2i(round(x),round(y));</span><br><span class="line">        x += xIncrement;</span><br><span class="line">        y += yIncrement;</span><br><span class="line">    &#125;</span><br><span class="line">    glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>比直接处理直线方程的算法快？</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><p>取整运算、浮点运算的累积误差影响像素坐标计算精度</p>
+</li>
+<li><p>取整运算、浮点运算的影响运算效率</p>
+</li>
+</ul>
+<h3 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h3><h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Bresenham line-drawing procedure for |m| &lt; 1.0. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lineBres</span> <span class="params">(<span class="keyword">int</span> x0, <span class="keyword">int</span> y0, <span class="keyword">int</span> xEnd, <span class="keyword">int</span> yEnd)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dx = <span class="built_in">fabs</span> (xEnd - x0), dy = <span class="built_in">fabs</span>(yEnd - y0);</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">2</span> * dy - dx;</span><br><span class="line">    <span class="keyword">int</span> twoDy = <span class="number">2</span> * dy, twoDyMinusDx = <span class="number">2</span> * (dy - dx);</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">     <span class="comment">/* Determine which endpoint to use as start position. */</span></span><br><span class="line">    <span class="keyword">if</span> (x0 &gt; xEnd) &#123;</span><br><span class="line">        x = xEnd;</span><br><span class="line">        y = yEnd;</span><br><span class="line">        xEnd = x0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        x = x0;</span><br><span class="line">        y = y0;</span><br><span class="line">    &#125;</span><br><span class="line">    setPixel (x, y);</span><br><span class="line">	<span class="keyword">while</span> (x &lt; xEnd) &#123;</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">if</span> (p &lt; <span class="number">0</span>)</span><br><span class="line">            p += twoDy;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            y++;</span><br><span class="line">            p += twoDyMinusDx;</span><br><span class="line">        &#125;</span><br><span class="line">        setPixel (x, y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="曲线曲面生成"><a href="#曲线曲面生成" class="headerlink" title="曲线曲面生成"></a>曲线曲面生成</h2><h3 id="圆生成算法"><a href="#圆生成算法" class="headerlink" title="圆生成算法"></a>圆生成算法</h3><p><img src="/../../图片md/1544767629504-1544767629610.png" alt="1544767629504"></p>
+<p><img src="/../../图片md/1544767084342-1544767084598.png" alt="1544767084342"></p>
+<h3 id="椭圆生成算法"><a href="#椭圆生成算法" class="headerlink" title="椭圆生成算法"></a>椭圆生成算法</h3><p><img src="/../../图片md/1544772068892-1544772069052.png" alt="1544772068892"></p>
+<p><img src="/../../图片md/1544772075732-1544772075892.png" alt="1544772075732"></p>
+<h3 id="二次曲面"><a href="#二次曲面" class="headerlink" title="二次曲面"></a>二次曲面</h3><h4 id="球面"><a href="#球面" class="headerlink" title="球面"></a>球面</h4><p><img src="/../../图片md/1544772204423-1544772204612.png" alt="1544772204423"></p>
+<h4 id="椭球面"><a href="#椭球面" class="headerlink" title="椭球面"></a>椭球面</h4><p><img src="/../../图片md/1544772228709-1544772228948.png" alt="1544772228709"></p>
+<h3 id="样条曲线、曲面"><a href="#样条曲线、曲面" class="headerlink" title="样条曲线、曲面"></a>样条曲线、曲面</h3><p>利用多项式曲线段形成的这种连续曲线称为样条曲线，简称为样条。</p>
+<h4 id="OpenGL的Bezier样条曲线函数"><a href="#OpenGL的Bezier样条曲线函数" class="headerlink" title="OpenGL的Bezier样条曲线函数"></a>OpenGL的Bezier样条曲线函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成曲线</span></span><br><span class="line">GLfloat ctrlPts[<span class="number">4</span>][<span class="number">3</span>] = &#123; &#123;<span class="number">-40.0</span>, <span class="number">40.0</span>, <span class="number">0.0</span>&#125;,</span><br><span class="line">                           &#123;<span class="number">-10.0</span>, <span class="number">200.0</span>, <span class="number">0.0</span>&#125;,</span><br><span class="line">                           &#123;<span class="number">10.0</span>, <span class="number">-200.0</span>, <span class="number">0.0</span>&#125;, </span><br><span class="line">                           &#123;<span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">0.0</span>&#125;&#125;;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">glMap1*(GL_MAP1_VERTEX_3, uMin, uMax, stride, nPts, *ctrlPts);</span></span><br><span class="line"><span class="comment">uMin,uMax是参数u的最小最大值，通常取0和1</span></span><br><span class="line"><span class="comment">三维笛卡尔坐标控制点坐标在ctrlPts数组中</span></span><br><span class="line"><span class="comment">nPts为数组元素个数</span></span><br><span class="line"><span class="comment">stride表示位移量，一个坐标到下一个坐标的数据值的数量</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">glMap1f(GL_MAP1_VERTEX_3, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">3</span>, <span class="number">4</span>, *ctrlPts);</span><br><span class="line">glEnable(GL_MAP1_VERTEX_3);</span><br><span class="line"><span class="comment">//绘制曲线</span></span><br><span class="line">GLint k;</span><br><span class="line">glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>); </span><br><span class="line">glBegin(GL_LINE_STRIP);                                       </span><br><span class="line">    <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt;= <span class="number">50</span>; k++)    </span><br><span class="line">        glEvalCoord1f(GLfloat (k) / <span class="number">50.0</span>);</span><br><span class="line">glEnd();</span><br><span class="line"><span class="comment">//绘制控制点</span></span><br><span class="line">glColor(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>); </span><br><span class="line">glPointSize(<span class="number">5.0</span>);.</span><br><span class="line">glBegin(GL_POINTS); </span><br><span class="line">    <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; <span class="number">4</span>; k++)    </span><br><span class="line">        glVertex3fv(&amp;ctrlPts[k][<span class="number">0</span>]);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure>
+<h4 id="OpenGL的Bezier样条曲面函数"><a href="#OpenGL的Bezier样条曲面函数" class="headerlink" title="OpenGL的Bezier样条曲面函数"></a>OpenGL的Bezier样条曲面函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">GLfloat ctrlPts [<span class="number">4</span>][<span class="number">4</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">	&#123;&#123;<span class="number">-1.5</span>,<span class="number">-1.5</span>,<span class="number">4.0</span>&#125;, &#123;<span class="number">-0.5</span>,<span class="number">-1.5</span>,<span class="number">2.0</span>&#125;, &#123;<span class="number">-0.5</span>,<span class="number">-1.5</span>,<span class="number">-1.0</span>&#125;, &#123;<span class="number">1.5</span>,<span class="number">-1.5</span>,<span class="number">2.0</span>&#125;&#125;,</span><br><span class="line">	&#123;&#123;<span class="number">-1.5</span>,<span class="number">-0.5</span>,<span class="number">1.0</span>&#125;, &#123;<span class="number">-0.5</span>,<span class="number">-0.5</span>,<span class="number">3.0</span>&#125;, &#123;<span class="number">0.5</span>,<span class="number">-0.5</span>,<span class="number">0.0</span>&#125;, &#123;<span class="number">1.5</span>,<span class="number">-0.5</span>,<span class="number">-1.0</span>&#125;&#125;,</span><br><span class="line">	&#123;&#123;<span class="number">-1.5</span>,<span class="number">0.5</span>,<span class="number">4.0</span>&#125;, &#123;<span class="number">-0.5</span>,<span class="number">0.5</span>,<span class="number">0.0</span>&#125;, &#123; <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">3.0</span>&#125;, &#123; <span class="number">1.5</span>, <span class="number">0.5</span>, <span class="number">4.0</span>&#125;&#125;,</span><br><span class="line">	&#123;&#123;<span class="number">-1.5</span>,<span class="number">1.5</span>,<span class="number">-2.0</span>&#125;, &#123;<span class="number">-0.5</span>,<span class="number">1.5</span>,<span class="number">-2.0</span>&#125;, &#123; <span class="number">0.5</span>, <span class="number">1.5</span>, <span class="number">0.0</span>&#125;, &#123; <span class="number">1.5</span>, <span class="number">1.5</span>, <span class="number">-1.0</span>&#125;&#125; &#125;;</span><br><span class="line">glMap2f (GL_MAP2_VERTEX_3, </span><br><span class="line">         <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">3</span>, <span class="number">4</span>, </span><br><span class="line">         <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">12</span>, <span class="number">4</span>,</span><br><span class="line">         &amp;ctrlPts[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">glEnable (GL_MAP2_VERTEX_3);</span><br><span class="line">GLint k, j;</span><br><span class="line">glColor3f (<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">for</span> (k = <span class="number">0</span>; k &lt;= <span class="number">8</span>; k++) &#123;</span><br><span class="line">    glBegin (GL_LINE_STRIP); </span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= <span class="number">40</span>; j++)  </span><br><span class="line">            glEvalCoord2f (GLfloat (j) / <span class="number">40.0</span>, GLfloat (k) / <span class="number">8.0</span>);</span><br><span class="line">    glEnd ( );</span><br><span class="line">    glBegin (GL_LINE_STRIP);</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= <span class="number">40</span>; j++)  </span><br><span class="line">            glEvalCoord2f (GLfloat (k) / <span class="number">8.0</span>, GLfloat (j) / <span class="number">40.0</span>);</span><br><span class="line">    glEnd ( );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区域填充"><a href="#区域填充" class="headerlink" title="区域填充"></a>区域填充</h2><h3 id="OpenGL填充函数"><a href="#OpenGL填充函数" class="headerlink" title="OpenGL填充函数"></a>OpenGL填充函数</h3><p><img src="/1544792839504.png" alt="1544792839504"></p>
+<p><img src="/1544792867702.png" alt="1544792867702"></p>
+<p><img src="/1544792887030.png" alt="1544792887030"></p>
+<p><img src="/1544792923420.png" alt="1544792923420"></p>
+<p><img src="/1544792941610.png" alt="1544792941610"></p>
+<p>​    左上角和右下角</p>
+<h3 id="扫描线填充算法"><a href="#扫描线填充算法" class="headerlink" title="扫描线填充算法"></a>扫描线填充算法</h3><h3 id="四联通、八联通填充方法"><a href="#四联通、八联通填充方法" class="headerlink" title="四联通、八联通填充方法"></a>四联通、八联通填充方法</h3><h2 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h2><h3 id="二维几何变换"><a href="#二维几何变换" class="headerlink" title="二维几何变换"></a>二维几何变换</h3><h4 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h4><p><img src="/1544793962034.png" alt="1544793962034"></p>
+<h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p><img src="/1544793987822.png" alt="1544793987822"></p>
+<h4 id="放缩"><a href="#放缩" class="headerlink" title="放缩"></a>放缩</h4><p><img src="/1544794081967.png" alt="1544794081967"></p>
+<h4 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h4><p><img src="/1544794344826.png" alt="1544794344826"></p>
+<h4 id="二维变换矩阵"><a href="#二维变换矩阵" class="headerlink" title="二维变换矩阵"></a>二维变换矩阵</h4><p><img src="/1544794375578.png" alt="1544794375578"></p>
+<h4 id="矩阵合并特性"><a href="#矩阵合并特性" class="headerlink" title="矩阵合并特性"></a>矩阵合并特性</h4><p><img src="/1544794483018.png" alt="1544794483018"></p>
+<h3 id="三维几何变换"><a href="#三维几何变换" class="headerlink" title="三维几何变换"></a>三维几何变换</h3><h4 id="旋转-1"><a href="#旋转-1" class="headerlink" title="旋转"></a>旋转</h4><p><img src="/1544838323979.png" alt="1544838323979"></p>
+<p><img src="/1544838526849.png" alt="1544838526849"></p>
+<p><img src="/1544838548499.png" alt="1544838548499"></p>
+<p><img src="/1544838585852.png" alt="1544838585852"></p>
+<p><img src="/1544838603213.png" alt="1544838603213"></p>
+<h5 id="一般旋转"><a href="#一般旋转" class="headerlink" title="一般旋转"></a>一般旋转</h5><ol>
+<li>平移对象，使得旋转轴通过坐标原点；</li>
+<li>旋转对象使得旋转轴与某一坐标轴重合；</li>
+<li>绕该坐标轴完成指定的旋转；</li>
+<li>利用逆旋转使旋转轴回到其原始方向；</li>
+<li>利用逆平移使旋转轴回到其原始位置。</li>
+</ol>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p><img src="/1544840444829.png" alt="1544840444829"></p>
+<h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>产品设计</li>
+<li>生产制造</li>
+<li>生物医学</li>
+</ul>
+<h2 id="二维-三维观察"><a href="#二维-三维观察" class="headerlink" title="二维/三维观察"></a>二维/三维观察</h2><h3 id="世界坐标、屏幕坐标"><a href="#世界坐标、屏幕坐标" class="headerlink" title="世界坐标、屏幕坐标"></a>世界坐标、屏幕坐标</h3><p><img src="/1544848321043.png" alt="1544848321043"></p>
+<h3 id="裁剪算法"><a href="#裁剪算法" class="headerlink" title="裁剪算法"></a>裁剪算法</h3><h4 id="线段-Cohen-Sutherland"><a href="#线段-Cohen-Sutherland" class="headerlink" title="线段-Cohen-Sutherland"></a>线段-Cohen-Sutherland</h4><p><img src="/1544874098074.png" alt="1544874098074"></p>
+<h4 id="线段-Nicholl-Lee-Nicholl"><a href="#线段-Nicholl-Lee-Nicholl" class="headerlink" title="线段-Nicholl-Lee-Nicholl"></a>线段-Nicholl-Lee-Nicholl</h4><p><img src="/1544875802399.png" alt="1544875802399"></p>
+<p><img src="/1544875751203.png" alt="1544875751203"></p>
+<p><img src="/1544875767295.png" alt="1544875767295"></p>
+<h4 id="多边形填充区-Sutherland-Hodgman"><a href="#多边形填充区-Sutherland-Hodgman" class="headerlink" title="多边形填充区-Sutherland-Hodgman"></a>多边形填充区-Sutherland-Hodgman</h4><p><img src="/1544875912032.png" alt="1544875912032"></p>
+<p><img src="/1544876468893.png" alt="1544876468893"></p>
+<p><img src="/1544876534026.png" alt="1544876534026"></p>
+<h4 id="多边形填充区-Weiler-Atherton"><a href="#多边形填充区-Weiler-Atherton" class="headerlink" title="多边形填充区- Weiler-Atherton"></a>多边形填充区- Weiler-Atherton</h4><p><img src="/1544877349903.png" alt="1544877349903"></p>
+<p><img src="/1544877334052.png" alt="1544877334052"></p>
+<h4 id="三维"><a href="#三维" class="headerlink" title="三维"></a>三维</h4><p><img src="/1544877595562.png" alt="1544877595562"></p>
+<p><img src="/1544878239180.png" alt="1544878239180"></p>
+<h3 id="平行投影-透视投影"><a href="#平行投影-透视投影" class="headerlink" title="平行投影\透视投影"></a>平行投影\透视投影</h3><p><img src="/1544878819072.png" alt="1544878819072"><img src="/1544878830833.png" alt="1544878830833"></p>
+<h3 id="爆炸图、剖视图"><a href="#爆炸图、剖视图" class="headerlink" title="爆炸图、剖视图"></a>爆炸图、剖视图</h3><p><img src="/1544878909453.png" alt="1544878909453"></p>
+<p><img src="/1544878923968.png" alt="1544878923968"></p>
+<h3 id="相关的OpenGL函数"><a href="#相关的OpenGL函数" class="headerlink" title="相关的OpenGL函数"></a>相关的OpenGL函数</h3><h2 id="可见面判别算法"><a href="#可见面判别算法" class="headerlink" title="可见面判别算法"></a>可见面判别算法</h2><p>物空间和像空间算法</p>
+<h3 id="后向面判别"><a href="#后向面判别" class="headerlink" title="后向面判别"></a>后向面判别</h3><p><img src="/1544879455118.png" alt="1544879455118"></p>
+<h3 id="深度缓存法"><a href="#深度缓存法" class="headerlink" title="深度缓存法"></a>深度缓存法</h3><p><img src="/1544879680841.png" alt="1544879680841"></p>
+<p><img src="/1544879635496.png" alt="1544879635496"></p>
+<h3 id="A缓存法"><a href="#A缓存法" class="headerlink" title="A缓存法"></a>A缓存法</h3><p><img src="/1544880006880.png" alt="1544880006880"></p>
+<h3 id="深度排序法（画家算法）"><a href="#深度排序法（画家算法）" class="headerlink" title="深度排序法（画家算法）"></a>深度排序法（画家算法）</h3><p><img src="/1544880020748.png" alt="1544880020748"></p>
+<p><img src="/1544880839220.png" alt="1544880839220"></p>
+<p><img src="/1544880860032.png" alt="1544880860032"></p>
+<h3 id="四叉树法"><a href="#四叉树法" class="headerlink" title="四叉树法"></a>四叉树法</h3><p><img src="/1544880944837.png" alt="1544880944837"></p>
+<p><img src="/1544880893586.png" alt="1544880893586"></p>
+<p><img src="/1544881117454.png" alt="1544881117454"></p>
+<p>上述图有两处错误</p>
+<h2 id="应用专题"><a href="#应用专题" class="headerlink" title="应用专题"></a>应用专题</h2><h3 id="二维图像与机器视觉"><a href="#二维图像与机器视觉" class="headerlink" title="二维图像与机器视觉"></a>二维图像与机器视觉</h3><p>​    人眼能识别的自然景象或图像源是一种模拟信号，为了使计算机能够记录和处理图像，必须首先使其数字化。数字化后的图像成为数字图像。数字图像可以定义为一个二维函数f(x,y)，其中x 和y是空间坐标，在(x,y)坐标处的幅度值f称为图像在该点坐标的强度或灰度值，该值的大小由图像本身决定。在数字图像中，x、y和f都是有限的离散的数值。所以数字图像是由有限的元素（像素）组成的二维网格阵列，其中每一个元素有一个特定的位置和数值。一个M行和N列的数字图像可以由上图表示。</p>
+<p>​    图像分辨率是组成一幅图像的像素密度的度量方法，用每英寸多少个像素点（dpi，dot per inch ）表示，它确定了组成一幅图像的像素密度。采样是决定图像分辨率的主要因素，从根本上讲，图像分辨率决定了图像上可识别的最小的细节。同样大小的一幅原图，如果数字化时图像分辨率高，则组成该图的像素点数目越多，看起来就越逼真。</p>
+<h3 id="三维图形与机器视觉"><a href="#三维图形与机器视觉" class="headerlink" title="三维图形与机器视觉"></a>三维图形与机器视觉</h3><h4 id="三维几何变换-思考问题"><a href="#三维几何变换-思考问题" class="headerlink" title="三维几何变换-思考问题"></a>三维几何变换-思考问题</h4><p>长方体P1（-1，-1，-1）、P2（1，1，1），如何得到中心在（3，2，3），长、宽分别为5和3的立方体？</p>
+<p>提示：利用放缩、旋转、平移等几何变换</p>
+<p>原中心在（0，0，0）</p>
+<h4 id="物理建模"><a href="#物理建模" class="headerlink" title="物理建模"></a>物理建模</h4><p>•重量</p>
+<p>•惯性</p>
+<p>•表面光滑度和粗糙度</p>
+<p>•软硬度</p>
+<p>•综合演示：刚体动态、刚体破坏、弹性体破坏</p>
+<h4 id="基于视频的高级应用：三维重构"><a href="#基于视频的高级应用：三维重构" class="headerlink" title="基于视频的高级应用：三维重构"></a>基于视频的高级应用：三维重构</h4><h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="动画的基本原理"><a href="#动画的基本原理" class="headerlink" title="动画的基本原理"></a>动画的基本原理</h4><p>“视觉暂留”效应</p>
+<h4 id="动画的分类"><a href="#动画的分类" class="headerlink" title="动画的分类"></a>动画的分类</h4><ul>
+<li>按创作方式分类<ul>
+<li>帧动画：指构成动画的基本单位是帧，很多帧组成一部动画片。</li>
+<li>矢量动画：经过计算机计算而生成的动画，其画面只有一帧，主要表现变换的图形、线条、文字和图案。</li>
+</ul>
+</li>
+<li>按表现形式分类<ul>
+<li>二维动画：又叫“平面动画”，是帧动画的一种。</li>
+<li>三维动画：又叫“空间动画”，可以是帧动画，也可以制作成矢量动画。主要表现三维物体和空间运动。</li>
+<li>变形动画：变形动画也是帧动画的一种，它具有把物体形态过渡到另外一种形态的特点。</li>
+</ul>
+</li>
+</ul>
+<h4 id="应用：角色动画"><a href="#应用：角色动画" class="headerlink" title="应用：角色动画"></a>应用：角色动画</h4><p>•设备：3D位置跟踪器</p>
+<p>•动作捕捉应用举例：游戏、电影</p>
+<h3 id="虚拟现实和人机交互"><a href="#虚拟现实和人机交互" class="headerlink" title="虚拟现实和人机交互"></a>虚拟现实和人机交互</h3><h4 id="虚拟现实技术的特征"><a href="#虚拟现实技术的特征" class="headerlink" title="虚拟现实技术的特征"></a>虚拟现实技术的特征</h4><ul>
+<li><p>多感知性</p>
+</li>
+<li><p>沉浸感</p>
+</li>
+<li><p>交互性</p>
+</li>
+</ul>
+<h4 id="虚拟现实工具"><a href="#虚拟现实工具" class="headerlink" title="虚拟现实工具"></a>虚拟现实工具</h4><ul>
+<li><p>视觉设备</p>
+</li>
+<li><p>数据手套</p>
+</li>
+<li><p>3D位置跟踪器</p>
+</li>
+<li><p>触觉与力觉反馈装置</p>
+</li>
+</ul>
+<h4 id="交互技术"><a href="#交互技术" class="headerlink" title="交互技术"></a>交互技术</h4><ul>
+<li><p>肢体运动（多点触控：桌面管理、钢铁侠）</p>
+</li>
+<li><p>舌头</p>
+</li>
+<li><p>肌肉</p>
+</li>
+<li><p>脑</p>
+</li>
+</ul>
+<h4 id="增强现实"><a href="#增强现实" class="headerlink" title="增强现实"></a>增强现实</h4><ul>
+<li>游戏</li>
+<li>实验</li>
+</ul>
+<h2 id="课程总结"><a href="#课程总结" class="headerlink" title="课程总结"></a>课程总结</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"><i class="fa fa-tag"></i> 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/17/Linux 复习/" rel="next" title="Linux课程复习">
+                <i class="fa fa-chevron-left"></i> Linux课程复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图形学简介"><span class="nav-number">1.</span> <span class="nav-text">图形学简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">1.1.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机图形硬件"><span class="nav-number">1.2.</span> <span class="nav-text">计算机图形硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机图形软件"><span class="nav-number">1.3.</span> <span class="nav-text">计算机图形软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenGL介绍"><span class="nav-number">2.</span> <span class="nav-text">OpenGL介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发环境配置"><span class="nav-number">2.1.</span> <span class="nav-text">开发环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL程序"><span class="nav-number">2.2.</span> <span class="nav-text">OpenGL程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直线生成"><span class="nav-number">3.</span> <span class="nav-text">直线生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#画点"><span class="nav-number">3.1.</span> <span class="nav-text">画点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画线"><span class="nav-number">3.2.</span> <span class="nav-text">画线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直线公式"><span class="nav-number">3.3.</span> <span class="nav-text">直线公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDA算法"><span class="nav-number">3.4.</span> <span class="nav-text">DDA算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">3.4.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">3.4.2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.4.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">3.4.4.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bresenham算法"><span class="nav-number">3.5.</span> <span class="nav-text">Bresenham算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#曲线曲面生成"><span class="nav-number">4.</span> <span class="nav-text">曲线曲面生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆生成算法"><span class="nav-number">4.1.</span> <span class="nav-text">圆生成算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#椭圆生成算法"><span class="nav-number">4.2.</span> <span class="nav-text">椭圆生成算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次曲面"><span class="nav-number">4.3.</span> <span class="nav-text">二次曲面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#球面"><span class="nav-number">4.3.1.</span> <span class="nav-text">球面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#椭球面"><span class="nav-number">4.3.2.</span> <span class="nav-text">椭球面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样条曲线、曲面"><span class="nav-number">4.4.</span> <span class="nav-text">样条曲线、曲面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenGL的Bezier样条曲线函数"><span class="nav-number">4.4.1.</span> <span class="nav-text">OpenGL的Bezier样条曲线函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenGL的Bezier样条曲面函数"><span class="nav-number">4.4.2.</span> <span class="nav-text">OpenGL的Bezier样条曲面函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域填充"><span class="nav-number">5.</span> <span class="nav-text">区域填充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL填充函数"><span class="nav-number">5.1.</span> <span class="nav-text">OpenGL填充函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描线填充算法"><span class="nav-number">5.2.</span> <span class="nav-text">扫描线填充算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四联通、八联通填充方法"><span class="nav-number">5.3.</span> <span class="nav-text">四联通、八联通填充方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何变换"><span class="nav-number">6.</span> <span class="nav-text">几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维几何变换"><span class="nav-number">6.1.</span> <span class="nav-text">二维几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平移"><span class="nav-number">6.1.1.</span> <span class="nav-text">平移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转"><span class="nav-number">6.1.2.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#放缩"><span class="nav-number">6.1.3.</span> <span class="nav-text">放缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#齐次坐标"><span class="nav-number">6.1.4.</span> <span class="nav-text">齐次坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维变换矩阵"><span class="nav-number">6.1.5.</span> <span class="nav-text">二维变换矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵合并特性"><span class="nav-number">6.1.6.</span> <span class="nav-text">矩阵合并特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维几何变换"><span class="nav-number">6.2.</span> <span class="nav-text">三维几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">旋转</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般旋转"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">一般旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放"><span class="nav-number">6.3.</span> <span class="nav-text">缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用-1"><span class="nav-number">6.4.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维-三维观察"><span class="nav-number">7.</span> <span class="nav-text">二维/三维观察</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#世界坐标、屏幕坐标"><span class="nav-number">7.1.</span> <span class="nav-text">世界坐标、屏幕坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#裁剪算法"><span class="nav-number">7.2.</span> <span class="nav-text">裁剪算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线段-Cohen-Sutherland"><span class="nav-number">7.2.1.</span> <span class="nav-text">线段-Cohen-Sutherland</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线段-Nicholl-Lee-Nicholl"><span class="nav-number">7.2.2.</span> <span class="nav-text">线段-Nicholl-Lee-Nicholl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多边形填充区-Sutherland-Hodgman"><span class="nav-number">7.2.3.</span> <span class="nav-text">多边形填充区-Sutherland-Hodgman</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多边形填充区-Weiler-Atherton"><span class="nav-number">7.2.4.</span> <span class="nav-text">多边形填充区- Weiler-Atherton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三维"><span class="nav-number">7.2.5.</span> <span class="nav-text">三维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平行投影-透视投影"><span class="nav-number">7.3.</span> <span class="nav-text">平行投影\透视投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆炸图、剖视图"><span class="nav-number">7.4.</span> <span class="nav-text">爆炸图、剖视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关的OpenGL函数"><span class="nav-number">7.5.</span> <span class="nav-text">相关的OpenGL函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可见面判别算法"><span class="nav-number">8.</span> <span class="nav-text">可见面判别算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后向面判别"><span class="nav-number">8.1.</span> <span class="nav-text">后向面判别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度缓存法"><span class="nav-number">8.2.</span> <span class="nav-text">深度缓存法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A缓存法"><span class="nav-number">8.3.</span> <span class="nav-text">A缓存法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度排序法（画家算法）"><span class="nav-number">8.4.</span> <span class="nav-text">深度排序法（画家算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四叉树法"><span class="nav-number">8.5.</span> <span class="nav-text">四叉树法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用专题"><span class="nav-number">9.</span> <span class="nav-text">应用专题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维图像与机器视觉"><span class="nav-number">9.1.</span> <span class="nav-text">二维图像与机器视觉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维图形与机器视觉"><span class="nav-number">9.2.</span> <span class="nav-text">三维图形与机器视觉</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三维几何变换-思考问题"><span class="nav-number">9.2.1.</span> <span class="nav-text">三维几何变换-思考问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理建模"><span class="nav-number">9.2.2.</span> <span class="nav-text">物理建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于视频的高级应用：三维重构"><span class="nav-number">9.2.3.</span> <span class="nav-text">基于视频的高级应用：三维重构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">9.3.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动画的基本原理"><span class="nav-number">9.3.1.</span> <span class="nav-text">动画的基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画的分类"><span class="nav-number">9.3.2.</span> <span class="nav-text">动画的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用：角色动画"><span class="nav-number">9.3.3.</span> <span class="nav-text">应用：角色动画</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟现实和人机交互"><span class="nav-number">9.4.</span> <span class="nav-text">虚拟现实和人机交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟现实技术的特征"><span class="nav-number">9.4.1.</span> <span class="nav-text">虚拟现实技术的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟现实工具"><span class="nav-number">9.4.2.</span> <span class="nav-text">虚拟现实工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互技术"><span class="nav-number">9.4.3.</span> <span class="nav-text">交互技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增强现实"><span class="nav-number">9.4.4.</span> <span class="nav-text">增强现实</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#课程总结"><span class="nav-number">10.</span> <span class="nav-text">课程总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共148.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2018/12/17/图形学复习/';
+          this.page.identifier = '2018/12/17/图形学复习/';
+          this.page.title = '计算机图形学复习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

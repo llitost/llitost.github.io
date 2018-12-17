@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="总结,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[TOC] Linux 复习第一章什么是LinuxLinux是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心。用户可以获得内核源代码，编译并安装，然后获得并安装其它自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统。 Linux的特点开放性，多用户，多任务，良好的用户界面，设备独立性，丰富的网络功能，可靠的系统安全，良好的可移植性。 Linux版本内核版本好">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux课程复习">
+<meta property="og:url" content="http://litost-fht.top/2018/12/17/Linux 复习/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="[TOC] Linux 复习第一章什么是LinuxLinux是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心。用户可以获得内核源代码，编译并安装，然后获得并安装其它自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统。 Linux的特点开放性，多用户，多任务，良好的用户界面，设备独立性，丰富的网络功能，可靠的系统安全，良好的可移植性。 Linux版本内核版本好">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ws4.sinaimg.cn/mw690/adba74c1gy1fy46qucy51j20fr0d53z7.jpg">
+<meta property="og:image" content="http://ws2.sinaimg.cn/mw690/adba74c1gy1fy46nxtqwsj20d10553yl.jpg">
+<meta property="og:image" content="http://ws1.sinaimg.cn/mw690/adba74c1gy1fy46opx5iij209x04hmx6.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/adba74c1gy1fy40s0nri3j20g30bi3zr.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/adba74c1gy1fy40z1mq0ej20b407mq39.jpg">
+<meta property="og:image" content="http://ws2.sinaimg.cn/mw690/adba74c1gy1fy413p5wqsj20dl09g0tw.jpg">
+<meta property="og:image" content="http://ws4.sinaimg.cn/mw690/adba74c1gy1fy41m5jot7j20cb06omxe.jpg">
+<meta property="og:image" content="http://ws3.sinaimg.cn/mw690/adba74c1gy1fy41y43817j20cl05zdg1.jpg">
+<meta property="og:updated_time" content="2018-12-17T06:11:14.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux课程复习">
+<meta name="twitter:description" content="[TOC] Linux 复习第一章什么是LinuxLinux是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心。用户可以获得内核源代码，编译并安装，然后获得并安装其它自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统。 Linux的特点开放性，多用户，多任务，良好的用户界面，设备独立性，丰富的网络功能，可靠的系统安全，良好的可移植性。 Linux版本内核版本好">
+<meta name="twitter:image" content="http://ws4.sinaimg.cn/mw690/adba74c1gy1fy46qucy51j20fr0d53z7.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2018/12/17/Linux 复习/">
+
+
+
+
+
+  <title>Linux课程复习 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2018/12/17/Linux 复习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux课程复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T14:06:50+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程复习/" itemprop="url" rel="index">
+                    <span itemprop="name">课程复习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/17/Linux 复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/17/Linux 复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="Linux-复习"><a href="#Linux-复习" class="headerlink" title="Linux 复习"></a>Linux 复习</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="什么是Linux"><a href="#什么是Linux" class="headerlink" title="什么是Linux"></a>什么是Linux</h3><p>Linux是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心。用户可以获得内核源代码，编译并安装，然后获得并安装其它自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统。</p>
+<h3 id="Linux的特点"><a href="#Linux的特点" class="headerlink" title="Linux的特点"></a>Linux的特点</h3><p>开放性，多用户，多任务，良好的用户界面，设备独立性，丰富的网络功能，可靠的系统安全，良好的可移植性。</p>
+<h3 id="Linux版本"><a href="#Linux版本" class="headerlink" title="Linux版本"></a>Linux版本</h3><p>内核版本好格式：x.y.zz-www（x主版本号，y次版本号，zz次次版本号，www发行号）。X为2时，次版本号为偶数的是稳定版本，奇数是发展版本。</p>
+<h3 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h3><p>Fedora，Debian，Mandrake，Ubuntu，Red Hat，SuSE，Linux Mint，Gentoo，Red Flag，Arch，Manjaro，Lubuntu，Clear Linux，ezgo Linux，Deepin Linux，Caldera…</p>
+<h3 id="GUN计划"><a href="#GUN计划" class="headerlink" title="GUN计划"></a>GUN计划</h3><p><strong>GNU’s not Unix</strong>，开始于1984年，旨在发展一個类-Unix<br>且为自由软件的完整操作系統。</p>
+<h3 id="GPL"><a href="#GPL" class="headerlink" title="GPL"></a>GPL</h3><p><strong>GNU General Public License</strong>，GNU通用公共许可证。</p>
+<h3 id="Linux的运行级别有几个？"><a href="#Linux的运行级别有几个？" class="headerlink" title="Linux的运行级别有几个？"></a>Linux的运行级别有几个？</h3><p>Linux有7种运行级别。</p>
+<ul>
+<li>0：关机级别</li>
+<li>1：单用户运行级别，启动时执行rc.sysinit和rc1.d目录下的脚本</li>
+<li>2：多用户，但系统不会启动NFS，字符模式，在有些linux系统中是默认级别，具有网络功能，如Ubuntu，Debian</li>
+<li>3：多用户，字符模式，具有网络功能，Red Hat常用级别</li>
+<li>4：用户自定义级别</li>
+<li>5：图形化界面级别，Red Hat常用级别</li>
+<li>6：重启级别</li>
+</ul>
+<h3 id="如何切换Linux的运行级别"><a href="#如何切换Linux的运行级别" class="headerlink" title="如何切换Linux的运行级别"></a>如何切换Linux的运行级别</h3><ol>
+<li>在字符终端界面上以root身份执行命令init n或telinit n，n为级别号</li>
+<li>在字符终端界面执行命令stratx启动图形化界面</li>
+<li>更改/etc/inittab中“id:5:initdefault”项目，把数字5改为其它，表示Linux默认以该级别启动</li>
+</ol>
+<h3 id="阐述GNU-Linux操作系统的基本体系结构"><a href="#阐述GNU-Linux操作系统的基本体系结构" class="headerlink" title="阐述GNU/Linux操作系统的基本体系结构"></a>阐述GNU/Linux操作系统的基本体系结构</h3><p>​    Linux操作系统的体系结构可以从两个层次上来划分。</p>
+<p>​    最上面是用户空间，这是用户应用程序执行的地方。GNU C Library也在这里。它提供了连接内核的系统调用接口，还提供了在用户空间应用程序和内核之间进行转换的机制。</p>
+<p>​         用户空间之下是内核空间，Linux内核正是位于这里。Linux可以进一步划分为3层。最上面是系统调用接口，它实现了一些基本的功能，例如read和write。系统调用接口之下是内核代码，可以更精确地定义为独立于体系结构的内核代码，这些代码是Linux所支持的所有处理器体系结构所通用的。在这些代码之下是依赖于体系结构的代码，构成了通常称为BSP的部分，这些代码用作给定体系结构的处理器和特定于平台的代码。</p>
+<h3 id="Linux内核包含哪几部分？每部分的作用是什么？"><a href="#Linux内核包含哪几部分？每部分的作用是什么？" class="headerlink" title="Linux内核包含哪几部分？每部分的作用是什么？"></a>Linux内核包含哪几部分？每部分的作用是什么？</h3><p>​    ①系统调用接口：SCI层提供了某些机制执行从用户空间到内核的函数调用。依赖于体系结构，是一个非常有用的函数调用多路复用和多路分解服务。</p>
+<p>​         ②进程管理：重点在于进程的执行。内核通过SCI提供了一个应用程序编程接口（API）来创建一个新进程，停止进程，并在它们之间进行通信和同步。还包括处理活动进程之间共享CPU的需求。</p>
+<p>​         ③内存管理：管理可用内存的方式，以及物理和虚拟映射所使用的硬件机制。</p>
+<p>​         ④虚拟文件系统：为文件系统提供了一个通用的接口抽象。VFS在SCI和内核所支持的文件系统之间提供了一个交换层。</p>
+<p>​         ⑤网络堆栈：在设计上遵循模拟协议本身的分层体系结构。</p>
+<p>​         ⑥设备驱动程序：Linux内核中有大量代码都在设备驱动程序中，它们能够运转特定的硬件设备。</p>
+<p>​         ⑦依赖于体系结构的代码：尽管Linux很大程度上独立于所运行的体系结构，但是有些元素则必须考虑体系结构才能正常操作并实现更高效率。</p>
+<h3 id="以根目录“-”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？"><a href="#以根目录“-”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？" class="headerlink" title="以根目录“/”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？"></a>以根目录“/”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？</h3><ul>
+<li><p>/bin：常用系統程序目录</p>
+</li>
+<li><p>/boot：开机设定目录，也是摆放核心 vmlinuz 的地方</p>
+</li>
+<li><p>/dev：摆放系统设备装置文件的目录</p>
+</li>
+<li><p>/etc：系统配置文件，尤其 passwd, shadow</p>
+</li>
+<li><p>/etc/rc.d/init.d：系統开机的時候载入服务的 scripts 的摆放地点</p>
+</li>
+<li><p>/home：系統使用者的目录</p>
+</li>
+<li><p>/lib：Linux 执行或编译程序函数库目录</p>
+</li>
+<li><p>/mnt：软驱与光驱接入挂载的地方</p>
+</li>
+<li><p>/proc：系统核心与执行程序的一些信息</p>
+</li>
+<li><p>/root：系统管理员的目录 </p>
+</li>
+<li><p>/usr/bin, /bin：一般执行文件摆放的地方</p>
+</li>
+<li><p>/usr/sbin, /sbin：系统管理员常用指令集</p>
+</li>
+<li><p>/var：摆放系统日志文件的地方 </p>
+</li>
+<li><p>/lost+fount：摆放系统不正常产生错误时遗失的片段<img src="http://ws4.sinaimg.cn/mw690/adba74c1gy1fy46qucy51j20fr0d53z7.jpg" alt="image"></p>
+</li>
+</ul>
+<h3 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h3><ul>
+<li><p>shutdown –h now</p>
+</li>
+<li><p>halt</p>
+</li>
+<li><p>poweroff</p>
+</li>
+<li><p>init 0</p>
+</li>
+</ul>
+<h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><ul>
+<li><p>shutdown –r now</p>
+</li>
+<li><p>reboot</p>
+</li>
+<li><p>init 6</p>
+</li>
+</ul>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？"><a href="#什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？" class="headerlink" title="什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？"></a>什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？</h3><p>​    Shell是一个作为用户与Linux系统间接口的程序，它允许用户向操作系统输入需要执行的命令。用户通过启动字符终端完成Shell命令的输入。Shell作为应用程序，部署在Linux内核的周围。由于Linux是一个高度模块化的操作系统，因此可以在Linux系统中安装多种Shell程序，用户根据需要选择相应的Shell程序来使用。常用的Shell：bash，csh，zsh，tcsh，ksh。</p>
+<h3 id="查看支持的Shell"><a href="#查看支持的Shell" class="headerlink" title="查看支持的Shell"></a>查看支持的Shell</h3><p>​    /etc/shells</p>
+<h3 id="指定用户使用某个shell"><a href="#指定用户使用某个shell" class="headerlink" title="指定用户使用某个shell"></a>指定用户使用某个shell</h3><ul>
+<li><p>编辑/etc/passwd文件，将对应用户的某行的最后一列修改为选择的Shell。</p>
+</li>
+<li><p>chsh –s /bin/bash 将bash设置为默认shell</p>
+</li>
+</ul>
+<h3 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h3><p><img src="http://ws2.sinaimg.cn/mw690/adba74c1gy1fy46nxtqwsj20d10553yl.jpg" alt="image"></p>
+<p><img src="http://ws1.sinaimg.cn/mw690/adba74c1gy1fy46opx5iij209x04hmx6.jpg" alt="image"></p>
+<p>​    r=4，w=2，x=1，-=0，每一组权限值由组内各个位累积而成。</p>
+<h3 id="Linux文件类型"><a href="#Linux文件类型" class="headerlink" title="Linux文件类型"></a>Linux文件类型</h3><p>Linux系统中有三种<strong>基本</strong>的文件类型.</p>
+<ul>
+<li><p>普通文件：又分为文本文件和二进制文件；</p>
+</li>
+<li><p>目录文件：目录文件存储了一组相关文件的位置、大小等与文件有关的信息；</p>
+</li>
+<li><p>设备文件：Linux系统把每一个I/O设备都看成一个文件，与普通文件一样处理，这样可以使文件与设备的操作尽可能统一 ；</p>
+<h4 id="Linux中文件类型归纳如下："><a href="#Linux中文件类型归纳如下：" class="headerlink" title="Linux中文件类型归纳如下："></a>Linux中文件类型归纳如下：</h4><ul>
+<li>-：普通文件</li>
+<li>d：目录文件</li>
+<li>l：链接文件</li>
+<li>p：管道文件</li>
+<li>s：Socket文件</li>
+<li>c：字符设备文件</li>
+<li>b：块设备文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="软链接与硬链接有什么区别？如何创建？"><a href="#软链接与硬链接有什么区别？如何创建？" class="headerlink" title="软链接与硬链接有什么区别？如何创建？"></a>软链接与硬链接有什么区别？如何创建？</h3><p>​    <strong>硬链接</strong>：给文件创建一个副本，同时建立两者之间的链接关系。修改其中一个，与其链接的文件同时被修改；如果删除其中一个，对其余文件无影响。磁盘上只有一份数据。硬链接是在同一个文件系统中。</p>
+<p>​    <strong>软链接</strong>：创建一个特殊的文件，其内容是另一个文件的位置。它只是一个快捷方式，删除了源文件，这个链接文件也就没有用了。软链接可以跨越不同的文件系统。</p>
+<p>​    硬链接和软链接都不会将原本的文件复制一份，只会占用很少的磁盘空间。</p>
+<p>​    创建硬链接：ln 源对象 目的对象</p>
+<p>​    创建软链接： ln -s 源对象 目的对象</p>
+<h3 id="显示目录与文件操作命令"><a href="#显示目录与文件操作命令" class="headerlink" title="显示目录与文件操作命令"></a>显示目录与文件操作命令</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>用于显示指定目录的目录和文件。</p>
+<ul>
+<li>-a：列出全部，包括隐藏文件</li>
+<li>-d：只显示目录</li>
+<li>-i：显示索引节点</li>
+<li>-l：详细信息</li>
+<li>-R：显示指定目录及子目录下的内容</li>
+<li>-t：以时间排序</li>
+<li>-S：以文件大小排序，从大到小</li>
+<li>-r：反向排序</li>
+<li>-s：磁盘块数表示大小</li>
+</ul>
+<h3 id="显示文件内容命令"><a href="#显示文件内容命令" class="headerlink" title="显示文件内容命令"></a>显示文件内容命令</h3><h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>文件查看和连接</p>
+<ul>
+<li>-n：行号，从1开始</li>
+<li>-b：对空白行不编号</li>
+<li>-s：遇到连续两行以上的空白行就替换为一行</li>
+</ul>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p>分页显示，按空格下一页，b键上一页</p>
+<ul>
+<li><p>-num：一次显示的行数</p>
+</li>
+<li><p>+num：从第num行开始显示</p>
+</li>
+</ul>
+<h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><p>分页显示，滚动浏览，</p>
+<ul>
+<li>-n：显示时去掉行号</li>
+</ul>
+<h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><p>显示前N行内容，默认为10</p>
+<ul>
+<li>-c：显示前多少字节</li>
+<li>-n：显示前n行</li>
+<li>-q：不显示文件名，默认</li>
+<li>-v：显示文件名</li>
+</ul>
+<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>显示后N行内容，默认为10</p>
+<ul>
+<li>选项与head类似</li>
+<li>-f：动态显示后N行内容，Ctrl+C终止</li>
+</ul>
+<h3 id="创建和删除目录命令"><a href="#创建和删除目录命令" class="headerlink" title="创建和删除目录命令"></a>创建和删除目录命令</h3><h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>创建目录</p>
+<ul>
+<li>-p：目录不存在的话创建一个</li>
+<li>-m：在创建目录的同时设置目录权限</li>
+</ul>
+<h4 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h4><p>删除<strong>空</strong>目录</p>
+<ul>
+<li>-p：当子目录被删除后使它也成为空目录时，一并删除</li>
+</ul>
+<h3 id="创建和删除文件命令"><a href="#创建和删除文件命令" class="headerlink" title="创建和删除文件命令"></a>创建和删除文件命令</h3><h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>改变文件的时间记录或创建空文件</p>
+<ul>
+<li>-a：改变读取时间</li>
+<li>-m：改变修改时间</li>
+<li>-c：若目的文件不存在，不会创建新文件</li>
+<li>-r：使用参考文件的时间记录</li>
+</ul>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><ul>
+<li>-i：逐一确认</li>
+<li>-f：无需确认，强制删除</li>
+<li>-r：递归执行</li>
+<li>-v：显示执行过程</li>
+</ul>
+<h3 id="改变目录和查看当前目录命令"><a href="#改变目录和查看当前目录命令" class="headerlink" title="改变目录和查看当前目录命令"></a>改变目录和查看当前目录命令</h3><h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><ul>
+<li>~：用户主目录</li>
+<li>-：上一次目录</li>
+</ul>
+<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>显示工作目录</p>
+<h3 id="复制和移动命令"><a href="#复制和移动命令" class="headerlink" title="复制和移动命令"></a>复制和移动命令</h3><h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>复制文件或目录</p>
+<ul>
+<li>-a：相当于-pdr</li>
+<li>-d：若源文件是链接文件，则复制链接文件属性</li>
+<li>-f：强制</li>
+<li>-i：覆盖询问</li>
+<li>-l：进行硬链接的链接文件建立，而非复制</li>
+<li>-p：连同文件属性一起复制，而非预设</li>
+<li>-r：递归</li>
+<li>-s：复制成为软链接文件</li>
+<li>-u：目的文件更旧则更新</li>
+</ul>
+<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>移动或更名</p>
+<ul>
+<li>-b：覆盖前备份</li>
+<li>-f：直接覆盖</li>
+<li>-i：覆盖前询问</li>
+</ul>
+<h3 id="查找命令"><a href="#查找命令" class="headerlink" title="查找命令"></a>查找命令</h3><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><p>从指定目录开始，递归查找。</p>
+<h4 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h4><p>快速查找系统数据库中指定的内容。</p>
+<ul>
+<li>-q：不会显示任何错误信息</li>
+<li>-e&lt;dir>：排除</li>
+</ul>
+<h3 id="文件链接命令"><a href="#文件链接命令" class="headerlink" title="文件链接命令"></a>文件链接命令</h3><h4 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h4><p>为源文件创建一个链接，但不复制源文件。</p>
+<ul>
+<li>-f：链接前先将与目的对象同名的文件删除</li>
+<li>-s：软链接</li>
+<li>-b：覆写时备份</li>
+</ul>
+<h3 id="修改目录与文件权限和所属用户和所属组命令"><a href="#修改目录与文件权限和所属用户和所属组命令" class="headerlink" title="修改目录与文件权限和所属用户和所属组命令"></a>修改目录与文件权限和所属用户和所属组命令</h3><h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>更改权限。</p>
+<p>格式：[ugoa…] [+-=][rwxX…]</p>
+<ul>
+<li>-R：递归执行</li>
+</ul>
+<h4 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h4><p>改变所属用户、所属组。root权限</p>
+<p>chown [选项] 用户名[:组名] 文件名或目录 </p>
+<ul>
+<li>-h：只对链接进行变更</li>
+</ul>
+<h4 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h4><p>改变所属组，不包括软链接</p>
+<h3 id="文件内容提取工具"><a href="#文件内容提取工具" class="headerlink" title="文件内容提取工具"></a>文件内容提取工具</h3><h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>从指定文件中过滤或提取特定内容，并显示在当前屏幕上。</p>
+<p>提取/etc/passwd文件中的第1列</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: -f1 /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>将/etc/passwd文件从第2个字母至第5个字母的内容提取出来 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -c2-5 /etc/passwd</span><br></pre></td></tr></table></figure>
+<h3 id="文件状态处理工具"><a href="#文件状态处理工具" class="headerlink" title="文件状态处理工具"></a>文件状态处理工具</h3><h4 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h4><p>统计一个文件有多少字、字节、行、字串，默认是行、字和字节数。</p>
+<ul>
+<li>-m：字串</li>
+<li>-l：行</li>
+<li>-w：字</li>
+<li>-c：字节</li>
+</ul>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>默认升序</p>
+<ul>
+<li>-u：去重</li>
+<li>-r：反向</li>
+<li>-n：按数字</li>
+<li>-f：忽略大小写</li>
+</ul>
+<h3 id="文件处理工具"><a href="#文件处理工具" class="headerlink" title="文件处理工具"></a>文件处理工具</h3><h4 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h4><p>用来从标准输入中通过替换或删除操作进行字符转换。</p>
+<ul>
+<li><p>-c：用字符串1中字符集的补集替换此字符集，要求字符集为ASCII。</p>
+</li>
+<li><p>-d：删除字符串1中所有输入字符。</p>
+</li>
+<li><p>-s：删除所有重复出现字符序列，只保留第一个；即将重复出现字符串压缩为一个字符串。</p>
+</li>
+</ul>
+<h3 id="备份与压缩命令"><a href="#备份与压缩命令" class="headerlink" title="备份与压缩命令"></a>备份与压缩命令</h3><h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><p>打包但不压缩，也可解包。</p>
+<ul>
+<li>-c：创建打包文件</li>
+<li>-v：详细信息</li>
+<li>-f：必选</li>
+<li>-z：使用gzip来压缩或解压缩文件。</li>
+<li>-x：解除打包内容</li>
+<li>-t：列出内容</li>
+<li>-r：追加</li>
+<li>-u：更新</li>
+</ul>
+<h4 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h4><p>压缩和解压缩。</p>
+<ul>
+<li>-d：解压</li>
+</ul>
+<h4 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h4><p>用于解压缩采用winzip压缩的文件</p>
+<ul>
+<li>-x：解压缩</li>
+<li>-d：指定目录</li>
+</ul>
+<h3 id="描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。"><a href="#描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。" class="headerlink" title="描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。"></a>描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。</h3><p>​    硬链接产生的文件的索引节点号和源文件相同，且文件链接数加1；软链接文件的文件节点号和源文件并不相同，软链接并不会让文件的索引节点数变多；cp复制后的文件拥有另一个索引节点号，不增加文件链接数；mv改名源文件的文件拥有和原来相同的文件链接数和索引节点号，可是改名会导致软链接文件不可用；rm删除硬链接会使链接数减1，其余不变。</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="vi编辑器三种工作模式之间是如何切换的，各自有什么功能？"><a href="#vi编辑器三种工作模式之间是如何切换的，各自有什么功能？" class="headerlink" title="vi编辑器三种工作模式之间是如何切换的，各自有什么功能？"></a>vi编辑器三种工作模式之间是如何切换的，各自有什么功能？</h3><ul>
+<li>命令模式：进入vi的默认模式，可以对文件进行复制、粘贴、删除、移动光标等</li>
+<li>末行模式：由于文件的保存、退出、查找、替换、设置行号等</li>
+<li>插入模式：此模式下可进行字符输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">D[进入vi] --&gt; A</span><br><span class="line">A[命令模式] --&gt;|i,o,a,R| B[插入模式]</span><br><span class="line">B[插入模式] --&gt;|esc| A[命令模式]</span><br><span class="line">A[命令模式] --&gt;|:,/,?| C[末行模式]</span><br><span class="line">C[末行模式] --&gt;|esc| A[命令模式]</span><br></pre></td></tr></table></figure>
+<h3 id="vi与Shell交互"><a href="#vi与Shell交互" class="headerlink" title="vi与Shell交互"></a>vi与Shell交互</h3><p>在末行模式下用“！”符号来访问Linux的Shell </p>
+<ul>
+<li><p>：!netstat -an | more </p>
+</li>
+<li><p>：! /bin/bash </p>
+</li>
+</ul>
+<h3 id="UNIX2dos和dos2UNIX"><a href="#UNIX2dos和dos2UNIX" class="headerlink" title="UNIX2dos和dos2UNIX"></a>UNIX2dos和dos2UNIX</h3><p>Windows 换行结束符号有两个控制字符，一个是归位字符（carriage return，^M），另一个是换行字符（new line，^J）。 </p>
+<p>Linux中只使用一个换行字符\n（功能同^J）。  </p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="X-Window概念"><a href="#X-Window概念" class="headerlink" title="X Window概念"></a>X Window概念</h3><p>​    X Window系统是一种以位图方式显示的软件窗口系统。</p>
+<h3 id="X-Window组成"><a href="#X-Window组成" class="headerlink" title="X Window组成"></a>X Window组成</h3><p>​    X Window系统由三个基本元素组成：X Server、X Client和二者通信的通道。</p>
+<h3 id="X-Window原理"><a href="#X-Window原理" class="headerlink" title="X Window原理"></a>X Window原理</h3><ul>
+<li>C/S模式应用程序</li>
+<li>X Protocol（X协议）</li>
+<li>实现了X<br>Protocol的软件 </li>
+<li>X Server和WM</li>
+</ul>
+<h3 id="有哪些X-Window"><a href="#有哪些X-Window" class="headerlink" title="有哪些X Window"></a>有哪些X Window</h3><ol>
+<li><p>XFree86。一个免费的X Server软件。</p>
+</li>
+<li><p>Xorg。这是运行在大多数Linux系统上的X Server，Red Hat Enterprises Linux 5.0上也是如此。</p>
+</li>
+<li><p>Accelerated X。由Accelerated X Product开发，在图形的加速显示上做了改进。</p>
+</li>
+<li><p>X Server suSE。SuSE Team’s开发。</p>
+</li>
+</ol>
+<h3 id="说明X-Window系统中，X-Server和X-Client的作用。"><a href="#说明X-Window系统中，X-Server和X-Client的作用。" class="headerlink" title="说明X Window系统中，X Server和X Client的作用。"></a>说明X Window系统中，X Server和X Client的作用。</h3><p>​    X Server是全部X Window系统的核心，是运行在系统后台的进程，管理用户图形界面的显示，鼠标、键盘等输入设备与后台程序的通信等。它最重要的功能是显示。X Server可以创建视窗，在视窗中绘图和文字，回应X Client程序的请求，但它不会自己完成，只有X Client程序提出需求后才完成动作。</p>
+<p>​    X Client的功能大致可分为两部分：向X Server发出请求只是一部分功能，其他的功能是为用户执行程序而准备的，例如输入文件信息、计算等。</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/adba74c1gy1fy40s0nri3j20g30bi3zr.jpg" alt="image"></p>
+<h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><h3 id="挂载的概念"><a href="#挂载的概念" class="headerlink" title="挂载的概念"></a>挂载的概念</h3><p>​    计算机系统中，所有的存储设备都是以目录树的形式对文件进行管理的 。在Linux系统中，所有的文件都是在以“/”目录为根的一棵“大”目录树中进行管理。如果要使用USB存储设备、光盘或软盘等存储设备，必须将这些设备中的“小”目录树像嫁接一样挂载（mount）到Linux系统的“大”目录树中。 </p>
+<h3 id="挂载的文件系统类型"><a href="#挂载的文件系统类型" class="headerlink" title="挂载的文件系统类型"></a>挂载的文件系统类型</h3><p>ext、FAT、ext2（extended file system ）、ext3、MINIX、MSDOS、SYSV</p>
+<ul>
+<li>Minix：Linux系统的第一个文件系统</li>
+<li>ext：1992年设计，是第一个专为linux设计的文件系统</li>
+<li>ext2： 1993年设计，提高性能</li>
+<li>ext3：采用日志式文件系统技术（Journalling<br>Filesystem），目前各个linux发行版使用</li>
+</ul>
+<h3 id="挂载设备的过程"><a href="#挂载设备的过程" class="headerlink" title="挂载设备的过程"></a>挂载设备的过程</h3><h4 id="查看设备"><a href="#查看设备" class="headerlink" title="查看设备"></a>查看设备</h4><p>查看系统的存储设备</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk –l</span><br></pre></td></tr></table></figure>
+<h4 id="挂载设备"><a href="#挂载设备" class="headerlink" title="挂载设备"></a>挂载设备</h4><p>建立挂载点目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt</span><br><span class="line">mkdir usb</span><br></pre></td></tr></table></figure>
+<p>挂载相关设备</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o iocharset=cp936 /dev/sda1 /mnt/usb</span><br></pre></td></tr></table></figure>
+<h4 id="访问设备"><a href="#访问设备" class="headerlink" title="访问设备"></a>访问设备</h4><h4 id="卸载设备"><a href="#卸载设备" class="headerlink" title="卸载设备"></a>卸载设备</h4><p>用户在使用完挂载设备后，不能直接将挂载设备从系统拔出，否则会出现问题，严重的会导致系统崩溃。用户必须先执行卸载命令然后再该设备拔出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt/usb</span><br></pre></td></tr></table></figure>
+<h3 id="Linux系统为什么可以支持大部分的文件系统？"><a href="#Linux系统为什么可以支持大部分的文件系统？" class="headerlink" title="Linux系统为什么可以支持大部分的文件系统？"></a>Linux系统为什么可以支持大部分的文件系统？</h3><p>​    Linux系统使用一种统一的接口——虚拟文件系统(VFS)。通过VFS将不同文件系统的实现细节隐藏起来，因而从外部看上去，所有的文件系统都是一样的。(当内核要使用文件系统时，都是经由VFS这层接口来使用。当用户去读取一个文件的内容时，它不会因为这个文件位于不同文件系统需要使用不同的方式和命令来读取。因为这件事VFS已经帮用户实现了。)</p>
+<p><img src="http://wx3.sinaimg.cn/mw690/adba74c1gy1fy40z1mq0ej20b407mq39.jpg" alt="image"></p>
+<h3 id="磁盘管理命令"><a href="#磁盘管理命令" class="headerlink" title="磁盘管理命令"></a>磁盘管理命令</h3><h4 id="mkfs"><a href="#mkfs" class="headerlink" title="mkfs"></a>mkfs</h4><p>创建文件系统</p>
+<h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>报告已安装文件系统的磁盘空间使用情况</p>
+<h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>统计目录或文件所占磁盘空间的大小</p>
+<ul>
+<li>-b：以字节为单位，默认为块（1块=1024字节）</li>
+<li>-s：只显示占用的块总数</li>
+</ul>
+<h3 id="简述Linux系统的引导过程"><a href="#简述Linux系统的引导过程" class="headerlink" title="简述Linux系统的引导过程"></a>简述Linux系统的引导过程</h3><p><img src="http://ws2.sinaimg.cn/mw690/adba74c1gy1fy413p5wqsj20dl09g0tw.jpg" alt="image"></p>
+<h3 id="调度启动进程"><a href="#调度启动进程" class="headerlink" title="调度启动进程"></a>调度启动进程</h3><h4 id="at"><a href="#at" class="headerlink" title="at"></a>at</h4><ul>
+<li><p>在shell提示符下输入”at 时间”，然后按回车键。这时在下一行shell会等待用户继续输入要执行的命令。每一行输入一个命令，所有命令都输入完毕后按Ctrl+d键结束。</p>
+</li>
+<li><p>将各个命令写入shell脚本中，然后使用下面格式设置在指定时间执行shell脚本中的命令：at 时间 –f 脚本文件。 </p>
+</li>
+</ul>
+<h4 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h4><p>crontab –e,/var/spool/cron</p>
+<ul>
+<li>－e：执行文字编辑器来设定时程表，内定的文字编辑器是vi</li>
+<li>－r：删除目前的时程表</li>
+<li>－l：列出目前的时程表</li>
+</ul>
+<h3 id="进程管理命令"><a href="#进程管理命令" class="headerlink" title="进程管理命令"></a>进程管理命令</h3><h4 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h4><ul>
+<li>-e：显示所有进程；</li>
+<li><p>-f：全格式</p>
+</li>
+<li><p>-h：不显示标题；</p>
+</li>
+<li><p>-l：采用详细的格式来显示进程；</p>
+</li>
+<li><p>-a：显示所有终端上的进程，包括其他用户的进程；</p>
+</li>
+<li><p>-r：只显示当前终端上正在运行的进程；</p>
+</li>
+<li><p>-x：显示所有进程，不以终端来区分；</p>
+</li>
+<li><p>-u：以用户为主的格式来显示进程； </p>
+</li>
+</ul>
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><ul>
+<li><p>-s：指定需要送出的信号。既可以是信号名也可以是信号名对应的数字。</p>
+</li>
+<li><p>-p：指定kill命令只显示命名进程的pid，并不真正送出任何信号。</p>
+</li>
+<li><p>-l：显示信号名称列表，该列表也可以在/usr/include/linux/signal.h文件中找到。</p>
+</li>
+</ul>
+<p>强行中止（经常使用杀掉）一个进程标识号为324的进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＃kill －9 324</span><br></pre></td></tr></table></figure>
+<h3 id="要求每星期五晚上21点30分开始以oracle用户执行-home-oracle-exportdata-sh程序导出数据库数据文件，请给出解决方案。"><a href="#要求每星期五晚上21点30分开始以oracle用户执行-home-oracle-exportdata-sh程序导出数据库数据文件，请给出解决方案。" class="headerlink" title="要求每星期五晚上21点30分开始以oracle用户执行/home/oracle/exportdata.sh程序导出数据库数据文件，请给出解决方案。"></a>要求每星期五晚上21点30分开始以oracle用户执行/home/oracle/exportdata.sh程序导出数据库数据文件，请给出解决方案。</h3><p>​    编写crontab文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">30 21 * * 5  /home/oracle/exportdata.sh</span><br></pre></td></tr></table></figure>
+<h3 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h3><p>Linux操作系统包括三种不同类型的进程，每种进程都有自己的特点和属性：</p>
+<ul>
+<li><p>交互进程:由shell启动的进程。</p>
+</li>
+<li><p>批处理进程:这种进程和终端没有联系，是一个进程序列。</p>
+</li>
+<li><p>守护进程:在后台持续运行的进程。</p>
+</li>
+</ul>
+<h2 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h2><h3 id="配置网络接口可以使用三种不同的工具"><a href="#配置网络接口可以使用三种不同的工具" class="headerlink" title="配置网络接口可以使用三种不同的工具"></a>配置网络接口可以使用三种不同的工具</h3><h4 id="使用网络接口配置程序netconfig或setup"><a href="#使用网络接口配置程序netconfig或setup" class="headerlink" title="使用网络接口配置程序netconfig或setup"></a>使用网络接口配置程序netconfig或setup</h4><h4 id="使用图形配置工具"><a href="#使用图形配置工具" class="headerlink" title="使用图形配置工具"></a>使用图形配置工具</h4><h4 id="使用终端命令ifconfig"><a href="#使用终端命令ifconfig" class="headerlink" title="使用终端命令ifconfig"></a>使用终端命令ifconfig</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig &lt;设备名&gt; &lt;IP地址&gt; netmask &lt;掩码&gt;</span><br></pre></td></tr></table></figure>
+<p>​    使用ifconfig命令的修改都是临时性的，计算机重启时就会失效。若要永久生效，需要修改/etc/sysconfig/network-scripts/ifcfg-ethN文件或者使用图形界面配置工具操作。</p>
+<h3 id="网络接口的启动与禁用"><a href="#网络接口的启动与禁用" class="headerlink" title="网络接口的启动与禁用"></a>网络接口的启动与禁用</h3><h4 id="1-在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，"><a href="#1-在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，" class="headerlink" title="1.在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，"></a>1.在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，</h4><h4 id="2-网络控制程序network"><a href="#2-网络控制程序network" class="headerlink" title="2.网络控制程序network"></a>2.网络控制程序network</h4><p>​    <code>/etc/rc.d/init.d/network  start|stop|restart</code></p>
+<p>​    <code>service network restart|stop</code> </p>
+<h4 id="3-命令ifconfig"><a href="#3-命令ifconfig" class="headerlink" title="3.命令ifconfig :"></a>3.命令ifconfig :</h4><p>​    ifconfig &lt;设备名&gt; [up|down]</p>
+<p>​    <code>ifconfig eth0 down</code></p>
+<h4 id="4-命令ifup-ifdown"><a href="#4-命令ifup-ifdown" class="headerlink" title="4.命令ifup/ifdown"></a>4.命令ifup/ifdown</h4><p>​    <code>ifup eth0</code></p>
+<p>​    <code>ifdown eth0</code> </p>
+<h3 id="网络相关配置文件"><a href="#网络相关配置文件" class="headerlink" title="网络相关配置文件"></a>网络相关配置文件</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/sysconfig/network-scripts/ifcfg-ethN</td>
+<td>系统网络设备的配置文件。例如：第一块以太网卡对应的文件为ifcfg-eth0</td>
+</tr>
+<tr>
+<td>/etc/sysconfig/network</td>
+<td>最基本的网络信息，系统启动时读取该文件</td>
+</tr>
+<tr>
+<td>/etc/host.conf</td>
+<td>域名解析的控制文件</td>
+</tr>
+<tr>
+<td>/etc/hosts</td>
+<td>域名或主机名与IP地址的映射文件</td>
+</tr>
+<tr>
+<td>/etc/resolv.conf</td>
+<td>域名服务器设置文件</td>
+</tr>
+<tr>
+<td>/etc/protocols</td>
+<td>定义使用的网络互联协议及协议号</td>
+</tr>
+<tr>
+<td>/etc/services</td>
+<td>设定主机的不同端口的网络服务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="守护进程概念原理"><a href="#守护进程概念原理" class="headerlink" title="守护进程概念原理"></a>守护进程概念原理</h3><p>​    守护进程的工作原理就是在C/S模式下，服务器监听在一个特定的端口上等待客户连接。连接成功后服务器和客户端通过端口进行数据通信。</p>
+<h3 id="以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。"><a href="#以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。" class="headerlink" title="以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。"></a>以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。</h3><p>​    运行独立的守护进程工作方式称作：stand-alone。它是Unix传统的C/S模式的访问模式。服务器监听(listen)在一个特定的端口上等待客户端的联机。如果客户端产生一个连接请求，守护进程就创建(fork)一个子服务器响应这个连接，而主服务器继续监听。以保持多个子服务器池等待下一个客户端请求</p>
+<p>​    Web服务器Apache和邮件服务器Sendmail、域名服务器Bind应用独立守护进程模式启动。因为这些负载很大服务器上，预先创子服务器，可以提高客户的服务速度。</p>
+<p><img src="http://ws4.sinaimg.cn/mw690/adba74c1gy1fy41m5jot7j20cb06omxe.jpg" alt="image"></p>
+<p>​    从守护进程的概念可以看出，对于系统所要通过的每一种服务，都必须运行一个监听某个端口连接所发生的守护进程，这通常意味着资源浪费。为了解决这个问题，Linux引进了“网络守护进程服务程序”的概念。RHEL5使用的网络守护进程是xinted（eXtended InterNET daemon）。和stand－alone模式相对应xinted模式也称 Internet Super－Server（超级服务器）。</p>
+<p>​    xinetd能够同时监听多个指定的端口，在接收用户请求时，它能够根据用户请求的端口不同，启动不同的网络服务进程来处理这些用户请求。可以把xinetd看作一个管理启动服务的管理服务器，它决定把一个客户请求交给某个程序处理，然后启动相应的守护进程。</p>
+<p>​    运行单个xinetd就可以同时监听所有服务端口，这样就降低了系统开销，保护系统资源。但是对于访问量大、经常出现并发访问时，xinetd想要频繁启动对应的网络服务进程，反而会导致系统性能下降。</p>
+<p><img src="http://ws3.sinaimg.cn/mw690/adba74c1gy1fy41y43817j20cl05zdg1.jpg" alt="image"></p>
+<h3 id="ftp服务"><a href="#ftp服务" class="headerlink" title="ftp服务"></a>ftp服务</h3><h4 id="（1）vsFTPd的启动和关闭"><a href="#（1）vsFTPd的启动和关闭" class="headerlink" title="（1）vsFTPd的启动和关闭"></a>（1）vsFTPd的启动和关闭</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service vsftpd [start|stop|restart]</span><br><span class="line">或</span><br><span class="line">/etc/rc.d/init.d/vsftpd [start|stop|restart]</span><br></pre></td></tr></table></figure>
+<h4 id="（2）关闭防火墙和SELinux对FTP的禁用状态"><a href="#（2）关闭防火墙和SELinux对FTP的禁用状态" class="headerlink" title="（2）关闭防火墙和SELinux对FTP的禁用状态"></a>（2）关闭防火墙和SELinux对FTP的禁用状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br><span class="line">setsebool -P ftpd_disable_trans on</span><br><span class="line">setsebool -P ftp_home_dir on</span><br></pre></td></tr></table></figure>
+<h4 id="（3）用另一台机器进行ftp登录"><a href="#（3）用另一台机器进行ftp登录" class="headerlink" title="（3）用另一台机器进行ftp登录"></a>（3）用另一台机器进行ftp登录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp &lt;FTP服务器IP地址或主机名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ls：列出远程主机目录内容</li>
+<li>pwd：显示远程主机工作目录</li>
+<li>cd：在远程主机上切换目录</li>
+<li>lcd：在本地主机上切换目录</li>
+<li>get filename：下载文件</li>
+<li>put filename：上传文件</li>
+<li>！：转到shell中</li>
+</ul>
+<h3 id="telnet服务"><a href="#telnet服务" class="headerlink" title="telnet服务"></a>telnet服务</h3><h4 id="（1）为Linux配置IP地址"><a href="#（1）为Linux配置IP地址" class="headerlink" title="（1）为Linux配置IP地址"></a>（1）为Linux配置IP地址</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 192.168.0.11 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+<h4 id="（2）编辑-etc-xinetd-d-krb5-telnet"><a href="#（2）编辑-etc-xinetd-d-krb5-telnet" class="headerlink" title="（2）编辑/etc/xinetd.d/krb5-telnet"></a>（2）编辑/etc/xinetd.d/krb5-telnet</h4><p>​    修改成disable = no</p>
+<h4 id="（3）编辑-etc-securetty"><a href="#（3）编辑-etc-securetty" class="headerlink" title="（3）编辑/etc/securetty"></a>（3）编辑/etc/securetty</h4><p>​    添加以下行。</p>
+<p>​    tty1</p>
+<p>​    tty2</p>
+<p>​    …</p>
+<p>​    ttyN</p>
+<p>​    pts/0</p>
+<p>​    pts/1</p>
+<p>​    …</p>
+<p>​    pts/N</p>
+<p>​    该文件允许我们规定用户可以从哪个终端设备登录。</p>
+<h4 id="（4）重新启动服务"><a href="#（4）重新启动服务" class="headerlink" title="（4）重新启动服务"></a>（4）重新启动服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service xinetd restart</span><br></pre></td></tr></table></figure>
+<h4 id="（5）测试"><a href="#（5）测试" class="headerlink" title="（5）测试"></a>（5）测试</h4><p>​    自行建立普通用户，用普通用户登录，然后通过su切换为root用户</p>
+<h2 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h2><h3 id="Grep命令"><a href="#Grep命令" class="headerlink" title="Grep命令"></a>Grep命令</h3><p>-v,-w,^d,^-</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>锚定行的开始 如：’^grep’匹配所有以grep开头的行。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>锚定行的结束 如：’grep$’匹配所有以grep结尾的行</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配一个非换行符的字符 如：’gr.p’匹配gr后接一个任意字符，然后是p。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配零个或多个先前字符 如：’<em>grep’匹配所有一个或多个空格后紧跟grep的行。 .</em>一起用代表任意字符。</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配一个指定范围内的字符，如’[Gg]rep’匹配Grep和grep。</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>匹配一个不在指定范围内的字符，如：’[^A-FH-Z]rep’匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。</td>
+</tr>
+<tr>
+<td>\(..\)</td>
+<td>标记匹配字符，如’(love)‘，love被标记为1。</td>
+</tr>
+<tr>
+<td>\&lt;</td>
+<td>锚定单词的开始，如:’\&lt;grep’匹配包含以grep开头的单词的行。</td>
+</tr>
+<tr>
+<td>></td>
+<td>锚定单词的结束，如’grep>‘匹配包含以grep结尾的单词的行。</td>
+</tr>
+<tr>
+<td>x\{m\}</td>
+<td>重复字符x，m次，如：’0{5}‘匹配包含5个o的行。</td>
+</tr>
+<tr>
+<td>x\{m,\}</td>
+<td>重复字符x,至少m次，如：’o{5,}‘匹配至少有5个o的行</td>
+</tr>
+<tr>
+<td>x\{m,n\}</td>
+<td>重复字符x，至少m次，不多于n次，如：’o{5,10}‘匹配5–10个o的行。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配文字和数字字符，也就是[A-Za-z0-9]，如：’G\w*p’匹配以G后跟零个或多个文字或数字字符，然后是p。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>\w的反置形式，匹配一个或多个非单词字符，如点号句号等。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>单词锁定符，如: ‘\bgrep\b’只匹配grep</td>
+</tr>
+</tbody>
+</table>
+<p>$ ls -l | grep ‘^a’ </p>
+<p>通过管道过滤ls -l输出的内容，只显示以a开头的行。</p>
+<p>$ grep ‘test’ d* </p>
+<p>显示所有以d开头的文件中包含test的行。</p>
+<p>$ grep ‘test’ aa bb cc </p>
+<p>显示在aa，bb，cc文件中匹配test的行。</p>
+<p>$ grep ‘[a-z]{5}‘ aa </p>
+<p>显示所有包含每个字符串至少有5个连续小写字符的字符串的行</p>
+<h3 id="Awk命令"><a href="#Awk命令" class="headerlink" title="Awk命令"></a>Awk命令</h3><p>awk ‘{print $2}’ </p>
+<p>选择第二列</p>
+<h3 id="简述Shell程序的特点和用途。"><a href="#简述Shell程序的特点和用途。" class="headerlink" title="简述Shell程序的特点和用途。"></a>简述Shell程序的特点和用途。</h3><p>​         shell程序可以认为是将shell命令按照控制结构组织到一个文本文件中，批量的交给shell去执行。</p>
+<p>​    特点：不同的shell解释器使用不同的shell命令语法；shell程序解释执行，不生成可以执行的二进制文件，Shell使用解释型语言，不需重新编译。</p>
+<p>​    用途：可以帮助用户完成特定的任务，提高使用、维护系统的效率；了解shell程序可以更好的配置和使用linux；它适合于编写执行相对简单的任务的工具，因为它更强调易于配置、维护和可移植性；它不适合用来完成时间紧迫型和处理器忙碌型的任务。</p>
+<h3 id="使用引号"><a href="#使用引号" class="headerlink" title="使用引号"></a>使用引号</h3><ul>
+<li><p>如果在参数中包含一个或多个空白字符，必须给参数加双引号</p>
+</li>
+<li><p>如果把一个带有$字符的变量放在双引号中，程序执行到该行时会把变量替换为它的值</p>
+</li>
+<li><p>如果你把它放在单引号中，不会发生替换现象</p>
+</li>
+<li><p>可用\字符取消$的特殊含义</p>
+</li>
+<li><p>字符串通常被放在双引号中</p>
+</li>
+<li>由单引号括起来的字符都作为普通字符出现</li>
+<li>倒引号括起来的字符串被shell解释为命令行，在执行时shell会先执行该命令行，并以它的标准输出结果取代整个倒引号部分</li>
+</ul>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><table>
+<thead>
+<tr>
+<th>环境变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$HOME</td>
+<td>用户的主目录</td>
+</tr>
+<tr>
+<td>$IFS</td>
+<td>内部的域分隔符，一般为空格符、制表符或换行符</td>
+</tr>
+<tr>
+<td>$PATH</td>
+<td>寻找命令或可执行文件的搜索路径列表，路径以冒号分隔</td>
+</tr>
+<tr>
+<td>$PS1</td>
+<td>主命令提示符，默认为“$”</td>
+</tr>
+<tr>
+<td>$PS2</td>
+<td>从命令提示符，默认为“&gt;”</td>
+</tr>
+<tr>
+<td>$TERM</td>
+<td>使用的终端类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h3><table>
+<thead>
+<tr>
+<th>特殊变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$</td>
+<td>Shell脚本的进程号</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>紧邻的前驱命令的返回值</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>参数列表，各个参数之间用环境变量IFS中的第一个字符分隔开</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>参数列表，它是$*的一种变体，它不使用IFS环境变量，所以当IFS为空时，参数的值不会结合在一起</td>
+</tr>
+<tr>
+<td>$0</td>
+<td>Shell脚本名称</td>
+</tr>
+<tr>
+<td>$n</td>
+<td>位置参数1，2…n</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>参数个数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><table>
+<thead>
+<tr>
+<th>测试文件属性</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f  fn</td>
+<td>如果fn存在且fn为普通文件则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-b  fn</td>
+<td>如果fn存在且fn为块设备则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-e  fn</td>
+<td>如果fn存在则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-d  fn</td>
+<td>如果fn 存在且fn为目录则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-r  fn</td>
+<td>如果fn存在且fn可读则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-w  fn</td>
+<td>如果fn存在且fn可写则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-x  fn</td>
+<td>如果fn存在且fn可执行则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-O  fn</td>
+<td>如果fn存在且被当前用户拥有则返回真，否则返回假。</td>
+</tr>
+<tr>
+<td>-L  fn</td>
+<td>如果fn存在且fn为符号链接则返回真，否则返回假。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>测试字符串属性</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string_1   = string_2</td>
+<td>如果string_1和string_2两个字符串相等则返回真，否则返回假；</td>
+</tr>
+<tr>
+<td>string_1   != string_2</td>
+<td>如果string_1和string_2两个字符串不相等则返回真，否则返回假；</td>
+</tr>
+<tr>
+<td>-z   string</td>
+<td>如果字符串string的长度为0则返回真，否则返回假；</td>
+</tr>
+<tr>
+<td>-n   string</td>
+<td>如果字符串string长度不为0则返回真，否则返回假；</td>
+</tr>
+<tr>
+<td>string</td>
+<td>同-n string，如果字符串string长度不为0返回真，否则返回假。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if 条件1</span><br><span class="line">then</span><br><span class="line">命令</span><br><span class="line">[elif 条件2</span><br><span class="line">then</span><br><span class="line">命令]</span><br><span class="line">[else</span><br><span class="line">命令]</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="case"><a href="#case" class="headerlink" title="case"></a>case</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">case 条件 in</span><br><span class="line">模式1)</span><br><span class="line">	命令1</span><br><span class="line">	；；</span><br><span class="line">[模式2）</span><br><span class="line">	命令2</span><br><span class="line">	；；</span><br><span class="line">...............</span><br><span class="line">模式n）</span><br><span class="line">	命令n</span><br><span class="line">	；；]</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for 变量 [in 列表]</span><br><span class="line">do</span><br><span class="line">	命令（通常用到循环变量）</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="while-until"><a href="#while-until" class="headerlink" title="while/until"></a>while/until</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while/until 条件</span><br><span class="line">do</span><br><span class="line">	命令</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h2><h3 id="简述GCC的用法和常用参数的含义。"><a href="#简述GCC的用法和常用参数的含义。" class="headerlink" title="简述GCC的用法和常用参数的含义。"></a>简述GCC的用法和常用参数的含义。</h3><p>​    基本用法：gcc [options]  [filenames]</p>
+<p>​    其中options就是编译器所需要的选项，filenames就是给出相关的文件名称。    </p>
+<p>​    -c 只编译，不链接成为可执行文件，由.c源代码文件生成.o目标文件。</p>
+<p>​    -o filename 确定输出的文件名称为filename，输出的文件可以是预处理文件、汇编文件、目标文件和可执行文件。</p>
+<p>​    -g 在可执行文件中加入调试信息，方便进行调试。</p>
+<p>​    -E 指定GCC在生成预处理文件后停止。</p>
+<p>​    -S 指定GCC在生成汇编文件后停止。</p>
+<p>​    -w 禁止所有警告</p>
+<h2 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h2><h3 id="简述X-Window的编程架构。"><a href="#简述X-Window的编程架构。" class="headerlink" title="简述X Window的编程架构。"></a>简述X Window的编程架构。</h3><p>X服务器：运行在用户的本地机器上，在屏幕上完成低层的绘图操作。</p>
+<p>X客户端：是以X窗口系统作为GUI的任何程序，它等候X服务器传送的用户事件，然后通过给X服务器发送重绘消息来响应。</p>
+<p>X协议：X服务器和X客户端之间的通讯协议。</p>
+<p>Xlib库：是X客户端间接用于产生X协议消息的库，它提供一个非常底层的API、允许客户端在X服务器上绘出非常基本的元素。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"><i class="fa fa-tag"></i> 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/30/实现IOC功能的简单Spring框架/" rel="next" title="实现IOC功能的简单Spring框架">
+                <i class="fa fa-chevron-left"></i> 实现IOC功能的简单Spring框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/17/图形学复习/" rel="prev" title="计算机图形学复习">
+                计算机图形学复习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-复习"><span class="nav-number">1.</span> <span class="nav-text">Linux 复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章"><span class="nav-number">1.1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Linux"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">Linux的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux版本"><span class="nav-number">1.1.3.</span> <span class="nav-text">Linux版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux发行版"><span class="nav-number">1.1.4.</span> <span class="nav-text">Linux发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUN计划"><span class="nav-number">1.1.5.</span> <span class="nav-text">GUN计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPL"><span class="nav-number">1.1.6.</span> <span class="nav-text">GPL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的运行级别有几个？"><span class="nav-number">1.1.7.</span> <span class="nav-text">Linux的运行级别有几个？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何切换Linux的运行级别"><span class="nav-number">1.1.8.</span> <span class="nav-text">如何切换Linux的运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阐述GNU-Linux操作系统的基本体系结构"><span class="nav-number">1.1.9.</span> <span class="nav-text">阐述GNU/Linux操作系统的基本体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux内核包含哪几部分？每部分的作用是什么？"><span class="nav-number">1.1.10.</span> <span class="nav-text">Linux内核包含哪几部分？每部分的作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以根目录“-”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？"><span class="nav-number">1.1.11.</span> <span class="nav-text">以根目录“/”为起点，Linux中由根目录派生何来的第一层目录有哪些？它们的主要作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关机"><span class="nav-number">1.1.12.</span> <span class="nav-text">关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启"><span class="nav-number">1.1.13.</span> <span class="nav-text">重启</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章"><span class="nav-number">1.2.</span> <span class="nav-text">第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是Shell？Shell的作用是什么？和内核之间的关系，常用shell有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看支持的Shell"><span class="nav-number">1.2.2.</span> <span class="nav-text">查看支持的Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定用户使用某个shell"><span class="nav-number">1.2.3.</span> <span class="nav-text">指定用户使用某个shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件属性"><span class="nav-number">1.2.4.</span> <span class="nav-text">Linux文件属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">Linux文件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux中文件类型归纳如下："><span class="nav-number">1.2.5.1.</span> <span class="nav-text">Linux中文件类型归纳如下：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软链接与硬链接有什么区别？如何创建？"><span class="nav-number">1.2.6.</span> <span class="nav-text">软链接与硬链接有什么区别？如何创建？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示目录与文件操作命令"><span class="nav-number">1.2.7.</span> <span class="nav-text">显示目录与文件操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">ls</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示文件内容命令"><span class="nav-number">1.2.8.</span> <span class="nav-text">显示文件内容命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cat"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">more</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#less"><span class="nav-number">1.2.8.3.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#head"><span class="nav-number">1.2.8.4.</span> <span class="nav-text">head</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tail"><span class="nav-number">1.2.8.5.</span> <span class="nav-text">tail</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和删除目录命令"><span class="nav-number">1.2.9.</span> <span class="nav-text">创建和删除目录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir"><span class="nav-number">1.2.9.1.</span> <span class="nav-text">mkdir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmdir"><span class="nav-number">1.2.9.2.</span> <span class="nav-text">rmdir</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和删除文件命令"><span class="nav-number">1.2.10.</span> <span class="nav-text">创建和删除文件命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#touch"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">touch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">rm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变目录和查看当前目录命令"><span class="nav-number">1.2.11.</span> <span class="nav-text">改变目录和查看当前目录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cd"><span class="nav-number">1.2.11.1.</span> <span class="nav-text">cd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pwd"><span class="nav-number">1.2.11.2.</span> <span class="nav-text">pwd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制和移动命令"><span class="nav-number">1.2.12.</span> <span class="nav-text">复制和移动命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cp"><span class="nav-number">1.2.12.1.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv"><span class="nav-number">1.2.12.2.</span> <span class="nav-text">mv</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找命令"><span class="nav-number">1.2.13.</span> <span class="nav-text">查找命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">1.2.13.1.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#locate"><span class="nav-number">1.2.13.2.</span> <span class="nav-text">locate</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件链接命令"><span class="nav-number">1.2.14.</span> <span class="nav-text">文件链接命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ln"><span class="nav-number">1.2.14.1.</span> <span class="nav-text">ln</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改目录与文件权限和所属用户和所属组命令"><span class="nav-number">1.2.15.</span> <span class="nav-text">修改目录与文件权限和所属用户和所属组命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod"><span class="nav-number">1.2.15.1.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chown"><span class="nav-number">1.2.15.2.</span> <span class="nav-text">chown</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chgrp"><span class="nav-number">1.2.15.3.</span> <span class="nav-text">chgrp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件内容提取工具"><span class="nav-number">1.2.16.</span> <span class="nav-text">文件内容提取工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cut"><span class="nav-number">1.2.16.1.</span> <span class="nav-text">cut</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件状态处理工具"><span class="nav-number">1.2.17.</span> <span class="nav-text">文件状态处理工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wc"><span class="nav-number">1.2.17.1.</span> <span class="nav-text">wc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">1.2.17.2.</span> <span class="nav-text">sort</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理工具"><span class="nav-number">1.2.18.</span> <span class="nav-text">文件处理工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tr"><span class="nav-number">1.2.18.1.</span> <span class="nav-text">tr</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份与压缩命令"><span class="nav-number">1.2.19.</span> <span class="nav-text">备份与压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tar"><span class="nav-number">1.2.19.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gzip"><span class="nav-number">1.2.19.2.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unzip"><span class="nav-number">1.2.19.3.</span> <span class="nav-text">unzip</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。"><span class="nav-number">1.2.20.</span> <span class="nav-text">描述ln、cp、mv、rm命令对文件链接数和索引节点号的影响。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章"><span class="nav-number">1.3.</span> <span class="nav-text">第四章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vi编辑器三种工作模式之间是如何切换的，各自有什么功能？"><span class="nav-number">1.3.1.</span> <span class="nav-text">vi编辑器三种工作模式之间是如何切换的，各自有什么功能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vi与Shell交互"><span class="nav-number">1.3.2.</span> <span class="nav-text">vi与Shell交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIX2dos和dos2UNIX"><span class="nav-number">1.3.3.</span> <span class="nav-text">UNIX2dos和dos2UNIX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章"><span class="nav-number">1.4.</span> <span class="nav-text">第五章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#X-Window概念"><span class="nav-number">1.4.1.</span> <span class="nav-text">X Window概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-Window组成"><span class="nav-number">1.4.2.</span> <span class="nav-text">X Window组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-Window原理"><span class="nav-number">1.4.3.</span> <span class="nav-text">X Window原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有哪些X-Window"><span class="nav-number">1.4.4.</span> <span class="nav-text">有哪些X Window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明X-Window系统中，X-Server和X-Client的作用。"><span class="nav-number">1.4.5.</span> <span class="nav-text">说明X Window系统中，X Server和X Client的作用。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章"><span class="nav-number">1.5.</span> <span class="nav-text">第六章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载的概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">挂载的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载的文件系统类型"><span class="nav-number">1.5.2.</span> <span class="nav-text">挂载的文件系统类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载设备的过程"><span class="nav-number">1.5.3.</span> <span class="nav-text">挂载设备的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看设备"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">查看设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载设备"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">挂载设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问设备"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">访问设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载设备"><span class="nav-number">1.5.3.4.</span> <span class="nav-text">卸载设备</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统为什么可以支持大部分的文件系统？"><span class="nav-number">1.5.4.</span> <span class="nav-text">Linux系统为什么可以支持大部分的文件系统？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘管理命令"><span class="nav-number">1.5.5.</span> <span class="nav-text">磁盘管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mkfs"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">mkfs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#df"><span class="nav-number">1.5.5.2.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#du"><span class="nav-number">1.5.5.3.</span> <span class="nav-text">du</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述Linux系统的引导过程"><span class="nav-number">1.5.6.</span> <span class="nav-text">简述Linux系统的引导过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调度启动进程"><span class="nav-number">1.5.7.</span> <span class="nav-text">调度启动进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#at"><span class="nav-number">1.5.7.1.</span> <span class="nav-text">at</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crontab"><span class="nav-number">1.5.7.2.</span> <span class="nav-text">crontab</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程管理命令"><span class="nav-number">1.5.8.</span> <span class="nav-text">进程管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ps"><span class="nav-number">1.5.8.1.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill"><span class="nav-number">1.5.8.2.</span> <span class="nav-text">kill</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要求每星期五晚上21点30分开始以oracle用户执行-home-oracle-exportdata-sh程序导出数据库数据文件，请给出解决方案。"><span class="nav-number">1.5.9.</span> <span class="nav-text">要求每星期五晚上21点30分开始以oracle用户执行/home/oracle/exportdata.sh程序导出数据库数据文件，请给出解决方案。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的概念"><span class="nav-number">1.5.10.</span> <span class="nav-text">进程的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章"><span class="nav-number">1.6.</span> <span class="nav-text">第七章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置网络接口可以使用三种不同的工具"><span class="nav-number">1.6.1.</span> <span class="nav-text">配置网络接口可以使用三种不同的工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用网络接口配置程序netconfig或setup"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">使用网络接口配置程序netconfig或setup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用图形配置工具"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">使用图形配置工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用终端命令ifconfig"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">使用终端命令ifconfig</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络接口的启动与禁用"><span class="nav-number">1.6.2.</span> <span class="nav-text">网络接口的启动与禁用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">1.在网络配置界面中，通过“激活”或者“解除”按钮可以启动或者禁用网络接口，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-网络控制程序network"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">2.网络控制程序network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-命令ifconfig"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">3.命令ifconfig :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-命令ifup-ifdown"><span class="nav-number">1.6.2.4.</span> <span class="nav-text">4.命令ifup/ifdown</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络相关配置文件"><span class="nav-number">1.6.3.</span> <span class="nav-text">网络相关配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#守护进程概念原理"><span class="nav-number">1.6.4.</span> <span class="nav-text">守护进程概念原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。"><span class="nav-number">1.6.5.</span> <span class="nav-text">以图解方式解释服务的xinetd工作模式和stand-alone工作模式，并说明选择不同工作模式的原则。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ftp服务"><span class="nav-number">1.6.6.</span> <span class="nav-text">ftp服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）vsFTPd的启动和关闭"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">（1）vsFTPd的启动和关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）关闭防火墙和SELinux对FTP的禁用状态"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">（2）关闭防火墙和SELinux对FTP的禁用状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）用另一台机器进行ftp登录"><span class="nav-number">1.6.6.3.</span> <span class="nav-text">（3）用另一台机器进行ftp登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#telnet服务"><span class="nav-number">1.6.7.</span> <span class="nav-text">telnet服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）为Linux配置IP地址"><span class="nav-number">1.6.7.1.</span> <span class="nav-text">（1）为Linux配置IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）编辑-etc-xinetd-d-krb5-telnet"><span class="nav-number">1.6.7.2.</span> <span class="nav-text">（2）编辑/etc/xinetd.d/krb5-telnet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）编辑-etc-securetty"><span class="nav-number">1.6.7.3.</span> <span class="nav-text">（3）编辑/etc/securetty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）重新启动服务"><span class="nav-number">1.6.7.4.</span> <span class="nav-text">（4）重新启动服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）测试"><span class="nav-number">1.6.7.5.</span> <span class="nav-text">（5）测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章"><span class="nav-number">1.7.</span> <span class="nav-text">第八章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Grep命令"><span class="nav-number">1.7.1.</span> <span class="nav-text">Grep命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Awk命令"><span class="nav-number">1.7.2.</span> <span class="nav-text">Awk命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述Shell程序的特点和用途。"><span class="nav-number">1.7.3.</span> <span class="nav-text">简述Shell程序的特点和用途。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用引号"><span class="nav-number">1.7.4.</span> <span class="nav-text">使用引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">1.7.5.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊变量"><span class="nav-number">1.7.6.</span> <span class="nav-text">特殊变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件判断"><span class="nav-number">1.7.7.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if"><span class="nav-number">1.7.8.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case"><span class="nav-number">1.7.9.</span> <span class="nav-text">case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for"><span class="nav-number">1.7.10.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-until"><span class="nav-number">1.7.11.</span> <span class="nav-text">while/until</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章"><span class="nav-number">1.8.</span> <span class="nav-text">第九章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简述GCC的用法和常用参数的含义。"><span class="nav-number">1.8.1.</span> <span class="nav-text">简述GCC的用法和常用参数的含义。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章"><span class="nav-number">1.9.</span> <span class="nav-text">第十章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简述X-Window的编程架构。"><span class="nav-number">1.9.1.</span> <span class="nav-text">简述X Window的编程架构。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共148.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2018/12/17/Linux 复习/';
+          this.page.identifier = '2018/12/17/Linux 复习/';
+          this.page.title = 'Linux课程复习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+http://litost-fht.top/2018/12/17/图形学复习/
+http://litost-fht.top/2018/12/17/Linux 复习/
 http://litost-fht.top/2018/10/30/实现IOC功能的简单Spring框架/
 http://litost-fht.top/2018/10/29/IDEA+Maven+Spring-MVC-HelloWorld示例/
 http://litost-fht.top/2018/10/27/CSU - 1803/
@@ -16,18 +18,18 @@ http://litost-fht.top/2017/08/11/UVALive - 7139（差分+模拟）/
 http://litost-fht.top/2017/08/10/UVALive - 7263 Today Is a Rainy Day(bfs)/
 http://litost-fht.top/2017/08/03/UVALive - 7639 G - Extreme XOR Sum（思维）/
 http://litost-fht.top/2017/08/03/UVALive - 7637 E - Balanced String(构造)/
-http://litost-fht.top/2017/08/01/Gym - 100269F Flight Boarding Optimization /
 http://litost-fht.top/2017/08/01/GYM 101173 K.Key Knocking（构造）/
+http://litost-fht.top/2017/08/01/Gym - 100269F Flight Boarding Optimization /
 http://litost-fht.top/2017/08/01/GYM 101173 F.Free Figurines（贪心，并查集）/
 http://litost-fht.top/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/
 http://litost-fht.top/2017/07/31/HDU - 5117 Fluorescent(状压dp+思维)/
 http://litost-fht.top/2017/07/30/HDU - 4135 Co-prime/
 http://litost-fht.top/2017/07/30/HDU - 5119 Happy Matt Friends(dp)/
 http://litost-fht.top/2017/07/30/HDU - 5115 Dire Wolf(dp)/
-http://litost-fht.top/2017/07/29/HDU - 5071 Chat（模拟）/
 http://litost-fht.top/2017/07/29/Galaxy HDU - 5073 /
-http://litost-fht.top/2017/07/29/HDU - 5172 GTY's gay friends/
+http://litost-fht.top/2017/07/29/HDU - 5071 Chat（模拟）/
 http://litost-fht.top/2017/07/29/HDU - 5179  beautiful number/
+http://litost-fht.top/2017/07/29/HDU - 5172 GTY's gay friends/
 http://litost-fht.top/2017/07/26/CodeForces - 375A Divisible by Seven/
 http://litost-fht.top/2017/07/25/CodeChef - FORESTGA Forest Gathering（二分）/
 http://litost-fht.top/2017/07/25/ACdream - 1060 递推数(矩阵+循环节)/
@@ -96,5 +98,3 @@ http://litost-fht.top/2017/03/20/What does the fox say/
 http://litost-fht.top/2017/03/20/ACdream - 1092/
 http://litost-fht.top/2017/03/19/HDU - 1102 Constructing Roads/
 http://litost-fht.top/2017/03/19/CodeForces - 546C - Soldier and Cards/
-http://litost-fht.top/2017/03/19/(转载) 并查集(Union-Find)算法介绍/
-http://litost-fht.top/2017/03/19/POJ - 2524  Ubiquitous Religions/
