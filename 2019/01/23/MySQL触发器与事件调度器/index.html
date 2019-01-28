@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.触发器1.1 触发器的概念​    触发器是一种特殊的存储过程，它在插入、删除或修改特定表中的数据时触发执行。 ​    数据库触发器有以下作用： ​    1.安全性：可以基于数据库的值使用户具有操作数据库的某种权利。可以基于时间限制用户的操作。可以基于数据库中的数据限制用户的操作。 ​    2.审计：可以跟踪用户对数据库的操作。审计用户操作数据库的语句。 ​    3.实现复杂的数据完整">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL触发器与事件调度器">
+<meta property="og:url" content="http://litost-fht.top/2019/01/23/MySQL触发器与事件调度器/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="1.触发器1.1 触发器的概念​    触发器是一种特殊的存储过程，它在插入、删除或修改特定表中的数据时触发执行。 ​    数据库触发器有以下作用： ​    1.安全性：可以基于数据库的值使用户具有操作数据库的某种权利。可以基于时间限制用户的操作。可以基于数据库中的数据限制用户的操作。 ​    2.审计：可以跟踪用户对数据库的操作。审计用户操作数据库的语句。 ​    3.实现复杂的数据完整">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-28T15:06:22.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL触发器与事件调度器">
+<meta name="twitter:description" content="1.触发器1.1 触发器的概念​    触发器是一种特殊的存储过程，它在插入、删除或修改特定表中的数据时触发执行。 ​    数据库触发器有以下作用： ​    1.安全性：可以基于数据库的值使用户具有操作数据库的某种权利。可以基于时间限制用户的操作。可以基于数据库中的数据限制用户的操作。 ​    2.审计：可以跟踪用户对数据库的操作。审计用户操作数据库的语句。 ​    3.实现复杂的数据完整">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2019/01/23/MySQL触发器与事件调度器/">
+
+
+
+
+
+  <title>MySQL触发器与事件调度器 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2019/01/23/MySQL触发器与事件调度器/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL触发器与事件调度器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T12:42:50+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/MySQL触发器与事件调度器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/23/MySQL触发器与事件调度器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-触发器"><a href="#1-触发器" class="headerlink" title="1.触发器"></a>1.触发器</h2><h3 id="1-1-触发器的概念"><a href="#1-1-触发器的概念" class="headerlink" title="1.1 触发器的概念"></a>1.1 触发器的概念</h3><p>​    触发器是一种特殊的存储过程，它在插入、删除或修改特定表中的数据时触发执行。</p>
+<p>​    数据库触发器有以下作用：</p>
+<p>​    <strong>1.安全性：</strong>可以基于数据库的值使用户具有操作数据库的某种权利。可以基于时间限制用户的操作。可以基于数据库中的数据限制用户的操作。</p>
+<p>​    <strong>2.审计：</strong>可以跟踪用户对数据库的操作。审计用户操作数据库的语句。</p>
+<p>​    <strong>3.实现复杂的数据完整性规则：</strong>实现非标准的数据完整性检查和约束。触发器可产生比规则更为复杂的限制。</p>
+<p>​    <strong>4.实现复杂的非标准的数据库相关完整性规则：</strong>触发器可以对数据库中相关的表进行连环更新。</p>
+<h3 id="1-2-创建使用触发器"><a href="#1-2-创建使用触发器" class="headerlink" title="1.2 创建使用触发器"></a>1.2 创建使用触发器</h3><p>​    触发程序是与表有关的命名数据库对象，当表上出现特定事件时，将激活该对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create trigger trigger_name trigger_time trigger_event</span><br><span class="line">on table_name for each row trigger_stmt</span><br></pre></td></tr></table></figure>
+<p>​    table_name必须引用永久性表。</p>
+<p>​    trigger_time是触发程序的发动时间。可以是before或after。</p>
+<p>​    trigger_event指明了激活触发程序的语句的类型。可以是下述值之一：</p>
+<p>​    1）insert：将新行插入表时。通过insert、load data和replace语句。</p>
+<p>​    2）update：更改某一行时。通过update语句。</p>
+<p>​    3）delete：从表中删除某一行时。通过delete和replace语句。</p>
+<p>​    <strong>注意：</strong>trigger_event与sql语句并不相同。</p>
+<p>​    对于具有相同触发器动作时间和事件的给定表，不能有两个触发程序。例，对于某一表，不能同时有两个before update触发程序。</p>
+<p>​    trigger_stmt是需要执行的语句。多个语句可以使用begin…end结构。</p>
+<p>​    例：创建一个表tb。在表上创建触发器，每次插入时，将用户变量count的值加1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">create table tb(a int);</span><br><span class="line">set @count=0;</span><br><span class="line">create trigger tb_insert after insert on tb for each row</span><br><span class="line">set @count = @count+1;</span><br><span class="line">insert into tb values(11);</span><br><span class="line">select @count;</span><br><span class="line">+--------+</span><br><span class="line">| @count |</span><br><span class="line">+--------+</span><br><span class="line">|      1 |</span><br><span class="line">+--------+</span><br><span class="line">insert into tb values(21);</span><br><span class="line">select @count;</span><br><span class="line">+--------+</span><br><span class="line">| @count |</span><br><span class="line">+--------+</span><br><span class="line">|      2 |</span><br><span class="line">+--------+</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项：</strong></p>
+<p>​    触发程序不能调用将数据返回客户端的存储程序，也不能采用CALL语句的动态SQL（允许存储程序通过函数将数据返回触发程序）。</p>
+<p>​    触发程序不能使用以显式或隐式方式开始或结束事务的语句，如START TRANSACTION、COMMIT或ROLLBACK。使用OLD和NEW关键字能够访问受触发程序影响的行中的列（OLD和NEW不分大小写）。</p>
+<p>​    在INSERT触发程序中，只能使用NEW。在DELETE触发程序中，只能使用OLD。在UPDATE触发程序中，NEW和OLD都可以使用。</p>
+<p>​    在BEFORE触发程序中，如果具有UPDATE权限，可使用“SET NEW.col_name=value”更改它的值。AUTO_INCREMENT列的NEW值为0，不是实际插入新纪录时将自动生成的序列号。</p>
+<p>​    通过BEGIN…END结构，能够定义执行多条语句的触发程序。还能使用存储子程序中运行的其他语法。</p>
+<h3 id="1-3-查看触发器"><a href="#1-3-查看触发器" class="headerlink" title="1.3 查看触发器"></a>1.3 查看触发器</h3><p>​    查看所有触发器信息：<code>show triggers；</code></p>
+<p>​    查询指定触发器：<code>select * from information_schema.triggers where trigger_name=&#39;tb_insert&#39;;</code></p>
+<h3 id="1-4-删除触发器"><a href="#1-4-删除触发器" class="headerlink" title="1.4 删除触发器"></a>1.4 删除触发器</h3><p>​    <code>drop trigger [schema_name.]trigger_name;</code></p>
+<p>​    如果忽略了schema_name，将从当前数据库中删除触发程序。</p>
+<h2 id="2-事件"><a href="#2-事件" class="headerlink" title="2.事件"></a>2.事件</h2><h3 id="2-1-事件的概念"><a href="#2-1-事件的概念" class="headerlink" title="2.1 事件的概念"></a>2.1 事件的概念</h3><p>​    自MySQL 5.1.0起，增加了事件调度器，可以用作定时执行某些特定任务来取代原先只能由操作系统的计划任务来执行的工作。MySQL中的事件调度器可精确到每秒执行一个任务，而操作系统的计划任务只能精确到分钟。对于一些对数据实时性要求比较高的应用就很适合。</p>
+<p>​    事件调度器是基于特定时间周期触发来执行某些任务，而触发器是基于某个表所产生的事件触发的。</p>
+<h3 id="2-2-创建事件"><a href="#2-2-创建事件" class="headerlink" title="2.2 创建事件"></a>2.2 创建事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create event event_name</span><br><span class="line">on schedule schedule</span><br><span class="line">[on completion [not] preserve]</span><br><span class="line">[enable|disable|disable on slave]</span><br><span class="line">[comment &apos;comment&apos;]</span><br><span class="line">do event_body;</span><br></pre></td></tr></table></figure>
+<p>​    on schedule schedule:定义执行的时间和时间间隔</p>
+<p>​    on completion [not] preserve：定义时间是一次执行还是永久执行，默认为一次执行。</p>
+<p>​    enable|disable|disable on slave：定义事件创建后是开启还是关闭。</p>
+<p>例：创建一个立即启动的事件，创建后查看tb表的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create event example</span><br><span class="line">on schedule at now()</span><br><span class="line">do insert into tb values(33);</span><br><span class="line"></span><br><span class="line">select * from tb;</span><br></pre></td></tr></table></figure>
+<p>​    在使用事件调度器之前，必须确保event_scheduler已开启，可执行<code>global event_scheduler = 1;</code></p>
+<p>例：创建一个五秒后启动的事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create event example</span><br><span class="line">on schedule at current_timestamp + interval 5 second</span><br><span class="line">do insert into tb values(44);</span><br><span class="line"></span><br><span class="line">select * from tb;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-修改事件"><a href="#2-3-修改事件" class="headerlink" title="2.3 修改事件"></a>2.3 修改事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter event event_name [on schedule schedule]</span><br><span class="line">[rename to new_event_name] [on completion [not] preserve]</span><br><span class="line">[comment &apos;comment&apos;] [enable|disable] [do sql_stmt]</span><br></pre></td></tr></table></figure>
+<p>​    临时关闭事件<code>alter event event_name disable</code>，那么当重新启动MySQL服务器后，该event_name将被删除。</p>
+<h3 id="2-4-删除事件"><a href="#2-4-删除事件" class="headerlink" title="2.4 删除事件"></a>2.4 删除事件</h3><p>​    <code>drop event [if exists] event_name；</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/22/MySQL存储过程和函数/" rel="next" title="MySQL存储过程和函数">
+                <i class="fa fa-chevron-left"></i> MySQL存储过程和函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/23/MySQL索引/" rel="prev" title="MySQL索引">
+                MySQL索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-触发器"><span class="nav-number">1.</span> <span class="nav-text">1.触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-触发器的概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 触发器的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-创建使用触发器"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 创建使用触发器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-查看触发器"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 查看触发器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-删除触发器"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 删除触发器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-事件"><span class="nav-number">2.</span> <span class="nav-text">2.事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-事件的概念"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 事件的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-创建事件"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 创建事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-修改事件"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 修改事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-删除事件"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 删除事件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共174.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2019/01/23/MySQL触发器与事件调度器/';
+          this.page.identifier = '2019/01/23/MySQL触发器与事件调度器/';
+          this.page.title = 'MySQL触发器与事件调度器';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

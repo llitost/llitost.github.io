@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.存储过程与函数简介1.1 概念​    1.存储过程概述 ​    存储过程是一组为了完成特定功能的SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数来调用执行它。 ​    一个存储过程是一个可编程的函数，它在数据库中创建并保存。数据库中的存储过程可以看作对编程中面向对象方法的模拟。 ​    2.存储过程的优点 ​    1）存储过程增强了SQL语言的功能和灵活性。">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL存储过程和函数">
+<meta property="og:url" content="http://litost-fht.top/2019/01/22/MySQL存储过程和函数/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="1.存储过程与函数简介1.1 概念​    1.存储过程概述 ​    存储过程是一组为了完成特定功能的SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数来调用执行它。 ​    一个存储过程是一个可编程的函数，它在数据库中创建并保存。数据库中的存储过程可以看作对编程中面向对象方法的模拟。 ​    2.存储过程的优点 ​    1）存储过程增强了SQL语言的功能和灵活性。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-28T15:06:59.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL存储过程和函数">
+<meta name="twitter:description" content="1.存储过程与函数简介1.1 概念​    1.存储过程概述 ​    存储过程是一组为了完成特定功能的SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数来调用执行它。 ​    一个存储过程是一个可编程的函数，它在数据库中创建并保存。数据库中的存储过程可以看作对编程中面向对象方法的模拟。 ​    2.存储过程的优点 ​    1）存储过程增强了SQL语言的功能和灵活性。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2019/01/22/MySQL存储过程和函数/">
+
+
+
+
+
+  <title>MySQL存储过程和函数 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2019/01/22/MySQL存储过程和函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL存储过程和函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T12:42:50+08:00">
+                2019-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/22/MySQL存储过程和函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/22/MySQL存储过程和函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-存储过程与函数简介"><a href="#1-存储过程与函数简介" class="headerlink" title="1.存储过程与函数简介"></a>1.存储过程与函数简介</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><p>​    <strong>1.存储过程概述</strong></p>
+<p>​    存储过程是一组为了完成特定功能的SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数来调用执行它。</p>
+<p>​    一个存储过程是一个可编程的函数，它在数据库中创建并保存。数据库中的存储过程可以看作对编程中面向对象方法的模拟。</p>
+<p>​    <strong>2.存储过程的优点</strong></p>
+<p>​    1）存储过程增强了SQL语言的功能和灵活性。存储过程可以用流控制语言编写。</p>
+<p>​    2）存储过程允许标准组件是编程。存储过程创建后，可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。</p>
+<p>​    3）存储过程能实现比较快的执行速度。因为存储过程是预编译的。在首次运行一个存储过程时查询优化器对其进行分析优化，并给出最终被存储在系统表中的执行计划。</p>
+<p>​    4）存储过程能减少网络流量。网络中传送的只是调用语句。</p>
+<p>​    5）存储过程可被作为一种安全机制来充分利用。</p>
+<p>​    MySQL在5.0以前并不支持存储过程。</p>
+<h3 id="1-2-存储过程和函数区别"><a href="#1-2-存储过程和函数区别" class="headerlink" title="1.2 存储过程和函数区别"></a>1.2 存储过程和函数区别</h3><p>·    1）一般来说，存储过程实现的功能要复制一点，而函数实现的功能针对性比较强。存储过程功能强大，可以执行包括修改表等一系列数据库操作；用户定义函数不能用于执行一组修改全局数据库状态的操作。</p>
+<p>​    2）存储过程可以返回参数，而函数只能返回值或者表对象。函数只能返回一个变量，而存储过程可以返回多个变量。存储过程的参数可以有in、out、inout三种类型，而函数只能有in类型。存储过程声明时不需要返回类型，而函数声明时需要描述返回类型，且函数体必须包含return。</p>
+<p>​    3）存储过程可以使用非确定函数。</p>
+<p>​    4）存储过程通常是作为一个独立的部分来执行（execute），而函数可以作为查询语句的一个部分来调用（select调用）。SQL语句不可以用存储过程，而可使用函数。</p>
+<h2 id="2-存储过程与函数操作"><a href="#2-存储过程与函数操作" class="headerlink" title="2.存储过程与函数操作"></a>2.存储过程与函数操作</h2><h3 id="2-1-创建和使用存储过程或函数"><a href="#2-1-创建和使用存储过程或函数" class="headerlink" title="2.1 创建和使用存储过程或函数"></a>2.1 创建和使用存储过程或函数</h3><h4 id="2-1-1-存储过程"><a href="#2-1-1-存储过程" class="headerlink" title="2.1.1 存储过程"></a>2.1.1 存储过程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create procedure sp_name([proc_parameter[,..]])</span><br><span class="line">[characteristic..] routine_body</span><br></pre></td></tr></table></figure>
+<p>其中，sp_name是存储过程的名称；proc_parameter表示存储过程的参数列表；characteristic指定存储过程的特性；routine_body是SQL代码的内容，可以用begin…end来标志SQL代码的开始与结束。</p>
+<p>proc_parameter中的每个参数由三部分组成：[in|out|inout] param_name type</p>
+<p>characteristic参数具有多个取值：</p>
+<ul>
+<li><p>languageSQL：说明routine_body部分是由SQL语句组成的，默认。</p>
+</li>
+<li><p>[not] deterministic：指明存储过程的执行结果是否是确定的。默认是非确定的。</p>
+</li>
+<li><p>{containsSQL|no SQL|reads SQL data|modifies SQL data}：指明子程序使用SQL语句的限制。默认为containsSQL。</p>
+</li>
+<li><p>SQL security {definer|invoker}：指明谁有权限来执行。默认为definer。</p>
+</li>
+<li><p>comment ’string‘：注释信息。</p>
+<p>调用存储过程的语法格式：<code>call sp_name([parameter[,..]])</code></p>
+</li>
+</ul>
+<h4 id="2-1-2-创建存储函数"><a href="#2-1-2-创建存储函数" class="headerlink" title="2.1.2 创建存储函数"></a>2.1.2 创建存储函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create function sp_name([func_parameter[,..]])</span><br><span class="line">returns type</span><br><span class="line">[characteristic..] routine_body</span><br></pre></td></tr></table></figure>
+<p>func_parameter可以由多个参数组成，其中每个参数由两部分组成：param_name type</p>
+<p>​    调用存储函数的语法格式：<code>select sp_name([func_parameter[,...]])</code></p>
+<p>​    存储函数的使用方法和MySQL内部函数的使用方法是一样的。</p>
+<h4 id="2-1-3-delimiter命令"><a href="#2-1-3-delimiter命令" class="headerlink" title="2.1.3 delimiter命令"></a>2.1.3 delimiter命令</h4><p>​    指定语句结束标志，MySQL默认为分号“：”。</p>
+<p>​    存储过程的简单例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">delimiter ##</span><br><span class="line">create procedure getNameBySno(in xh char(10),out name char(20))</span><br><span class="line">begin</span><br><span class="line">select sname into name from student where sno=xh;</span><br><span class="line">end ##</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<p>​    存储函数的简单例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">delimiter ##</span><br><span class="line">create function numOfStu()</span><br><span class="line">returns integer</span><br><span class="line">begin</span><br><span class="line">return(select count(*) from student);</span><br><span class="line">end ##</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<p>​    return子句中包含select语句时，select语句的返回结果只能是一行且只有一列值。</p>
+<h3 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a>2.2 变量</h3><p><strong>1.declare语句申明局部变量</strong></p>
+<p>declare语句申明局部的变量只适用于begin…end程序段中。</p>
+<p>语法格式：<code>declare var_name1[,var_name2]... type [default value]</code></p>
+<p><strong>2.用set语句给变量赋值</strong></p>
+<p>格式：<code>set var_name=exper[,var_name=exper]</code></p>
+<p>set可以直接声明用户变量，不需要声明类型，declare必须指定类型。set位置任意，declare必须在复合语句的开头。declare定义的变量的作用范围是begin…end块内。set定义的变量在定义时，变量名前使用@符号修饰，如set @var=2。</p>
+<p><strong>3.使用select语句给变量赋值</strong></p>
+<p>语法格式：<code>select col_name[,..] into var_name[,..] table_expr</code></p>
+<p>例：定义一个存储过程，作业是输出两个字符串拼接后的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create procedure myConcat() select CONCAT(@str1,@str2);</span><br><span class="line">set @str1=&apos;ab&apos;,@str2=&apos;cd&apos;;</span><br><span class="line">call myConcat();</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-定义条件和处理"><a href="#2-3-定义条件和处理" class="headerlink" title="2.3 定义条件和处理"></a>2.3 定义条件和处理</h3><p><strong>1.定义条件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">declare condition_name condition for condition_value</span><br><span class="line">condition_value:SQLstate[value] SQLstate_value|MySQL_error_code</span><br></pre></td></tr></table></figure>
+<p>​    condition_value是用来实现设置条件的类型，SQLstate_value和MySQL_error_code用来设置条件的错误。</p>
+<p><strong>2.定义处理程序</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare handler_type handler for condition_value[,..] sp_statement</span><br><span class="line">handler_type:continue|exit|undo</span><br><span class="line">condition_value:SQLstate[value] SQLstate_value|condition_name|SQLwarning|not found|SQLexception|MySQL_error_code</span><br></pre></td></tr></table></figure>
+<p>​    handler_type表示错误的处理方式。</p>
+<h3 id="2-4-游标的使用"><a href="#2-4-游标的使用" class="headerlink" title="2.4 游标的使用"></a>2.4 游标的使用</h3><p>​    可以认为游标就是一个标识，用来标识数据取到什么地方了。也可以理解为数组下标。</p>
+<p>​    游标具有以下特性：只读的，不能更新；不滚动的；不敏感的。</p>
+<p>​    游标必须在声明处理程序之前被声明，并且变量和条件必须在声明游标或处理程序之前被声明。</p>
+<p>​    <strong>1.声明游标</strong></p>
+<p>​    语法格式：<code>declare cursor_name cursor for select_statement</code></p>
+<p>​    select_statement是一个select语句，返回的是一行或多行数据。这里的select子句不能有into子句。</p>
+<p>​    一个块中的每个游标必须有唯一的名字。</p>
+<p>​    <strong>2.打开游标</strong></p>
+<p>​    语法格式：<code>open cursor_name</code></p>
+<p>​    一个游标可以打开多次。由于表可能更新，每次打开结果可能不同。</p>
+<p>​    <strong>3.读取数据</strong></p>
+<p>​    语法格式：<code>fetch cursor_name into var_name[,var_name]...</code></p>
+<p>​    fetch语句是将游标指向的一行数据赋给一些变量，变量数目要和列的数目相同。</p>
+<p>​    <strong>4.关闭游标</strong></p>
+<p>​    语法格式：<code>close cursor_name</code></p>
+<p>​    例：利用游标读取student表中的总人数，此实例主要为演示游标的使用方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">delimiter ##</span><br><span class="line">create procedure stuCount(out num integer)</span><br><span class="line">begin</span><br><span class="line">declare temp char(20);</span><br><span class="line">declare done int default false;</span><br><span class="line">declare cur cursor for select sno from student;</span><br><span class="line">declare continue handler for not fount set done = true;</span><br><span class="line">set num = 0;</span><br><span class="line">open cur;</span><br><span class="line">read_loop:loop</span><br><span class="line">	fetch cur into temp;</span><br><span class="line">	if done then leave read_loop;</span><br><span class="line">	end if;</span><br><span class="line">	set num = num + 1;</span><br><span class="line">end loop;</span><br><span class="line">close cur;</span><br><span class="line">end ##</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">set @num=0;</span><br><span class="line">call stuCount(num);</span><br><span class="line">select @num;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-流程的控制"><a href="#2-5-流程的控制" class="headerlink" title="2.5 流程的控制"></a>2.5 流程的控制</h3><p><strong>1.if语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if age&gt;20 then set @count = @count + 1;</span><br><span class="line">elseif age==20 then set @count2 = @count2 + 1;</span><br><span class="line">else set @count3 = @count3 + 1;</span><br><span class="line">end if</span><br></pre></td></tr></table></figure>
+<p><strong>2.case语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">case age</span><br><span class="line">	when 20 then set @count1=@count1+1;</span><br><span class="line">	else set @count2=@count2+1;</span><br><span class="line">end case;</span><br></pre></td></tr></table></figure>
+<p><strong>3.loop语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[add_num]:loop</span><br><span class="line">set @count=@count+1;</span><br><span class="line">end loop [add_num]</span><br></pre></td></tr></table></figure>
+<p>​    add_num是标签，可省略。loop没有停止循环的语句，要结合leave或iterate。</p>
+<p><strong>4.leave语句</strong></p>
+<p><code>leave label</code>主要用于跳出循环。</p>
+<p><strong>5.iterate语句</strong></p>
+<p><code>iterate label</code>主要用于跳出本次循环，然后进入下一轮循环。</p>
+<p><strong>6.repeat语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repeat</span><br><span class="line">set @num=@num+1;</span><br><span class="line">until @num=10;</span><br><span class="line">end repeat</span><br></pre></td></tr></table></figure>
+<p><strong>7.while语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while @num&lt;10 do</span><br><span class="line">set @num=@num+1;</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
+<h3 id="2-6-查看存储过程或函数"><a href="#2-6-查看存储过程或函数" class="headerlink" title="2.6 查看存储过程或函数"></a>2.6 查看存储过程或函数</h3><p><strong>1.查看存储过程或函数的状态</strong></p>
+<p><code>show {procedure|function} status [like &#39;pattern&#39;];</code></p>
+<p><strong>2.查看存储过程或函数的具体信息</strong></p>
+<p><code>show create {procedure|function} sp_name;</code></p>
+<p><strong>3.查看所有的存储过程</strong></p>
+<p><code>select * from information_schema.routines [where routine_name=&#39;名称&#39;];</code></p>
+<h3 id="2-7-修改存储过程或函数"><a href="#2-7-修改存储过程或函数" class="headerlink" title="2.7 修改存储过程或函数"></a>2.7 修改存储过程或函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter pocedure sp_name [characteristc..]</span><br><span class="line">characteristc:&#123;containsSQL|no SQL|reads SQL data|modifies SQL data&#125;|SQL security|&#123;definer|invoker&#125;|comment &apos;string&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="2-8-删除存储过程或函数"><a href="#2-8-删除存储过程或函数" class="headerlink" title="2.8 删除存储过程或函数"></a>2.8 删除存储过程或函数</h3><p><code>drop procedure [if exists] sp_name;</code></p>
+<p>删除前必须确认该存储过程没有任何依赖关系。</p>
+<p>### </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/20/MySQL视图/" rel="next" title="MySQL视图">
+                <i class="fa fa-chevron-left"></i> MySQL视图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/23/MySQL触发器与事件调度器/" rel="prev" title="MySQL触发器与事件调度器">
+                MySQL触发器与事件调度器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-存储过程与函数简介"><span class="nav-number">1.</span> <span class="nav-text">1.存储过程与函数简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-存储过程和函数区别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 存储过程和函数区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-存储过程与函数操作"><span class="nav-number">2.</span> <span class="nav-text">2.存储过程与函数操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-创建和使用存储过程或函数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 创建和使用存储过程或函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-存储过程"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-创建存储函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 创建存储函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-delimiter命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 delimiter命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-定义条件和处理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 定义条件和处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-游标的使用"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 游标的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-流程的控制"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 流程的控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-查看存储过程或函数"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 查看存储过程或函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-修改存储过程或函数"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 修改存储过程或函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-删除存储过程或函数"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 删除存储过程或函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共174.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2019/01/22/MySQL存储过程和函数/';
+          this.page.identifier = '2019/01/22/MySQL存储过程和函数/';
+          this.page.title = 'MySQL存储过程和函数';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

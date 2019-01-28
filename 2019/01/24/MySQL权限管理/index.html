@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.访问控制​    MySQL提供了访问控制，以此来确保MySQL服务器的安全访问，即用户应该对他们需要的数据具有适当的访问权，既不能多，也不能少。 2.权限表​    常用的权限表有：user、db、table_priv、columns_priv、column_priv和procs_priv。 2.1 user表​    user列主要分为4部分：用户列、权限列、安全列和资源控制列。 ​">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL权限管理">
+<meta property="og:url" content="http://litost-fht.top/2019/01/24/MySQL权限管理/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="1.访问控制​    MySQL提供了访问控制，以此来确保MySQL服务器的安全访问，即用户应该对他们需要的数据具有适当的访问权，既不能多，也不能少。 2.权限表​    常用的权限表有：user、db、table_priv、columns_priv、column_priv和procs_priv。 2.1 user表​    user列主要分为4部分：用户列、权限列、安全列和资源控制列。 ​">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-28T15:08:40.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL权限管理">
+<meta name="twitter:description" content="1.访问控制​    MySQL提供了访问控制，以此来确保MySQL服务器的安全访问，即用户应该对他们需要的数据具有适当的访问权，既不能多，也不能少。 2.权限表​    常用的权限表有：user、db、table_priv、columns_priv、column_priv和procs_priv。 2.1 user表​    user列主要分为4部分：用户列、权限列、安全列和资源控制列。 ​">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2019/01/24/MySQL权限管理/">
+
+
+
+
+
+  <title>MySQL权限管理 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2019/01/24/MySQL权限管理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL权限管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T19:42:50+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/24/MySQL权限管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/24/MySQL权限管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-访问控制"><a href="#1-访问控制" class="headerlink" title="1.访问控制"></a>1.访问控制</h2><p>​    MySQL提供了访问控制，以此来确保MySQL服务器的安全访问，即用户应该对他们需要的数据具有<strong>适当</strong>的访问权，既不能多，也不能少。</p>
+<h2 id="2-权限表"><a href="#2-权限表" class="headerlink" title="2.权限表"></a>2.权限表</h2><p>​    常用的权限表有：user、db、table_priv、columns_priv、column_priv和procs_priv。</p>
+<h3 id="2-1-user表"><a href="#2-1-user表" class="headerlink" title="2.1 user表"></a>2.1 user表</h3><p>​    user列主要分为4部分：用户列、权限列、安全列和资源控制列。</p>
+<p>​    当用户进行连接时，权限表的存取过程有以下两个阶段：</p>
+<p>​    1）从user表中的host、user和password三个字段中判断连接的ip、用户名和密码是否存在于表中，若存在则通过身份验证。</p>
+<p>​    2）若通过身份验证，按照以下权限的顺序得到数据库权限：user、db、table_priv、columns_priv。这几个表的权限依次递减，全局权限覆盖局部权限。</p>
+<p>​    <strong>1.用户字段</strong></p>
+<p>​    host、user、password</p>
+<p>​    <strong>2.权限字段</strong></p>
+<p>​    user表包含几十个与权限有关以priv结尾的字段，这些权限字段决定了用户的权限，它们的值只有y或n，默认为n，可以使用grant语句为用户赋予一些权限。</p>
+<p>​    <strong>3.安全字段</strong></p>
+<p>​    安全列只有六个字段，其中两个是ssl相关的：ssl_type和ssl_cipher，两个是x509相关的：x509_issuer和x509_subject，另外两个是授权插件相关的。</p>
+<p>​    ssl用于加密；x509标准可用于标识用户；plugin字段标识可以用于验证用户身份的插件。</p>
+<p>​    <strong>4.资源控制列</strong></p>
+<p>​    资源控制列的字段用来限制用户使用的资源：</p>
+<p>​    max_questions:用户每小时允许执行的查询操作次数</p>
+<p>​    max_updates:用户每小时允许执行的更新操作次数</p>
+<p>​    max_connections:用户每小时允许执行的连接操作次数</p>
+<p>​    max_user_connections:单个用户可以同时具有的连接数</p>
+<p>​    这些字段的默认值为0，表示没有限制。</p>
+<h3 id="2-2-db表和host表"><a href="#2-2-db表和host表" class="headerlink" title="2.2 db表和host表"></a>2.2 db表和host表</h3><p>​    db表中存储了用户对某个数据库的操作权限，决定用户能从哪个主机存取哪个数据库；host表中存储了某个主机对数据库的操作权限，配合db表对给定主机上数据库级操作权限做更细致的控制。</p>
+<p>​    这两个权限表不受grant和revoke语句的影响。字段可大致可以分为两类：用户列和权限列。</p>
+<p>​    <strong>1.用户列</strong></p>
+<p>​    db表：host、db和user；host表：host和db。</p>
+<p>​    host表是db表的扩展。如果db表中找不到host字段的值，就需要到host表中去寻找。</p>
+<p>​    <strong>2.权限列</strong></p>
+<p>​    db表和host表的权限列大致相同。</p>
+<p>​    user表中的权限是针对所有数据库的。用户先根据user表的内容获取权限，然后再根据db表的内容获取权限。</p>
+<h3 id="2-3-table-priv表"><a href="#2-3-table-priv表" class="headerlink" title="2.3 table_priv表"></a>2.3 table_priv表</h3><p>​    table_priv表可以对单个表进行权限设置，这里指定的权限适用于一个表的所有列。</p>
+<p>​    table_priv表有八个字段：host、db、user、table_name、grantor、timestamp、table_priv和column_priv。</p>
+<ul>
+<li>字段说明如下：<ul>
+<li>table_priv字段表示对表进行操作的权限，包括select、insert、update、delete、create、drop、grant、references、index和alter。</li>
+<li>column_priv字段表示对表中的列进行操作的权限，包括select、insert、update和references。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-columns-priv表"><a href="#2-4-columns-priv表" class="headerlink" title="2.4 columns_priv表"></a>2.4 columns_priv表</h3><p>​    columns_priv可以对表中的某一列进行权限设置。</p>
+<p>​    columns_priv表只有七个字段：host、db、user、table_name、column_name、timestamp和column_priv。</p>
+<p>​    MySQL中权限的分配是按照user表、db表、tables_priv表和columns_priv表的顺序进行分配的。    </p>
+<h3 id="2-5-procs-priv表"><a href="#2-5-procs-priv表" class="headerlink" title="2.5 procs_priv表"></a>2.5 procs_priv表</h3><p>​    procs_priv表可以对存储过程和存储函数进行权限设置。</p>
+<p>​    procs_priv表包含八个字段：host、db、user、routine_name、routine_type、grantor、timestamp和proc_priv。</p>
+<h2 id="3-用户管理"><a href="#3-用户管理" class="headerlink" title="3.用户管理"></a>3.用户管理</h2><p>​    MySQL用户账号和信息存储在名为<strong>mysql</strong>的数据库中。数据库中有个user表，包含所有用户的账号。</p>
+<h3 id="3-1-添加用户"><a href="#3-1-添加用户" class="headerlink" title="3.1 添加用户"></a>3.1 添加用户</h3><p>​    <strong>1.使用create use创建用户账号</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user identified by [password] &apos;password&apos;</span><br></pre></td></tr></table></figure>
+<p>​    user：指定创建用户账号，格式为`user_name‘@’host_name’。如果在创建的过程中只给出了用户名，而没指定主机名，则主机名默认为‘%’，表示一组主机。</p>
+<p>​    identified by子句：用于指定用户账号对应的口令。</p>
+<p>​    可选项password：用于指定散列口令。知道password()函数返回给密码的散列值。</p>
+<p>​    create user语句的使用说明如下：</p>
+<p>​    1）要使用create user语句，必须拥有mysql数据库的insert权限或全局create user权限。</p>
+<p>​    2）如果两个用户具有相同的用户名和不同的主机名，MySQL将视为不同的用户。</p>
+<p>​    3）新创建的用户拥有的权限很少，只允许进行不需要权限的操作，不可使用use database语句。</p>
+<p>​    <strong>2.使用insert语句新建普通用户</strong></p>
+<p>​    将用户信息直接插入mysql.user表中，插入时，至少要插入以下六个字段的值：host、user、password、ssl_cipher、x509_issuer、x509_subject。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into mysql.user(host,user,password,ssl_cipher,x509_issuer,x509_subject)</span><br><span class="line">values(&apos;localhost&apos;,&apos;fang&apos;,password(123),&apos;&apos;,&apos;&apos;,&apos;&apos;);</span><br></pre></td></tr></table></figure>
+<p>​    执行完毕后，要使用<code>flush privileges;</code>命令来使用户生效，需要reload权限。</p>
+<p>​    <strong>3.使用grant语句</strong></p>
+<p>​    可以使用grant语句来创建新的用户，在创建用户时可以为用户授权。</p>
+<h3 id="3-2-查看用户"><a href="#3-2-查看用户" class="headerlink" title="3.2 查看用户"></a>3.2 查看用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from mysql.user</span><br><span class="line">where host=&apos;host_name&apos; and user=&apos;user_name&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-修改用户账号"><a href="#3-3-修改用户账号" class="headerlink" title="3.3 修改用户账号"></a>3.3 修改用户账号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename user old_user to new_user</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-修改用户口令"><a href="#3-4-修改用户口令" class="headerlink" title="3.4 修改用户口令"></a>3.4 修改用户口令</h3><pre><code>**1）mysqladmin命令**
+</code></pre><p>​    <code>mysqladmin -u username -p password</code></p>
+<p>​    <strong>2）set语句</strong></p>
+<p>​    <code>set password [for &#39;username&#39;@&#39;hostname&#39;]=password(&#39;new_password&#39;);</code></p>
+<p>​    如果不加for ‘username‘@’hostname’，则修改当前用户密码。</p>
+<p>​    <strong>3）修改mysql.user表，需要root权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user</span><br><span class="line">set password=password(&apos;new_password&apos;)</span><br><span class="line">where user=&apos;user_name&apos; and host=&apos;host_name&apos;;</span><br></pre></td></tr></table></figure>
+<p>​    修改后，还是需要flush命令重新加载权限。</p>
+<p>​    使用set password、insert或update指定账户的密码时，必须用password()函数进行加密，唯一特例是密码为空。之所以要加密，是因为当用户登录服务器时，密码值会被加密后再与user表中相应的密码比较。</p>
+<h3 id="3-5-删除用户"><a href="#3-5-删除用户" class="headerlink" title="3.5 删除用户"></a>3.5 删除用户</h3><p>​    <strong>1.drop user</strong></p>
+<p>​    需有drop user权限，<code>drop user user</code>，user参数由用户名和主机名组成。</p>
+<p>​    <strong>2.使用delete语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from mysql.user where user=&apos;user_name&apos; and host=&apos;host_name&apos;;</span><br></pre></td></tr></table></figure>
+<p>​    显示操作成功后，还要用flush命令重新装载权限。</p>
+<h2 id="4-账户权限管理"><a href="#4-账户权限管理" class="headerlink" title="4.账户权限管理"></a>4.账户权限管理</h2><h3 id="4-1-权限授予"><a href="#4-1-权限授予" class="headerlink" title="4.1 权限授予"></a>4.1 权限授予</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grant</span><br><span class="line">priv_type[(column_list)] [,priv_type[(column_list)]]...</span><br><span class="line">on [object_type] priv_level</span><br><span class="line">to user_specification[,user_specification]...</span><br><span class="line">[with with_option...]</span><br></pre></td></tr></table></figure>
+<p>​    语法说明如下：</p>
+<p>​    1）priv_type：指定权限的名称，如select、insert等。</p>
+<p>​    2）选项column_list：指定权限要授予哪些列。</p>
+<p>​    3）on子句：指定权限授予的对象和级别，如数据库名或表名。</p>
+<p>​    4）可选项object_type：指定权限授予的对象类型，包括表、函数和存储过程。</p>
+<p>​    5）pri_level：指定权限的级别。有列权限、表权限、数据库权限和用户权限。</p>
+<p>​    6）to字句：用来设定用户的口令，以及指定被授予权限的用户user。若在to子句中给系统存在的用户指定口令，则新密码将覆盖原密码；如果权限被授予给一个不存在的用户，MySQL会自动执行一条create user语句来创建这个用户，但同时必须为该用户指定口令。</p>
+<p>​    7）with子句：实现权限的转移或限制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all on student </span><br><span class="line">to &apos;fang&apos;@&apos;localhost&apos; identified by &apos;123&apos;,</span><br><span class="line">&apos;lin&apos;@&apos;localhost&apos; identified by &apos;123&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-权限的转移和限制"><a href="#4-2-权限的转移和限制" class="headerlink" title="4.2 权限的转移和限制"></a>4.2 权限的转移和限制</h3><p>​    <strong>1.转移权限</strong></p>
+<p>​    将with子句指定为with grant option，表示to子句中的所有用户都具有把自己所拥有的权限授予其他用户的权利。</p>
+<p>​    <strong>2.限制权限</strong></p>
+<p>​    如果with子句中 with关键字后面紧跟的是<em>max_queries_per_hour count</em>、<em>max_updates_per_hour count</em>、<em>max_connections_per_hour count</em>、<em>max_user_connections count</em>或<em>max_queries_per_hour count</em>中的某一项，则该语句可用于限制权限。</p>
+<h3 id="4-3-权限的撤销"><a href="#4-3-权限的撤销" class="headerlink" title="4.3 权限的撤销"></a>4.3 权限的撤销</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">第一种：回收某些特定的权限</span><br><span class="line">revoke priv_type[(column_list)] [,priv_type[(column_list)]]...</span><br><span class="line">on [object_type] priv_level</span><br><span class="line">from user[,user]...</span><br><span class="line">第二种：回收特定用户的所有权限</span><br><span class="line">revoke all privileges,grant option</span><br><span class="line">from user[,user]...</span><br></pre></td></tr></table></figure>
+<p>​    要使用revoke语句，必须拥有mysql数据库的全局create user权限或update权限。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/MySQL索引/" rel="next" title="MySQL索引">
+                <i class="fa fa-chevron-left"></i> MySQL索引
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/MySQL数据库备份与还原/" rel="prev" title="MySQL数据库备份与还原">
+                MySQL数据库备份与还原 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-访问控制"><span class="nav-number">1.</span> <span class="nav-text">1.访问控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-权限表"><span class="nav-number">2.</span> <span class="nav-text">2.权限表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-user表"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 user表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-db表和host表"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 db表和host表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-table-priv表"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 table_priv表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-columns-priv表"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 columns_priv表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-procs-priv表"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 procs_priv表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户管理"><span class="nav-number">3.</span> <span class="nav-text">3.用户管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-添加用户"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 添加用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-查看用户"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 查看用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-修改用户账号"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 修改用户账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-修改用户口令"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 修改用户口令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-删除用户"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 删除用户</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-账户权限管理"><span class="nav-number">4.</span> <span class="nav-text">4.账户权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-权限授予"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 权限授予</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-权限的转移和限制"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 权限的转移和限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-权限的撤销"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 权限的撤销</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共174.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2019/01/24/MySQL权限管理/';
+          this.page.identifier = '2019/01/24/MySQL权限管理/';
+          this.page.title = 'MySQL权限管理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

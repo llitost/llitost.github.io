@@ -1,5 +1,16 @@
-http://litost-fht.top/2018/12/17/图形学复习/
+http://litost-fht.top/2019/01/28/Machine Learning/
+http://litost-fht.top/2019/01/26/MySQL性能优化/
+http://litost-fht.top/2019/01/26/MySQL日志管理/
+http://litost-fht.top/2019/01/25/事务与MySQL的多用户并发控制/
+http://litost-fht.top/2019/01/25/MySQL数据库备份与还原/
+http://litost-fht.top/2019/01/24/MySQL权限管理/
+http://litost-fht.top/2019/01/23/MySQL索引/
+http://litost-fht.top/2019/01/23/MySQL触发器与事件调度器/
+http://litost-fht.top/2019/01/22/MySQL存储过程和函数/
+http://litost-fht.top/2019/01/20/MySQL视图/
+http://litost-fht.top/2019/01/18/mysql/
 http://litost-fht.top/2018/12/17/Linux 复习/
+http://litost-fht.top/2018/12/14/图形学复习/
 http://litost-fht.top/2018/10/30/实现IOC功能的简单Spring框架/
 http://litost-fht.top/2018/10/29/IDEA+Maven+Spring-MVC-HelloWorld示例/
 http://litost-fht.top/2018/10/27/CSU - 1803/
@@ -8,8 +19,8 @@ http://litost-fht.top/2018/10/27/hello-world/
 http://litost-fht.top/2017/10/15/UVA - 1625 Color Length/
 http://litost-fht.top/2017/10/15/UVA - 11584 Partitioning by Palindromes/
 http://litost-fht.top/2017/10/15/UVA - 11400 Lighting System Design/
-http://litost-fht.top/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/
 http://litost-fht.top/2017/08/28/Gym - 100085G - GCD Guessing Game/
+http://litost-fht.top/2017/08/28/POJ 3415 Common Substrings（后缀数组+单调栈）/
 http://litost-fht.top/2017/08/28/HDU - 5884 - Sort/
 http://litost-fht.top/2017/08/12/Gym - 100851F - Froggy Ford（dijkstra）/
 http://litost-fht.top/2017/08/11/UVALive 7143 Room Assignment（组合数学+DP）/
@@ -21,18 +32,18 @@ http://litost-fht.top/2017/08/03/UVALive - 7637 E - Balanced String(构造)/
 http://litost-fht.top/2017/08/01/GYM 101173 K.Key Knocking（构造）/
 http://litost-fht.top/2017/08/01/Gym - 100269F Flight Boarding Optimization /
 http://litost-fht.top/2017/08/01/GYM 101173 F.Free Figurines（贪心，并查集）/
-http://litost-fht.top/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/
 http://litost-fht.top/2017/07/31/HDU - 5117 Fluorescent(状压dp+思维)/
+http://litost-fht.top/2017/07/31/Hdu 5072 Coprime（容斥+同色三角形）/
 http://litost-fht.top/2017/07/30/HDU - 4135 Co-prime/
 http://litost-fht.top/2017/07/30/HDU - 5119 Happy Matt Friends(dp)/
 http://litost-fht.top/2017/07/30/HDU - 5115 Dire Wolf(dp)/
 http://litost-fht.top/2017/07/29/Galaxy HDU - 5073 /
 http://litost-fht.top/2017/07/29/HDU - 5071 Chat（模拟）/
-http://litost-fht.top/2017/07/29/HDU - 5179  beautiful number/
 http://litost-fht.top/2017/07/29/HDU - 5172 GTY's gay friends/
+http://litost-fht.top/2017/07/29/HDU - 5179  beautiful number/
 http://litost-fht.top/2017/07/26/CodeForces - 375A Divisible by Seven/
-http://litost-fht.top/2017/07/25/CodeChef - FORESTGA Forest Gathering（二分）/
 http://litost-fht.top/2017/07/25/ACdream - 1060 递推数(矩阵+循环节)/
+http://litost-fht.top/2017/07/25/CodeChef - FORESTGA Forest Gathering（二分）/
 http://litost-fht.top/2017/07/25/hdu3555 Bomb ——数位DP入门题/
 http://litost-fht.top/2017/07/23/hdu 3605 Escape【状态压缩+最大流Dinic+建图】/
 http://litost-fht.top/2017/07/22/POJ 3376 Finding Palindromes/
@@ -87,14 +98,3 @@ http://litost-fht.top/2017/03/26/UVALive - 4867 H - Maximum Square/
 http://litost-fht.top/2017/03/26/Gym - 100676 E. Time Limit Exceeded/
 http://litost-fht.top/2017/03/26/HDU - 4475/
 http://litost-fht.top/2017/03/26/Codeforces 611B New Year and Old Property/
-http://litost-fht.top/2017/03/26/RMQ-ST/
-http://litost-fht.top/2017/03/23/LA 4329 乒乓比赛/
-http://litost-fht.top/2017/03/22/优先队列/
-http://litost-fht.top/2017/03/22/CSU - 1808 - 地铁/
-http://litost-fht.top/2017/03/22/HDU - 5965/
-http://litost-fht.top/2017/03/21/HDU - 1789 - Doing Homework again/
-http://litost-fht.top/2017/03/21/Codeforces Round #363 (Div. 1) A/
-http://litost-fht.top/2017/03/20/What does the fox say/
-http://litost-fht.top/2017/03/20/ACdream - 1092/
-http://litost-fht.top/2017/03/19/HDU - 1102 Constructing Roads/
-http://litost-fht.top/2017/03/19/CodeForces - 546C - Soldier and Cards/
