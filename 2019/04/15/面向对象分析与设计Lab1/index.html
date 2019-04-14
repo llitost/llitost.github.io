@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="课程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在线购物商城系统Lab1问题陈述​    Internet的到来，互联网对传统行业的冲击让其成为了人们快速获取、发布和传递信息的重要渠道。电子商务也逐渐流行起来，网上购物开始闯入人们的视野，向人们诠释一种全新的购物理念。传统购物方式要求购买者到商店里面亲自选购所需商品，商家采购商品也需要增加许多运输成本，传统购物的这些弊端使得越来越多的人选择网上购物，淘宝以及京东还有其他电商网站正式为我们打开网上">
+<meta name="keywords" content="课程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象分析与设计Lab1">
+<meta property="og:url" content="http://litost-fht.top/2019/04/15/面向对象分析与设计Lab1/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="在线购物商城系统Lab1问题陈述​    Internet的到来，互联网对传统行业的冲击让其成为了人们快速获取、发布和传递信息的重要渠道。电子商务也逐渐流行起来，网上购物开始闯入人们的视野，向人们诠释一种全新的购物理念。传统购物方式要求购买者到商店里面亲自选购所需商品，商家采购商品也需要增加许多运输成本，传统购物的这些弊端使得越来越多的人选择网上购物，淘宝以及京东还有其他电商网站正式为我们打开网上">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-14T16:37:52.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象分析与设计Lab1">
+<meta name="twitter:description" content="在线购物商城系统Lab1问题陈述​    Internet的到来，互联网对传统行业的冲击让其成为了人们快速获取、发布和传递信息的重要渠道。电子商务也逐渐流行起来，网上购物开始闯入人们的视野，向人们诠释一种全新的购物理念。传统购物方式要求购买者到商店里面亲自选购所需商品，商家采购商品也需要增加许多运输成本，传统购物的这些弊端使得越来越多的人选择网上购物，淘宝以及京东还有其他电商网站正式为我们打开网上">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/2019/04/15/面向对象分析与设计Lab1/">
+
+
+
+
+
+  <title>面向对象分析与设计Lab1 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/2019/04/15/面向对象分析与设计Lab1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面向对象分析与设计Lab1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-15T00:12:50+08:00">
+                2019-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/面向对象分析设计/" itemprop="url" rel="index">
+                    <span itemprop="name">面向对象分析设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/15/面向对象分析与设计Lab1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/面向对象分析与设计Lab1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="在线购物商城系统Lab1"><a href="#在线购物商城系统Lab1" class="headerlink" title="在线购物商城系统Lab1"></a>在线购物商城系统Lab1</h1><h2 id="问题陈述"><a href="#问题陈述" class="headerlink" title="问题陈述"></a>问题陈述</h2><p>​    Internet的到来，互联网对传统行业的冲击让其成为了人们快速获取、发布和传递信息的重要渠道。电子商务也逐渐流行起来，网上购物开始闯入人们的视野，向人们诠释一种全新的购物理念。传统购物方式要求购买者到商店里面亲自选购所需商品，商家采购商品也需要增加许多运输成本，传统购物的这些弊端使得越来越多的人选择网上购物，淘宝以及京东还有其他电商网站正式为我们打开网上购物的大门。</p>
+<p>​    今日，网上购物这种基于浏览器、服务器实现的购物方式已经初具规模，这些开放式的电商平台商品种类丰富多彩，但同时带来了质量无法保证的问题。生活质量的提高，消费者对质量要求也越来越高。于是，我们计划开发一个大型自营在线购物系统，商品种类囊括生活日常需要，包括美妆个护、食品饮料、服饰箱包、母婴玩具、家居生活、家用电器、蔬果生鲜、日用家纺、手机数码、生活服务等等，商品是海内外部分知名品牌，通过品牌折扣和有信誉公司正品采购的方式吸引购买者。</p>
+<p>​    在线购物是通过网络进行的，一般流程为：商家将新上架的商品信息通过系统管理功能发布到网上，购买者通过系统浏览商品，查看商品详细信息，或者根据自己的需要直接搜索对应商品。购买者注册之后即可下单购买商品，选择自己喜欢的付款方式，收到商品之后，可以对商品进行评价，其他想要购买相同商品的购买者可以参考相关评价。</p>
+<p>本在线购物系统的参与人员有顾客、商品管理员、订单处理员。</p>
+<ul>
+<li>（1）顾客注册</li>
+</ul>
+<p>顾客在首次使用本系统的购物功能前，必须先注册账号，在注册页面填写个人信息，包括手机号和密码，完成注册之后，系统将保存顾客信息。</p>
+<ul>
+<li>（2）顾客登录</li>
+</ul>
+<p>顾客注册之后可以在登录页面输入手机号和密码，验证通过即可。顾客登录之后可以修改个人信息，也可以购买商品。</p>
+<ul>
+<li>（3）顾客搜索、购买商品</li>
+</ul>
+<p>顾客在登录之后可以浏览、搜索商品，可以维护购物车，可以向购物车添加、删除商品，修改商品数量，可以从购物车中选择一件或多件商品进行购买，提交订单。</p>
+<ul>
+<li>（4）顾客查询订单、评价商品</li>
+</ul>
+<p>顾客可以查询订单，可以申请退货。顾客收到商品之后可以对商品进行评价。</p>
+<ul>
+<li>（5）商品管理员管理商品</li>
+</ul>
+<p>商品管理员登录之后可以维护商品，上架、下架商品，修改商品信息等，可以查看顾客对商品的评价，还可以查询、处理订单等。</p>
+<ul>
+<li>（6）订单处理员处理订单</li>
+</ul>
+<p>订单处理员登录后负责订单的管理，主要与发货仓库那边交流。</p>
+<h2 id="词汇表"><a href="#词汇表" class="headerlink" title="词汇表"></a>词汇表</h2><p>1.介绍                                                                                                                                                                                           </p>
+<p>2.定义                                                                                                                                                                                           </p>
+<p>2.1    账号                                                                                                                                                                                 </p>
+<p>2.2    订单信息                                                                                                                                                                         </p>
+<p>2.3    原金额                                                                                                                                                                             </p>
+<p>2.4    实付金额                                                                                                                                                                         </p>
+<p>2.5    优惠金额                                                                                                                                                                         </p>
+<p>2.6    到货处理                                                                                                                                                                         </p>
+<p>2.7    处理订单                                                                                                                                                                         </p>
+<p>2.8    管理商品                                                                                                                                                                         </p>
+<p>2.9    顾客                                                                                                                                                                                 </p>
+<p>2.10  维护购物车                                                                                                                                                                    </p>
+<p>2.11  订单处理员                                                                                                                                                                    </p>
+<p>2.12  商品管理员                                                                                                                                                                    </p>
+<h3 id="在线购物商城系统词汇表"><a href="#在线购物商城系统词汇表" class="headerlink" title="在线购物商城系统词汇表"></a>在线购物商城系统词汇表</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h4><p>本文档用于定义特定于问题域的术语，解释术语，读者可能不熟悉用例描述或其他项目文档。 通常，这个文档可以用作非正式的数据字典，捕获数据定义，以便用例描述和其他项目文档可以关注系统必须处理的信息。</p>
+<h4 id="2-定义"><a href="#2-定义" class="headerlink" title="2.定义"></a>2.定义</h4><p>词汇表包含购物商城系统中关键概念的工作定义。.</p>
+<h5 id="2-1-账号"><a href="#2-1-账号" class="headerlink" title="2.1 账号"></a>2.1 账号</h5><p>顾客登录本系统的唯一标识，在本系统中用手机号作为注册、登录账号。</p>
+<h5 id="2-2-订单信息"><a href="#2-2-订单信息" class="headerlink" title="2.2 订单信息"></a>2.2 订单信息</h5><p>订单信息包括订单上的商品种类、商品数量、订单号、送达地址、联系方式等等。</p>
+<h5 id="2-3-原金额"><a href="#2-3-原金额" class="headerlink" title="2.3 原金额"></a>2.3 原金额</h5><p>购买的商品原价格的总金额，没有减去优惠、折扣的金额加上邮费。</p>
+<h5 id="2-4-实付金额"><a href="#2-4-实付金额" class="headerlink" title="2.4 实付金额"></a>2.4 实付金额</h5><p>购买的商品经过优惠价、折扣的处理后得到的金额，加上邮费（有可能会免邮费）。</p>
+<h5 id="2-5-优惠金额"><a href="#2-5-优惠金额" class="headerlink" title="2.5 优惠金额"></a>2.5 优惠金额</h5><p>全部商品所优惠下来的总金额。</p>
+<h5 id="2-6-到货处理"><a href="#2-6-到货处理" class="headerlink" title="2.6 到货处理"></a>2.6 到货处理</h5><p>收到货物后对货物的确认收货，对货物使用后的评价，退款处理等一系列操作。</p>
+<h5 id="2-7-订单处理"><a href="#2-7-订单处理" class="headerlink" title="2.7 订单处理"></a>2.7 订单处理</h5><p>订单处理员对订单的一系列操作，如查看收到的订单的详情，将订单中的客户信息发往仓库，接受发货员返回的信息再点击“已发货”来修改物流信息。</p>
+<h5 id="2-8-商品管理"><a href="#2-8-商品管理" class="headerlink" title="2.8 商品管理"></a>2.8 商品管理</h5><p>商品管理员对商品的查看，上架（新增商品），下架（删除商品），修改商品信息等操作。</p>
+<h5 id="2-9-顾客"><a href="#2-9-顾客" class="headerlink" title="2.9 顾客"></a>2.9 顾客</h5><p>在本系统中注册、登录，并且可能在本系统购买商品的对象。</p>
+<h5 id="2-10-维护购物车"><a href="#2-10-维护购物车" class="headerlink" title="2.10 维护购物车"></a>2.10 维护购物车</h5><p>对购物车的一系列操作，如浏览商品后把商品增加到购物车，对不想放在购物车的商品进行删除，对不正确的商品数量进行修改。</p>
+<h5 id="2-11-订单处理员"><a href="#2-11-订单处理员" class="headerlink" title="2.11 订单处理员"></a>2.11 订单处理员</h5><p>负责接受订单，并把订单发给仓库，和接受发货员的发货信息而修改订单货物的发货情况。</p>
+<h5 id="2-12-商品管理员"><a href="#2-12-商品管理员" class="headerlink" title="2.12 商品管理员"></a>2.12 商品管理员</h5><p>负责管理该系统上的商品信息的人，拥有上架，下架，修改商品权限。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/课程/" rel="tag"><i class="fa fa-tag"></i> 课程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/28/Machine Learning/" rel="next" title="Machine Learning笔记">
+                <i class="fa fa-chevron-left"></i> Machine Learning笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在线购物商城系统Lab1"><span class="nav-number">1.</span> <span class="nav-text">在线购物商城系统Lab1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题陈述"><span class="nav-number">1.1.</span> <span class="nav-text">问题陈述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词汇表"><span class="nav-number">1.2.</span> <span class="nav-text">词汇表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在线购物商城系统词汇表"><span class="nav-number">1.2.1.</span> <span class="nav-text">在线购物商城系统词汇表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-定义"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-账号"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">2.1 账号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-订单信息"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">2.2 订单信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-原金额"><span class="nav-number">1.2.1.2.3.</span> <span class="nav-text">2.3 原金额</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-实付金额"><span class="nav-number">1.2.1.2.4.</span> <span class="nav-text">2.4 实付金额</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-优惠金额"><span class="nav-number">1.2.1.2.5.</span> <span class="nav-text">2.5 优惠金额</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-到货处理"><span class="nav-number">1.2.1.2.6.</span> <span class="nav-text">2.6 到货处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-订单处理"><span class="nav-number">1.2.1.2.7.</span> <span class="nav-text">2.7 订单处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-8-商品管理"><span class="nav-number">1.2.1.2.8.</span> <span class="nav-text">2.8 商品管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-顾客"><span class="nav-number">1.2.1.2.9.</span> <span class="nav-text">2.9 顾客</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-10-维护购物车"><span class="nav-number">1.2.1.2.10.</span> <span class="nav-text">2.10 维护购物车</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-11-订单处理员"><span class="nav-number">1.2.1.2.11.</span> <span class="nav-text">2.11 订单处理员</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-12-商品管理员"><span class="nav-number">1.2.1.2.12.</span> <span class="nav-text">2.12 商品管理员</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共175.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/2019/04/15/面向对象分析与设计Lab1/';
+          this.page.identifier = '2019/04/15/面向对象分析与设计Lab1/';
+          this.page.title = '面向对象分析与设计Lab1';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
