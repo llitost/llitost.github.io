@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.数据库表结构的操作1.1 创建数据表123456789mysql&amp;gt;create table orders(    -&amp;gt; oid int not null primary key,    -&amp;gt; uid int not null,    -&amp;gt; status int not null,    -&amp;gt; totalprice float not null,    -&amp;gt;">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基本操作个人总结">
+<meta property="og:url" content="http://litost-fht.top/posts/48164/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="1.数据库表结构的操作1.1 创建数据表123456789mysql&amp;gt;create table orders(    -&amp;gt; oid int not null primary key,    -&amp;gt; uid int not null,    -&amp;gt; status int not null,    -&amp;gt; totalprice float not null,    -&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-28T15:05:36.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基本操作个人总结">
+<meta name="twitter:description" content="1.数据库表结构的操作1.1 创建数据表123456789mysql&amp;gt;create table orders(    -&amp;gt; oid int not null primary key,    -&amp;gt; uid int not null,    -&amp;gt; status int not null,    -&amp;gt; totalprice float not null,    -&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/posts/48164/">
+
+
+
+
+
+  <title>MySQL基本操作个人总结 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/posts/48164/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基本操作个人总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T12:42:50+08:00">
+                2019-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/48164/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/48164/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-数据库表结构的操作"><a href="#1-数据库表结构的操作" class="headerlink" title="1.数据库表结构的操作"></a>1.数据库表结构的操作</h1><h2 id="1-1-创建数据表"><a href="#1-1-创建数据表" class="headerlink" title="1.1 创建数据表"></a>1.1 创建数据表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;create table orders(</span><br><span class="line">    -&gt; oid int not null primary key,</span><br><span class="line">    -&gt; uid int not null,</span><br><span class="line">    -&gt; status int not null,</span><br><span class="line">    -&gt; totalprice float not null,</span><br><span class="line">    -&gt; constraint fk_orders_users foreign key (uid) references users(uid)</span><br><span class="line">    -&gt; on delete cascade</span><br><span class="line">    -&gt; on update cascade</span><br><span class="line">    -&gt; )engine=InnoDB;</span><br></pre></td></tr></table></figure>
+<p><strong>on delete cascade</strong>子句表示当从users表中删除某条记录时，MySQL应该自动从orders表中删除与uid相匹配的行。<strong>on update cascade</strong>子句类似。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; show columns from users;</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br><span class="line">| uid   | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name  | varchar(20) | NO   | UNI | NULL    |                |</span><br><span class="line">| pwd   | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| sex   | char(2)     | YES  |     | NULL    |                |</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-修改表结构"><a href="#1-2-修改表结构" class="headerlink" title="1.2 修改表结构"></a>1.2 修改表结构</h2><p><code>ALTER TABLE 表名 ACTION[,ACTION]...;</code></p>
+<h3 id="1-2-1-修改字段"><a href="#1-2-1-修改字段" class="headerlink" title="1.2.1 修改字段"></a>1.2.1 修改字段</h3><h4 id="（1）添加新字段"><a href="#（1）添加新字段" class="headerlink" title="（1）添加新字段"></a>（1）添加新字段</h4><p>在sex字段后添加一个phone字段。</p>
+<p><code>alter table users add phone varchar(20) not null after sex;</code></p>
+<h4 id="（2）修改字段"><a href="#（2）修改字段" class="headerlink" title="（2）修改字段"></a>（2）修改字段</h4><p>如果只需要修改字段的数据类型，则使用CHANGE或MODIFY子句都行。如果要修改字段名，那么只能使用CHANGE子句了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 CHANGE 原字段名 新字段名 数据类型；</span><br><span class="line">ALTER TABLE 表名 MODIFY 字段名 数据类型；</span><br></pre></td></tr></table></figure>
+<h4 id="（3）删除字段"><a href="#（3）删除字段" class="headerlink" title="（3）删除字段"></a>（3）删除字段</h4><p><code>alter table users drop address;</code></p>
+<h3 id="1-2-2-修改约束条件"><a href="#1-2-2-修改约束条件" class="headerlink" title="1.2.2 修改约束条件"></a>1.2.2 修改约束条件</h3><h4 id="（1）添加约束条件"><a href="#（1）添加约束条件" class="headerlink" title="（1）添加约束条件"></a>（1）添加约束条件</h4><p><code>ALTER TABLE 表名 ADD CONSTRAINT 约束名 约束类型 (字段名);</code></p>
+<p>例：<code>alter table users add constraint phone_unique unique (telephone);</code></p>
+<h4 id="（2）删除约束条件"><a href="#（2）删除约束条件" class="headerlink" title="（2）删除约束条件"></a>（2）删除约束条件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP PRIMARY KEY;</span><br><span class="line">ALTER TABLE 表名 DROP FOREIGN KEY 外键约束名;</span><br><span class="line">ALTER TABLE 表名 DROP INDEX 唯一索引名;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-修改表的其他选项"><a href="#1-2-3-修改表的其他选项" class="headerlink" title="1.2.3 修改表的其他选项"></a>1.2.3 修改表的其他选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ENGINE=存储引擎类型;</span><br><span class="line">ALTER TABLE 表名 DEFAULT CHARSET=字符集;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-4-修改表名"><a href="#1-2-4-修改表名" class="headerlink" title="1.2.4 修改表名"></a>1.2.4 修改表名</h3><p><code>ALTER TABLE 原表名 RENAME TO 新表名;</code></p>
+<p>或者</p>
+<p> <code>RENAME TABLE 原表名 TO 新表名;</code> </p>
+<h1 id="2-基本数据类型"><a href="#2-基本数据类型" class="headerlink" title="2.基本数据类型"></a>2.基本数据类型</h1><h2 id="2-1-整数类型"><a href="#2-1-整数类型" class="headerlink" title="2.1 整数类型"></a>2.1 整数类型</h2><p>对于整数类型还可以指定其显示宽度，如int(4)表示当数值宽度小于8位时在数字前面填满宽度。如果需要用0进行填充，则使用关键字zerofill。</p>
+<p>整数类型还有一个属性：auto_increment。在需要产生唯一标识符或顺序符时，可以利用此属性。一个表最多只能有一个auto_increment字段，该字段应该为null，并且定义为primary key或unique。值从1开始。</p>
+<h2 id="2-2-小数类型"><a href="#2-2-小数类型" class="headerlink" title="2.2 小数类型"></a>2.2 小数类型</h2><p>MySQL中的小数类型有两种：浮点数和定点数。浮点数包括单精度float类型和双精度double类型，定点数为decimal类型。定点数在内部以字符串形式存放，比浮点数精确，适合来表示货币等精度高的数据。</p>
+<p>浮点数和定点数都可以在类型后面加上（M，D）来表示M位整数和小数点后D位。decimal默认M=10，D=0。</p>
+<h2 id="2-3-字符串类型"><a href="#2-3-字符串类型" class="headerlink" title="2.3 字符串类型"></a>2.3 字符串类型</h2><p>CHAR、VARCHAR、TINYTEXT、TEXT、MEDIUMTEXT、LONGTEXT。</p>
+<p>CHAR(n)类型的数据在存储时会删除尾部空格，而VARCHAR(n)类型的则不会。</p>
+<h2 id="2-4-日期时间类型"><a href="#2-4-日期时间类型" class="headerlink" title="2.4 日期时间类型"></a>2.4 日期时间类型</h2><p>DATE、TIME、DATETIME、TIMESTAMP、YEAR。</p>
+<p>在YEAR类型中，年份值可以为2位或4位。在4位格式中，允许值的范围为1901~2155。在2位格式中，取值范围为70~99时，表示1970~1999；取值为01~69时，表示2001~2069。</p>
+<p>TIMESTAMP类型与时区相关。如果在一个表中定义了两个类型为TIMESTAMP的字段，则第一个的默认值为CURRENT_TIMESTAMP，第二个的默认值为0000-00-00 00:00:00。</p>
+<h2 id="2-5-复合类型"><a href="#2-5-复合类型" class="headerlink" title="2.5 复合类型"></a>2.5 复合类型</h2><p>ENUM枚举类型和SET集合类型。ENUM类型只允许从集合中取得某一个值，SET类型允许从集合中取得多个值。ENUM类型的数据最多可以包含65535个元素，而SET类型的数据最多可以包含64个元素。</p>
+<p>复合数据类型ENUM和SET存储的仍然是字符串，只是数据的取值范围受到约束。</p>
+<h2 id="2-6-二进制类型"><a href="#2-6-二进制类型" class="headerlink" title="2.6 二进制类型"></a>2.6 二进制类型</h2><p>BINARY、VARBINARY、BIT、TINYBLOB、BLOB、MEDIUMBLOB、LONGBLOB。</p>
+<p>BIT数据类型按位为单位进行存储，而其他二进制类型的数据以字节为单位进行存储。</p>
+<h1 id="3-运算符"><a href="#3-运算符" class="headerlink" title="3.运算符"></a>3.运算符</h1><h2 id="3-1-比较运算符"><a href="#3-1-比较运算符" class="headerlink" title="3.1 比较运算符"></a>3.1 比较运算符</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!=或&lt;&gt;</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&lt;=&gt;</td>
+<td>NULL安全的不等于</td>
+</tr>
+<tr>
+<td>IS NULL</td>
+<td>为NULL</td>
+</tr>
+<tr>
+<td>IS NOT NULL</td>
+<td>不为NULL</td>
+</tr>
+<tr>
+<td>BETWEEN AND</td>
+<td>在指定范围内</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>在指定集合内</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>通配符匹配</td>
+</tr>
+<tr>
+<td>REGEXP</td>
+<td>正则表达式匹配</td>
+</tr>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+</tbody>
+</table>
+<p><code>select int_field,int_field between 10 and 20,int_field in(10,17,20) from test;</code></p>
+<h1 id="4-增添表记录"><a href="#4-增添表记录" class="headerlink" title="4.增添表记录"></a>4.增添表记录</h1><h2 id="4-1-INSERT语句"><a href="#4-1-INSERT语句" class="headerlink" title="4.1 INSERT语句"></a>4.1 INSERT语句</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//创建课程表</span><br><span class="line">create table course(</span><br><span class="line">    c_id int auto_increment primary key,</span><br><span class="line">    c_name varchar(20) not null,</span><br><span class="line">    c_hours int default 72</span><br><span class="line">);</span><br><span class="line">/*insert语句的使用*/</span><br><span class="line">insert into course values(null,&apos;c语言&apos;,default);</span><br><span class="line">insert into course(c_name) values(&apos;数据库&apos;); //向部分字段插入数据</span><br><span class="line">insert into course values(null,&apos;计算机网络&apos;,60);</span><br><span class="line">/*使用insert语句一次性插入多条记录*/</span><br><span class="line">//将上面course表中的原有信息删除</span><br><span class="line">truncate course;</span><br><span class="line">//一次性插入三条信息</span><br><span class="line">insert into course(c_name,c_hours) values</span><br><span class="line">	(&apos;数据库&apos;,default),</span><br><span class="line">    (&apos;计算机网络&apos;,default),</span><br><span class="line">    (&apos;C语言&apos;,60);</span><br><span class="line">/*使用insert语句将一个表中的查询结果集添加到目标表中*/</span><br><span class="line">create table course_hours_72 like course;</span><br><span class="line">insert into course_hours_72 select * from course where c_hours=72;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-REPLACE语句"><a href="#4-2-REPLACE语句" class="headerlink" title="4.2 REPLACE语句"></a>4.2 REPLACE语句</h2><p>REPLACE语句与INSERT语句的功能基本相同，不同之处在于：使用REPLACE语句添加记录时，如果新记录的主键值或者唯一性约束的字段值与已有记录相同，则已有记录被删除后再添加新记录。</p>
+<p><code>replace into course values(null,&#39;软件工程&#39;,65);</code></p>
+<h1 id="5-修改表记录"><a href="#5-修改表记录" class="headerlink" title="5.修改表记录"></a>5.修改表记录</h1><p><code>update course set c_hours=90 where c_name=&#39;C语言&#39;;</code></p>
+<p>若省略了where子句，则每个记录都要修改。</p>
+<h1 id="6-删除表记录"><a href="#6-删除表记录" class="headerlink" title="6.删除表记录"></a>6.删除表记录</h1><h2 id="6-1-DELETE语句"><a href="#6-1-DELETE语句" class="headerlink" title="6.1 DELETE语句"></a>6.1 DELETE语句</h2><p><code>delete from course where c_id=1;</code></p>
+<h2 id="6-2-TRUNCATE语句"><a href="#6-2-TRUNCATE语句" class="headerlink" title="6.2 TRUNCATE语句"></a>6.2 TRUNCATE语句</h2><p>清空表的所有记录。<code>truncate course;</code></p>
+<p>TRUNCATE语句的功能与DELETE from table_name语句的功能相同，但使用TRUNCATE语句会重新设置自增型字段的计数起始值，而DELETE语句不会。</p>
+<p><code>select auto_increment from information_schema.tables where table_name=&#39;course&#39;;</code></p>
+<p>上面语句的作用是查询course表中自增字段的初始值。</p>
+<h1 id="7-字符集设置"><a href="#7-字符集设置" class="headerlink" title="7.字符集设置"></a>7.字符集设置</h1><h2 id="7-1-字符集"><a href="#7-1-字符集" class="headerlink" title="7.1 字符集"></a>7.1 字符集</h2><p>默认情况下，MySQL使用的字符集为latin1，不支持中文。</p>
+<p>使用MySQL命令<code>show character set;</code>即可查看当前MySQL服务实例支持的字符集和默认排序规则。</p>
+<p>使用MySQL命令<code>show variables like &#39;character%&#39;;</code>可以查看当前服务实例使用的字符集信息。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &apos;character%&apos;;</span><br><span class="line">+--------------------------+--------------------------------------------+</span><br><span class="line">| Variable_name            | Value                                      |</span><br><span class="line">+--------------------------+--------------------------------------------+</span><br><span class="line">| character_set_client     | utf8                                       |</span><br><span class="line">| character_set_connection | gbk                                        |</span><br><span class="line">| character_set_database   | utf8mb4                                    |</span><br><span class="line">| character_set_filesystem | binary                                     |</span><br><span class="line">| character_set_results    | gbk                                        |</span><br><span class="line">| character_set_server     | utf8mb4                                    |</span><br><span class="line">| character_set_system     | utf8                                       |</span><br><span class="line">| character_sets_dir       | D:\web\mysql-8.0.11-winx64\share\charsets\ |</span><br><span class="line">+--------------------------+--------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>各参数信息说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>character_set_client</td>
+<td>客户机的字符集</td>
+</tr>
+<tr>
+<td>character_set_connection</td>
+<td>数据通信链路的字符集 ，当MySQL客户机向服务器发送请求时，请求数据以该字符集进行编码。</td>
+</tr>
+<tr>
+<td>character_set_database</td>
+<td>数据库字符集。</td>
+</tr>
+<tr>
+<td>character_set_filesystem</td>
+<td>MySQL服务器文件系统的字符集。</td>
+</tr>
+<tr>
+<td>character_set_results</td>
+<td>结果集的字符集，MySQL服务器向MySQL客户机返回执行结果时以该字符集进行编码。</td>
+</tr>
+<tr>
+<td>character_set_server</td>
+<td>MySQL服务实例字符集。</td>
+</tr>
+<tr>
+<td>character_set_system</td>
+<td>元数据的字符集。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-2-设置"><a href="#7-2-设置" class="headerlink" title="7.2 设置"></a>7.2 设置</h2><p>修改字符集后只会影响新的数据。</p>
+<h3 id="7-2-1-修改my-ini配置文件"><a href="#7-2-1-修改my-ini配置文件" class="headerlink" title="7.2.1 修改my.ini配置文件"></a>7.2.1 修改my.ini配置文件</h3><h3 id="7-2-2-使用set命令"><a href="#7-2-2-使用set命令" class="headerlink" title="7.2.2 使用set命令"></a>7.2.2 使用set命令</h3><p><code>set character_set_database=utf8;</code></p>
+<p>这种设置只在当前的MySQL服务器连接内有效。当打开新的MySQL客户机时，字符集将恢复为my.ini配置文件中的默认值。</p>
+<h3 id="7-2-3-使用set-names命令"><a href="#7-2-3-使用set-names命令" class="headerlink" title="7.2.3 使用set names命令"></a>7.2.3 使用set names命令</h3><p>使用<code>set names utf8</code>可以一次性将character_set_client、character_set_connection、character_set_results的参数值都设置为utf8，但这种设置只在当前的MySQL服务器连接内有效。</p>
+<h3 id="7-2-4-连接MySQL服务器时指定字符集"><a href="#7-2-4-连接MySQL服务器时指定字符集" class="headerlink" title="7.2.4 连接MySQL服务器时指定字符集"></a>7.2.4 连接MySQL服务器时指定字符集</h3><p><code>mysql --default-character-set=utf8 -h 127.0.0.1 -u root -p</code>相当于连接服务器后执行命令<code>set names utf8</code>。</p>
+<h1 id="8-检索表记录"><a href="#8-检索表记录" class="headerlink" title="8.检索表记录"></a>8.检索表记录</h1><h2 id="8-1-SELECT基本查询"><a href="#8-1-SELECT基本查询" class="headerlink" title="8.1 SELECT基本查询"></a>8.1 SELECT基本查询</h2><h3 id="8-1-1-SELECT···FROM查询语句"><a href="#8-1-1-SELECT···FROM查询语句" class="headerlink" title="8.1.1 SELECT···FROM查询语句"></a>8.1.1 SELECT···FROM查询语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ALL|DISTINCT]&lt;目标列表达式&gt;[,&lt;目标列表达式&gt;]</span><br><span class="line">FROM &lt;表名或视图名&gt;[,&lt;表名或视图名&gt;]</span><br><span class="line">[WHERE &lt;条件表达式&gt;]</span><br><span class="line">[GROUP BY&lt;列名1&gt;[HAVING &lt;条件表达式&gt;]]</span><br><span class="line">[ORDER BY&lt;列名2&gt;[ASC|DESC]]</span><br><span class="line">[LIMIT [start,]count]</span><br></pre></td></tr></table></figure>
+<p>以上结构只有SELECT子句是必不可少的，例如输出MySQL的版本号：<code>select version();</code></p>
+<h3 id="8-1-2-查询指定字段信息"><a href="#8-1-2-查询指定字段信息" class="headerlink" title="8.1.2 查询指定字段信息"></a>8.1.2 查询指定字段信息</h3><p>定义别名</p>
+<ul>
+<li>通过“列名 列标题”的形式</li>
+<li>通过“列名 AS 列标题”的形式</li>
+</ul>
+<h3 id="8-1-3-关键字DISTINCT"><a href="#8-1-3-关键字DISTINCT" class="headerlink" title="8.1.3 关键字DISTINCT"></a>8.1.3 关键字DISTINCT</h3><p>DISTINCT关键字表示仅仅显示不重复的数据行，重复的只显示一次。</p>
+<h3 id="8-1-4-ORDER-BY子句的使用"><a href="#8-1-4-ORDER-BY子句的使用" class="headerlink" title="8.1.4 ORDER BY子句的使用"></a>8.1.4 ORDER BY子句的使用</h3><p><code>select * from course order by c_hours desc;</code></p>
+<h3 id="8-1-5-LIMIT子句的使用"><a href="#8-1-5-LIMIT子句的使用" class="headerlink" title="8.1.5 LIMIT子句的使用"></a>8.1.5 LIMIT子句的使用</h3><p>LIMIT子句的用途是从结果集中进一步选取指定数量的数据行。</p>
+<p>例：选取第2条记录开始的1条记录（start值从0开始）。</p>
+<p><code>select * from course limit 1,1;</code></p>
+<h2 id="8-2-条件查询"><a href="#8-2-条件查询" class="headerlink" title="8.2 条件查询"></a>8.2 条件查询</h2><h3 id="8-2-1-模糊查询"><a href="#8-2-1-模糊查询" class="headerlink" title="8.2.1 模糊查询"></a>8.2.1 模糊查询</h3><p>使用通配符</p>
+<ul>
+<li>%：代表任意多个字符</li>
+<li>_：代表任意一个字符</li>
+</ul>
+<p>如果用户要查询的字符串本身就含有通配符，此时就需要用ESCAPE关键字对通配符进行转义。</p>
+<p>例：查询会员名中含有”_”的会员信息</p>
+<p><code>select * from users where u_name like &#39;%/_%&#39; escape &#39;/&#39;;</code></p>
+<p>escape ‘/‘表示“/”为转义字符。</p>
+<h2 id="8-3-分组查询"><a href="#8-3-分组查询" class="headerlink" title="8.3 分组查询"></a>8.3 分组查询</h2><p>若要统计users表中会员的数量，可以使用count(*)，计算出来的结果就是行数。</p>
+<p><code>select count(*) from users;</code></p>
+<p>若使用的是count(列名)对特定列中具有值的行进行计数，将忽略null值。</p>
+<p>sum(),avg(),max(),min()函数都将忽略值为null的行。</p>
+<h3 id="8-3-1-GROUP-BY子句"><a href="#8-3-1-GROUP-BY子句" class="headerlink" title="8.3.1 GROUP BY子句"></a>8.3.1 GROUP BY子句</h3><h3 id="8-3-2-HAVING子句"><a href="#8-3-2-HAVING子句" class="headerlink" title="8.3.2 HAVING子句"></a>8.3.2 HAVING子句</h3><p>用于分组后对组进行筛选。</p>
+<h2 id="8-4-表的连接"><a href="#8-4-表的连接" class="headerlink" title="8.4 表的连接"></a>8.4 表的连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;查询列表&gt;</span><br><span class="line">FROM &lt;表名1&gt; [连接类型] JOIN &lt;表名2&gt; ON &lt;连接条件&gt;</span><br><span class="line">WHERE &lt;查询条件&gt;</span><br></pre></td></tr></table></figure>
+<p>当两个表进行连接时，其运行过程通常是将第一个表中的每一行与第二个表中的所以行进行匹配，结果只包含那些匹配连接条件的行。</p>
+<h3 id="8-4-1-内连接"><a href="#8-4-1-内连接" class="headerlink" title="8.4.1 内连接"></a>8.4.1 内连接</h3><p>内连接是从两个或以上的表的组合中，挑选出符合条件的数据。默认连接模式。</p>
+<h3 id="8-4-2-外连接"><a href="#8-4-2-外连接" class="headerlink" title="8.4.2 外连接"></a>8.4.2 外连接</h3><p>在外连接中，参与连接的表有主从之分。使用外连接时，以主表中每行的数据去匹配从表中的数据行，如果符合条件则返回到结果集中；如果没有找到匹配行，则主表的行仍然保留，并且返回到结果集中，相应的从表中的数据行被填上null后也返回到结果集中。</p>
+<h4 id="（1）左外连接"><a href="#（1）左外连接" class="headerlink" title="（1）左外连接"></a>（1）左外连接</h4><p>​    JOIN关键字左边的表为主表。<strong>LEFT OUTER JOIN</strong></p>
+<h4 id="（2）右外连接"><a href="#（2）右外连接" class="headerlink" title="（2）右外连接"></a>（2）右外连接</h4><p>​    JOIN关键字右边的表为主表。<strong>RIGHT OUTER JOIN</strong></p>
+<h4 id="（3）自连接"><a href="#（3）自连接" class="headerlink" title="（3）自连接"></a>（3）自连接</h4><p>​    对一个表使用自连接时，可以看做是这张表的两个副本之间的连接，必须为该表指定两个别名。</p>
+<h4 id="（4）交叉连接"><a href="#（4）交叉连接" class="headerlink" title="（4）交叉连接"></a>（4）交叉连接</h4><p>​    使用交叉连接查询，如果不带where子句时，则返回笛卡尔积。<strong>CROSS JOIN</strong></p>
+<h2 id="8-5-子查询"><a href="#8-5-子查询" class="headerlink" title="8.5 子查询"></a>8.5 子查询</h2><p>子查询是指在一个外层查询中包含另一个内层查询。子查询除了可以用在主查询的where子句中，也可以用在having子句中。通常将子查询写在小括号中。</p>
+<h3 id="8-5-1-返回单行的子查询"><a href="#8-5-1-返回单行的子查询" class="headerlink" title="8.5.1 返回单行的子查询"></a>8.5.1 返回单行的子查询</h3><p>子查询的结果只返回一个值，并将这个返回值作为父查询的条件。</p>
+<h3 id="8-5-2-返回多行的子查询"><a href="#8-5-2-返回多行的子查询" class="headerlink" title="8.5.2 返回多行的子查询"></a>8.5.2 返回多行的子查询</h3><p>子查询的结果包含多行数据。经常与IN、EXIST、ALL、ANY、SOME关键字一起使用。</p>
+<h4 id="（1）IN"><a href="#（1）IN" class="headerlink" title="（1）IN"></a>（1）IN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE &lt;表达式&gt; [NOT] IN (&lt;子查询&gt;)</span><br></pre></td></tr></table></figure>
+<p>​    如果主查询里的行与子查询返回的某一个行相匹配，那么IN的结果即为真。</p>
+<h4 id="（2）EXIST"><a href="#（2）EXIST" class="headerlink" title="（2）EXIST"></a>（2）EXIST</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE [NOT] EXIST (&lt;子查询&gt;)</span><br></pre></td></tr></table></figure>
+<p>​    当子查询返回的结果不为空时，则返回真。</p>
+<h4 id="（3）ALL、ANY、SOME"><a href="#（3）ALL、ANY、SOME" class="headerlink" title="（3）ALL、ANY、SOME"></a>（3）ALL、ANY、SOME</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE &lt;表达式&gt;&lt;比较运算符&gt; [ALL|ANY|SOME] (&lt;子查询&gt;)</span><br></pre></td></tr></table></figure>
+<p>​    ALL要求与子查询中的所有值相符合；ANY表示只要与子查询中的一个值相符合即可；SOME与ANY是同义词。</p>
+<h2 id="8-6-联合查询"><a href="#8-6-联合查询" class="headerlink" title="8.6 联合查询"></a>8.6 联合查询</h2><p>联合查询是指合并两个或多个查询语句的结果集。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 语句1</span><br><span class="line">UNION [ALL]</span><br><span class="line">SELECT 语句2</span><br></pre></td></tr></table></figure>
+<p>ALL选项表示保留结果集中的重复记录，系统默认自动删除重复记录。</p>
+<p>所有查询语句中的列的数量和顺序必须相同，且数据类型必须兼容。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/57527/" rel="next" title="Linux课程复习">
+                <i class="fa fa-chevron-left"></i> Linux课程复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/41196/" rel="prev" title="MySQL视图">
+                MySQL视图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-数据库表结构的操作"><span class="nav-number">1.</span> <span class="nav-text">1.数据库表结构的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-创建数据表"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 创建数据表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-修改表结构"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 修改表结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-修改字段"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 修改字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）添加新字段"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">（1）添加新字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）修改字段"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">（2）修改字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）删除字段"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">（3）删除字段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-修改约束条件"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 修改约束条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）添加约束条件"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">（1）添加约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）删除约束条件"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">（2）删除约束条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-修改表的其他选项"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 修改表的其他选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-修改表名"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.4 修改表名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">2.基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-整数类型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 整数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-小数类型"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 小数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-字符串类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 字符串类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-日期时间类型"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 日期时间类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-复合类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 复合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-二进制类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 二进制类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-运算符"><span class="nav-number">3.</span> <span class="nav-text">3.运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-比较运算符"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 比较运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-增添表记录"><span class="nav-number">4.</span> <span class="nav-text">4.增添表记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-INSERT语句"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 INSERT语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-REPLACE语句"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 REPLACE语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-修改表记录"><span class="nav-number">5.</span> <span class="nav-text">5.修改表记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-删除表记录"><span class="nav-number">6.</span> <span class="nav-text">6.删除表记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-DELETE语句"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 DELETE语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-TRUNCATE语句"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 TRUNCATE语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-字符集设置"><span class="nav-number">7.</span> <span class="nav-text">7.字符集设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-字符集"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-设置"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-1-修改my-ini配置文件"><span class="nav-number">7.2.1.</span> <span class="nav-text">7.2.1 修改my.ini配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-2-使用set命令"><span class="nav-number">7.2.2.</span> <span class="nav-text">7.2.2 使用set命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-3-使用set-names命令"><span class="nav-number">7.2.3.</span> <span class="nav-text">7.2.3 使用set names命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-4-连接MySQL服务器时指定字符集"><span class="nav-number">7.2.4.</span> <span class="nav-text">7.2.4 连接MySQL服务器时指定字符集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-检索表记录"><span class="nav-number">8.</span> <span class="nav-text">8.检索表记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-SELECT基本查询"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 SELECT基本查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-1-SELECT···FROM查询语句"><span class="nav-number">8.1.1.</span> <span class="nav-text">8.1.1 SELECT···FROM查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-2-查询指定字段信息"><span class="nav-number">8.1.2.</span> <span class="nav-text">8.1.2 查询指定字段信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-3-关键字DISTINCT"><span class="nav-number">8.1.3.</span> <span class="nav-text">8.1.3 关键字DISTINCT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-4-ORDER-BY子句的使用"><span class="nav-number">8.1.4.</span> <span class="nav-text">8.1.4 ORDER BY子句的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-5-LIMIT子句的使用"><span class="nav-number">8.1.5.</span> <span class="nav-text">8.1.5 LIMIT子句的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-条件查询"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 条件查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-1-模糊查询"><span class="nav-number">8.2.1.</span> <span class="nav-text">8.2.1 模糊查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-分组查询"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 分组查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-1-GROUP-BY子句"><span class="nav-number">8.3.1.</span> <span class="nav-text">8.3.1 GROUP BY子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-2-HAVING子句"><span class="nav-number">8.3.2.</span> <span class="nav-text">8.3.2 HAVING子句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-表的连接"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 表的连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-1-内连接"><span class="nav-number">8.4.1.</span> <span class="nav-text">8.4.1 内连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-2-外连接"><span class="nav-number">8.4.2.</span> <span class="nav-text">8.4.2 外连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）左外连接"><span class="nav-number">8.4.2.1.</span> <span class="nav-text">（1）左外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）右外连接"><span class="nav-number">8.4.2.2.</span> <span class="nav-text">（2）右外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）自连接"><span class="nav-number">8.4.2.3.</span> <span class="nav-text">（3）自连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）交叉连接"><span class="nav-number">8.4.2.4.</span> <span class="nav-text">（4）交叉连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5-子查询"><span class="nav-number">8.5.</span> <span class="nav-text">8.5 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-1-返回单行的子查询"><span class="nav-number">8.5.1.</span> <span class="nav-text">8.5.1 返回单行的子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-2-返回多行的子查询"><span class="nav-number">8.5.2.</span> <span class="nav-text">8.5.2 返回多行的子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）IN"><span class="nav-number">8.5.2.1.</span> <span class="nav-text">（1）IN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）EXIST"><span class="nav-number">8.5.2.2.</span> <span class="nav-text">（2）EXIST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）ALL、ANY、SOME"><span class="nav-number">8.5.2.3.</span> <span class="nav-text">（3）ALL、ANY、SOME</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-6-联合查询"><span class="nav-number">8.6.</span> <span class="nav-text">8.6 联合查询</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共175.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/posts/48164/';
+          this.page.identifier = 'posts/48164/';
+          this.page.title = 'MySQL基本操作个人总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

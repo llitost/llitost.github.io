@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一周What is Machine Learning?​    Two definitions of Machine Learning are offered. Arthur Samuel described it as: “the field of study that gives computers the ability to learn without being explicitly">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning笔记">
+<meta property="og:url" content="http://litost-fht.top/posts/49569/index.html">
+<meta property="og:site_name" content="Litost&#39;s Blog">
+<meta property="og:description" content="第一周What is Machine Learning?​    Two definitions of Machine Learning are offered. Arthur Samuel described it as: “the field of study that gives computers the ability to learn without being explicitly">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png?expiry=1547596800000&hmac=VMM67_jkIOGw1bfoTjr0GJteQRxf8Lrs8ZT1z9tLR8w">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png?expiry=1547596800000&hmac=-ur9fV-YVNMKe7k_3EVBDwOdRx78ISkAxvZ3XBL0KGw">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png?expiry=1547596800000&hmac=lST2n9B7tGWE6RGAcqU_zu9R6c-4frwT613MKfaGNN0">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw690/adba74c1ly1fz7a4vp952j20bf070weo.jpg">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/MYm8uqafEeaZoQ7hPZtKqg_c974c2e2953662e9578b38c7b04591ed_Screenshot-2016-11-09-09.07.04.png?expiry=1547683200000&hmac=AHaRnVtf0hh0yN91HhICEkapB6PUZwKjTz6V8RGraOU">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FEfS3aajEea3qApInhZCFg_6be025f7ad145eb0974b244a7f5b3f59_Screenshot-2016-11-09-09.35.59.png?expiry=1547683200000&hmac=AnsPwSwNmRVY34rI4n99inP3eWG5P_gv1OWCAmLXMt0">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/rC2jGKgvEeamBAoLccicqA_ec9e40a58588382f5b6df60637b69470_Screenshot-2016-11-11-08.55.21.png?expiry=1547683200000&hmac=TWHJNdipwsfYy15H2FNpeXSMZardNpmHd0tvk0BRiVQ">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dykma6dwEea3qApInhZCFg_333df5f11086fee19c4fb81bc34d5125_Screenshot-2016-11-10-10.06.16.png?expiry=1547683200000&hmac=Mk3Cfi9-YlJiAIPUsSxAuIN0xo01-aD92hi5VqjrO5c">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png?expiry=1547769600000&hmac=SGvwWcXcPDVMPhLj-k_pIb7hC2V7VWwDhh8Xsx5xQls">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Q9sX8nnxEeamDApmnD43Fw_1cb67ecfac77b134606532f5caf98ee4_Logistic_regression_cost_function_positive_class.png?expiry=1547769600000&hmac=slTMVn1jZLWrLgnCy-KuNgshbF-dVWxl5PAy9fJWVgk">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png?expiry=1547769600000&hmac=80HXBGDsKhe9IZVLk58D_udFVnvj0p1shbvBY2RPhA0">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/adba74c1ly1fz8hro00ctj20np0dst9b.jpg">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/cqmPjanSEeawbAp5ByfpEg_299fcfbd527b6b5a7440825628339c54_Screenshot-2016-11-13-10.52.29.png?expiry=1547769600000&hmac=FShI1rEquBknKBcbhioau5eg8Cw-GLknpl9rvay9ukY">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0cOOdKsMEeaCrQqTpeD5ng_2a806eb8d988461f716f4799915ab779_Screenshot-2016-11-15-00.23.30.png?expiry=1547769600000&hmac=TAsGHEDO_6W-LtIWJLsg-lorrVC-KhN5tIdgocmuXHY">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/j0X9h6tUEeawbAp5ByfpEg_ea3e85af4056c56fa704547770da65a6_Screenshot-2016-11-15-08.53.32.png?expiry=1547769600000&hmac=rMlX6qjNbtqerouP_Go-rJ5PDaHFW2xSdE9X4_kUosM">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Od9mobDaEeaCrQqTpeD5ng_4f5e9c71d1aa285c1152ed4262f019c1_Screenshot-2016-11-22-09.31.21.png?expiry=1547769600000&hmac=A7T4qSaj6xflwdiqpZVcD-Sp5FKPUIOLGd0idlepBhY">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dfHLC70SEea4MxKdJPaTxA_306de28804a7467f7d84da0fe3ee9c7b_Screen-Shot-2016-12-07-at-10.49.02-PM.png?expiry=1547769600000&hmac=XZIJfjIAgXVWp_ZG0NiHWdYid1telhe2WfwAMscAo8E">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/f_ueJLGnEea3qApInhZCFg_a5ff8edc62c9a09900eae075e8502e34_Screenshot-2016-11-23-10.03.48.png?expiry=1547942400000&hmac=JkvOTr36LgHTc1HhLNYMWnLTK--zvIgdb41C2h9oiKo">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/wMOiMrGnEeajLxLfjQiSjg_bbbdad80f5c95068bde7c9134babdd77_Screenshot-2016-11-23-10.07.24.png?expiry=1547942400000&hmac=rXQZWvXvOO7yN9J6hqbRn5d8VHvnTqPUB5EPQOpZnOM">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/rag_zbGqEeaSmhJaoV5QvA_52c04a987dcb692da8979a2198f3d8d7_Screenshot-2016-11-23-10.28.41.png?expiry=1547942400000&hmac=0jWbW-vJ0f6D-9ZazKJ2YhCQTgv5MMyM5N2unLt4lIk">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/9Aeo6bGtEea4MxKdJPaTxA_4febc7ec9ac9dd0e4309bd1778171d36_Screenshot-2016-11-23-10.49.05.png?expiry=1547942400000&hmac=WEhRJ5dd1GPfW5dU-XQBhDNkPQG6dHhmw8N1hKC-E-8">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ul6i5teoEea1UArqXEX_3g_a36fb24a11c744d7552f0fecf2fdd752_Screenshot-2017-01-10-17.13.27.png?expiry=1547942400000&hmac=QZldoAbXaPD5iOXL7mGoms9SZhFPvU3RKhopNuz73q8">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bYLgwteoEeaX9Qr89uJd1A_73f280ff78695f84ae512f19acfa29a3_Screenshot-2017-01-10-18.16.50.png?expiry=1547942400000&hmac=7S9m45Xx1rSF91ytZqrOtpP3IunjDCnxBqEPp_Ibi3E">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/qc309rdcEea4MxKdJPaTxA_324034f1a3c3a3be8e7c6cfca90d3445_fixx.png?expiry=1547942400000&hmac=9W09X7txNTLIv74xKQ0J3-10so6-bjsxasOl8q6Ds1E">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/kdK7ubT2EeajLxLfjQiSjg_d35545b8d6b6940e8577b5a8d75c8657_Screenshot-2016-11-27-15.09.24.png?expiry=1547942400000&hmac=DfCIbxo0s1GPhWBIr90Kn_Y7iQKj_qS61GebrAXtpKU">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/y7gaS7pXEeaCrQqTpeD5ng_8868ccda2c387f5d481d0c54ab78a86e_Screen-Shot-2016-12-04-at-11.27.28-AM.png?expiry=1547942400000&hmac=U_IaMoeaz8gW_sdj8_g3thSDAetZgOQ4e2gEzl9xn78">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/hGk18LsaEea7TQ6MHcgMPA_8de173808f362583eb39cdd0c89ef43e_Screen-Shot-2016-12-05-at-10.40.35-AM.png?expiry=1547942400000&hmac=RX0ny1aNs9AXuUCcCuDinDVMEHnC8n-Z9fzSLisf-3s">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/I4dRkz_pEeeHpAqQsW8qwg_bed7efdd48c13e8f75624c817fb39684_fixed.png?expiry=1548028800000&hmac=gsvJ8uix6E9ki-r6G_cFtU8qicfsffnPMzsjAlLZvVk">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/3XyCytntEeataRJ74fuL6g_3b6c06d065d24e0bf8d557e59027e87a_Screenshot-2017-01-13-16.09.36.png?expiry=1548028800000&hmac=iK2Q7ZWg7ZZUeg5KjhWiI8uj-n6icsuaxRo9A5eIitU">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bpAOvt9uEeaQlg5FcsXQDA_ecad653e01ee824b231ff8b5df7208d9_2-am.png?expiry=1548028800000&hmac=Ea_WV56Wbl0MUHEnX3y3Cy2zsgxpumi2RNH-T-1Fd-I">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/vqlG7t9uEeaizBK307J26A_3e3e9f42b5e3ce9e3466a0416c4368ee_ITu3antfEeam4BLcQYZr8Q_37fe6be97e7b0740d1871ba99d4c2ed9_300px-Learning1.png?expiry=1548028800000&hmac=6p2C-RcNvb1bpDibx4tq1D3prwR8rt_kLVx1TCIetsY">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ys5NKOLJEeaPWBJZo44gSg_aba93cf4ce4507175d7e47ab5f9b7ce4_Screenshot-2017-01-24-22.29.45.png?expiry=1548028800000&hmac=Y9thbF3VNy5CuAn6C9x3uEUOgM8qd7WBUte0rT1qr1M">
+<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/kky-ouM6EeacbA6ydECl3A_01b1fa64fcc9a7eb5da8e946f6a12636_Screenshot-2017-01-25-12.08.23.png?expiry=1548028800000&hmac=1o9pxek1pIwohLfdIFT5_pj8P2GzBKTf6oMU3HKv2h0">
+<meta property="og:updated_time" content="2019-01-28T15:11:35.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning笔记">
+<meta name="twitter:description" content="第一周What is Machine Learning?​    Two definitions of Machine Learning are offered. Arthur Samuel described it as: “the field of study that gives computers the ability to learn without being explicitly">
+<meta name="twitter:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png?expiry=1547596800000&hmac=VMM67_jkIOGw1bfoTjr0GJteQRxf8Lrs8ZT1z9tLR8w">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://litost-fht.top/posts/49569/">
+
+
+
+
+
+  <title>Machine Learning笔记 | Litost's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script> 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/llitost"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Litost's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/posts/49569/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Hantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Litost's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine Learning笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T19:42:50+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/49569/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/49569/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  55
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h1><h2 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h2><p>​    Two definitions of Machine Learning are offered. Arthur Samuel described it as: “<strong>the field of study that gives computers the ability to learn without being explicitly programmed.</strong>“ This is an older, informal definition.</p>
+<p>​    Tom Mitchell provides a more modern definition: “<strong>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</strong>“</p>
+<p>Example: playing checkers.</p>
+<p>​    E = the experience of playing many games of checkers</p>
+<p>​    T = the task of playing checkers.</p>
+<p>​    P = the probability that the program will win the next game.</p>
+<p>​    In general, any machine learning problem can be assigned to one of two broad classifications:</p>
+<p><strong>Supervised learning </strong>and <strong>Unsupervised learning</strong>.</p>
+<h2 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h2><p>​    In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.</p>
+<p>​    Supervised learning problems are categorized into “regression” and “classification” problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.</p>
+<p><strong>Example 1:</strong></p>
+<p>​    Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.</p>
+<p>​    We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories.</p>
+<p><strong>Example 2</strong>:</p>
+<p>​    (a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture</p>
+<p>​    (b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.</p>
+<h2 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h2><p>​    Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don’t necessarily know the effect of the variables.</p>
+<p>​    We can derive this structure by clustering the data based on relationships among the variables in the data.</p>
+<p>​    With unsupervised learning there is no feedback based on the prediction results.</p>
+<p><strong>Example:</strong></p>
+<p>​    Clustering: Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.</p>
+<p>​    Non-clustering: The “Cocktail Party Algorithm”, allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).</p>
+<h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><p>​    To establish notation for future use, we’ll use $x^{(i)}$to denote the “input” variables (living area in this example), also called input features, and $y^{(i)}$ to denote the “output” or target variable that we are trying to predict (price). A pair $(x^{(i)} , y^{(i)} ) $is called a training example, and the dataset that we’ll be using to learn—a list of m training examples (<em>x</em>(<em>i</em>),<em>y</em>(<em>i</em>));<em>i</em>=1,…,<em>m</em>—is called a training set. Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, X = Y = ℝ.</p>
+<p>​    To describe the supervised learning problem slightly more formally, our goal is, given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis. Seen pictorially, the process is therefore like this:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png?expiry=1547596800000&amp;hmac=VMM67_jkIOGw1bfoTjr0GJteQRxf8Lrs8ZT1z9tLR8w" alt="img"></p>
+<p>​    When the target variable that we’re trying to predict is continuous, such as in our housing example, we call the learning problem a regression problem. When y can take on only a small number of discrete values (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a classification problem.</p>
+<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><p>​    So we have our hypothesis function and we have a way of measuring how well it fits into the data. Now we need to estimate the parameters in the hypothesis function. That’s where gradient descent comes in.</p>
+<p>​    Imagine that we graph our hypothesis function based on its fields $\theta_0$ and$ \theta_1​$(actually we are graphing the cost function as a function of the parameter estimates). We are not graphing x and y itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters.</p>
+<p>​    We put $\theta_0$ on the x axis and $\theta_1$on the y axis, with the cost function on the vertical z axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png?expiry=1547596800000&amp;hmac=-ur9fV-YVNMKe7k_3EVBDwOdRx78ISkAxvZ3XBL0KGw" alt="img"></p>
+<p>​    We will know that we have succeeded when our cost function is at the very bottom of the pits in our graph, i.e. when its value is the minimum. The red arrows show the minimum points in the graph.</p>
+<p>​    The way we do this is by taking the derivative (the tangential line to a function) of our cost function. The slope of the tangent is the derivative at that point and it will give us a direction to move towards. We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter α, which is called the learning rate.</p>
+<p>​    For example, the distance between each ‘star’ in the graph above represents a step determined by our parameter α. A smaller α would result in a smaller step and a larger α results in a larger step. The direction in which the step is taken is determined by the partial derivative of J($\theta_0$,$\theta_1$). Depending on where one starts on the graph, one could end up at different points. The image above shows us two different starting points that end up in two different places.</p>
+<p>​    The gradient descent algorithm is:</p>
+<p>​    repeat until convergence:</p>
+<p>​    $\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)​$</p>
+<p>​    where</p>
+<p>​    j=0,1 represents the feature index number.</p>
+<p>​    At each iteration j, one should simultaneously update the parameters $\theta_1$, $\theta_2$,…,$\theta_n$. Updating a specific parameter prior to calculating another one on the$ j^{(th)}$ iteration would yield to a wrong implementation.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png?expiry=1547596800000&amp;hmac=lST2n9B7tGWE6RGAcqU_zu9R6c-4frwT613MKfaGNN0" alt="img"></p>
+<h1 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h1><h2 id="Gradient-Descent-for-Multiple-Variables"><a href="#Gradient-Descent-for-Multiple-Variables" class="headerlink" title="Gradient Descent for Multiple Variables"></a><strong>Gradient Descent for Multiple Variables</strong></h2><p>The gradient descent equation itself is generally the same form; we just have to repeat it for our ‘n’ features:</p>
+<p><img src="https://wx2.sinaimg.cn/mw690/adba74c1ly1fz7a4vp952j20bf070weo.jpg" alt="image"></p>
+<p>In other words:</p>
+<p>}repeat until convergence:{<em>θ**j</em>:=<em>θ**j</em>−<em>α</em>1<em>m</em>∑<em>i</em>=1<em>m</em>(<em>h**θ</em>(<em>x</em>(<em>i</em>))−<em>y</em>(<em>i</em>))⋅<em>x</em>(<em>i</em>)<em>j</em>for j := 0…n</p>
+<p>The following image compares gradient descent with one variable to gradient descent with multiple variables:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/MYm8uqafEeaZoQ7hPZtKqg_c974c2e2953662e9578b38c7b04591ed_Screenshot-2016-11-09-09.07.04.png?expiry=1547683200000&amp;hmac=AHaRnVtf0hh0yN91HhICEkapB6PUZwKjTz6V8RGraOU" alt="img"></p>
+<h2 id="Gradient-Descent-in-Practice-I-Feature-Scaling"><a href="#Gradient-Descent-in-Practice-I-Feature-Scaling" class="headerlink" title="Gradient Descent in Practice I - Feature Scaling"></a>Gradient Descent in Practice I - Feature Scaling</h2><p>We can speed up gradient descent by having each of our input values in roughly the same range. This is because θ will descend quickly on small ranges and slowly on large ranges, and so will oscillate inefficiently down to the optimum when the variables are very uneven.</p>
+<p>The way to prevent this is to modify the ranges of our input variables so that they are all roughly the same. Ideally:</p>
+<p>$−1 ≤ x_{(i)} ≤ 1​$</p>
+<p>or</p>
+<p>$−0.5 ≤ x_{(i)} ≤ 0.5​$</p>
+<p>These aren’t exact requirements; we are only trying to speed things up. The goal is to get all input variables into roughly one of these ranges, give or take a few.</p>
+<p>Two techniques to help with this are <strong>feature scaling</strong> and <strong>mean normalization</strong>. Feature scaling involves dividing the input values by the range (i.e. the maximum value minus the minimum value) of the input variable, resulting in a new range of just 1. Mean normalization involves subtracting the average value for an input variable from the values for that input variable resulting in a new average value for the input variable of just zero. To implement both of these techniques, adjust your input values as shown in this formula:</p>
+<p>$x_i := \dfrac{x_i - \mu_i}{s_i}​$</p>
+<p>Where $μ_i$ is the <strong>average</strong> of all the values for feature (i) and $s_i$is the range of values (max - min), or $s_i$is the standard deviation.</p>
+<p>Note that dividing by the range, or dividing by the standard deviation, give different results. The quizzes in this course use range - the programming exercises use standard deviation.</p>
+<p>For example, if $x_i$ represents housing prices with a range of 100 to 2000 and a mean value of 1000, then, $x_i := \dfrac{price-1000}{1900}$.</p>
+<h2 id="Gradient-Descent-in-Practice-II-Learning-Rate"><a href="#Gradient-Descent-in-Practice-II-Learning-Rate" class="headerlink" title="Gradient Descent in Practice II - Learning Rate"></a>Gradient Descent in Practice II - Learning Rate</h2><p><strong>Debugging gradient descent.</strong> Make a plot with <em>number of iterations</em> on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
+<p><strong>Automatic convergence test.</strong> Declare convergence if J(θ) decreases by less than E in one iteration, where E is some small value such as 10−3. However in practice it’s difficult to choose this threshold value.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FEfS3aajEea3qApInhZCFg_6be025f7ad145eb0974b244a7f5b3f59_Screenshot-2016-11-09-09.35.59.png?expiry=1547683200000&amp;hmac=AnsPwSwNmRVY34rI4n99inP3eWG5P_gv1OWCAmLXMt0" alt="img"></p>
+<p>It has been proven that if learning rate α is sufficiently small, then J(θ) will decrease on every iteration.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/rC2jGKgvEeamBAoLccicqA_ec9e40a58588382f5b6df60637b69470_Screenshot-2016-11-11-08.55.21.png?expiry=1547683200000&amp;hmac=TWHJNdipwsfYy15H2FNpeXSMZardNpmHd0tvk0BRiVQ" alt="img"></p>
+<p>To summarize:</p>
+<p>If $\alpha$ is too small: slow convergence.</p>
+<p>If $\alpha$ is too large: ￼may not decrease on every iteration and thus may not converge.</p>
+<h2 id="Polynomial-Regression"><a href="#Polynomial-Regression" class="headerlink" title="Polynomial Regression"></a><strong>Polynomial Regression</strong></h2><p>Our hypothesis function need not be linear (a straight line) if that does not fit the data well.</p>
+<p>We can <strong>change the behavior or curve</strong> of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).</p>
+<p>For example, if our hypothesis function is $h_\theta(x) = \theta_0 + \theta_1 x_1$ then we can create additional features based on $x_1$, to get the quadratic function$ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 $or the cubic function $h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 + \theta_3 x_1^3​$</p>
+<p>In the cubic version, we have created new features $x_2$ and $x_3$ where $x_2 = x_1^2$ and $x_3 = x_1^3$.</p>
+<p>To make it a square root function, we could do: $h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}​$</p>
+<p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
+<p>eg. if $x_1$ has range 1 - 1000 then range of $x_1^2$ becomes 1 - 1000000 and that of $x_1^3$ becomes 1 - 1000000000</p>
+<h2 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h2><p>Gradient descent gives one way of minimizing J. Let’s discuss a second way of doing so, this time performing the minimization explicitly and without resorting to an iterative algorithm. In the “Normal Equation” method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration. The normal equation formula is given below:</p>
+<p>$\theta = (X^T X)^{-1}X^T y$</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dykma6dwEea3qApInhZCFg_333df5f11086fee19c4fb81bc34d5125_Screenshot-2016-11-10-10.06.16.png?expiry=1547683200000&amp;hmac=Mk3Cfi9-YlJiAIPUsSxAuIN0xo01-aD92hi5VqjrO5c" alt="img"></p>
+<p>There is <strong>no need</strong> to do feature scaling with the normal equation.</p>
+<p>The following is a comparison of gradient descent and the normal equation:</p>
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need to choose alpha</td>
+<td>No need to choose alpha</td>
+</tr>
+<tr>
+<td>Needs many iterations</td>
+<td>No need to iterate</td>
+</tr>
+<tr>
+<td>O (k$n^2$)</td>
+<td>O ($n^3$), need to calculate inverse of $X^TX$</td>
+</tr>
+<tr>
+<td>Works well when n is large</td>
+<td>Slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+<p>With the normal equation, computing the inversion has complexity $\mathcal{O}(n^3)$. So if we have a very large number of features, the normal equation will be slow. In practice, when n exceeds 10,000 it might be a good time to go from a normal solution to an iterative process.</p>
+<h2 id="Normal-Equation-Noninvertibility"><a href="#Normal-Equation-Noninvertibility" class="headerlink" title="Normal Equation Noninvertibility"></a>Normal Equation Noninvertibility</h2><p>When implementing the normal equation in octave we want to use the ‘pinv’ function rather than ‘inv.’ The ‘pinv’ function will give you a value of $\theta$ even if $X^TX$ is not invertible.</p>
+<p>If $X^TX$ is <strong>noninvertible,</strong> the common causes might be having :</p>
+<ul>
+<li>Redundant features, where two features are very closely related (i.e. they are linearly dependent)</li>
+<li>Too many features (e.g. m ≤ n). In this case, delete some features or use “regularization” (to be explained in a later lesson).</li>
+</ul>
+<p>Solutions to the above problems include deleting a feature that is linearly dependent with another or deleting one or more features when there are too many features.</p>
+<h1 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h1><h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><p>To attempt classification, one method is to use linear regression and map all predictions greater than 0.5 as a 1 and all less than 0.5 as a 0. However, this method doesn’t work well because classification is not actually a linear function.</p>
+<p>The classification problem is just like the regression problem, except that the values we now want to predict take on only a small number of discrete values. For now, we will focus on the <strong>binary classification</strong> <strong>problem</strong> in which y can take on only two values, 0 and 1. (Most of what we say here will also generalize to the multiple-class case.) For instance, if we are trying to build a spam classifier for email, then $x^{(i)}$ may be some features of a piece of email, and y may be 1 if it is a piece of spam mail, and 0 otherwise. Hence, y∈{0,1}. 0 is also called the negative class, and 1 the positive class, and they are sometimes also denoted by the symbols “-” and “+.” Given $x^{(i)}$, the corresponding $y^{(i)}​$ is also called the label for the training example.</p>
+<h2 id="Hypothesis-Representation"><a href="#Hypothesis-Representation" class="headerlink" title="Hypothesis Representation"></a>Hypothesis Representation</h2><p>We could approach the classification problem ignoring the fact that y is discrete-valued, and use our old linear regression algorithm to try to predict y given x. However, it is easy to construct examples where this method performs very poorly. Intuitively, it also doesn’t make sense for $h_\theta (x)​$  to take values larger than 1 or smaller than 0 when we know that y ∈ {0, 1}. To fix this, let’s change the form for our hypotheses  $h_\theta (x)​$  to satisfy $0 \leq h_\theta (x) \leq 1​$. This is accomplished by plugging $\theta^Tx​$ into the Logistic Function.</p>
+<p>Our new form uses the “Sigmoid Function,” also called the “Logistic Function”:</p>
+<p><em>h**θ</em>(<em>x</em>)=<em>g</em>(<em>θ<strong>T</strong>x</em>)<em>z</em>=<em>θ<strong>T</strong>x**g</em>(<em>z</em>)=11+<em>e</em>−<em>z</em></p>
+<p>$z=\theta^Tx$</p>
+<p>g(z)=1/(1+e^(-z))​</p>
+<p>The following image shows us what the sigmoid function looks like:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png?expiry=1547769600000&amp;hmac=SGvwWcXcPDVMPhLj-k_pIb7hC2V7VWwDhh8Xsx5xQls" alt="img"></p>
+<p>The function g(z), shown here, maps any real number to the (0, 1) interval, making it useful for transforming an arbitrary-valued function into a function better suited for classification.</p>
+<p>$h_\theta(x)​$ will give us the <strong>probability</strong> that our output is 1. For example, $h_\theta(x)=0.7​$  gives us a probability of 70% that our output is 1. Our probability that our prediction is 0 is just the complement of our probability that it is 1 (e.g. if probability that it is 1 is 70%, then the probability that it is 0 is 30%).</p>
+<p><em>h**θ</em>(<em>x</em>)=<em>P</em>(<em>y</em>=1|<em>x</em>;<em>θ</em>)=1−<em>P</em>(<em>y</em>=0|<em>x</em>;<em>θ</em>)<em>P</em>(<em>y</em>=0|<em>x</em>;<em>θ</em>)+<em>P</em>(<em>y</em>=1|<em>x</em>;<em>θ</em>)=1</p>
+<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>We cannot use the same cost function that we use for linear regression because the Logistic Function will cause the output to be wavy, causing many local optima. In other words, it will not be a convex function.</p>
+<p>Instead, our cost function for logistic regression looks like:</p>
+<p><em>J</em>(<em>θ</em>)=1<em>m</em>∑<em>i</em>=1<em>m</em>Cost(<em>h**θ</em>(<em>x</em>(<em>i</em>)),<em>y</em>(<em>i</em>))Cost(<em>h**θ</em>(<em>x</em>),<em>y</em>)=−log(<em>h**θ</em>(<em>x</em>))Cost(<em>h**θ</em>(<em>x</em>),<em>y</em>)=−log(1−<em>h**θ</em>(<em>x</em>))if y = 1if y = 0</p>
+<p>When y = 1, we get the following plot for $J(\theta) vs h_\theta (x)​$:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Q9sX8nnxEeamDApmnD43Fw_1cb67ecfac77b134606532f5caf98ee4_Logistic_regression_cost_function_positive_class.png?expiry=1547769600000&amp;hmac=slTMVn1jZLWrLgnCy-KuNgshbF-dVWxl5PAy9fJWVgk" alt="img"></p>
+<p>Similarly, when y = 0, we get the following plot for$ J(\theta) vs h_\theta (x)$ :</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png?expiry=1547769600000&amp;hmac=80HXBGDsKhe9IZVLk58D_udFVnvj0p1shbvBY2RPhA0" alt="img"></p>
+<p>Cost(<em>h**θ</em>(<em>x</em>),<em>y</em>)=0 if <em>h**θ</em>(<em>x</em>)=<em>y</em>Cost(<em>h**θ</em>(<em>x</em>),<em>y</em>)→∞ if <em>y</em>=0and<em>h**θ</em>(<em>x</em>)→1Cost(<em>h**θ</em>(<em>x</em>),<em>y</em>)→∞ if <em>y</em>=1and<em>h**θ</em>(<em>x</em>)→0</p>
+<p>If our correct answer ‘y’ is 0, then the cost function will be 0 if our hypothesis function also outputs 0. If our hypothesis approaches 1, then the cost function will approach infinity.</p>
+<p>If our correct answer ‘y’ is 1, then the cost function will be 0 if our hypothesis function outputs 1. If our hypothesis approaches 0, then the cost function will approach infinity.</p>
+<p>Note that writing the cost function in this way guarantees that J(θ) is convex for logistic regression.</p>
+<h2 id="Simplified-Cost-Function-and-Gradient-Descent"><a href="#Simplified-Cost-Function-and-Gradient-Descent" class="headerlink" title="Simplified Cost Function and Gradient Descent"></a>Simplified Cost Function and Gradient Descent</h2><p>We can compress our cost function’s two conditional cases into one case:</p>
+<p>$\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))$</p>
+<p>Notice that when y is equal to 1, then the second term$ (1-y)\log(1-h_\theta(x))$ will be zero and will not affect the result. If y is equal to 0, then the first term $-y \log(h_\theta(x))$ will be zero and will not affect the result.</p>
+<p>We can fully write out our entire cost function as follows:</p>
+<p>J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]<em>J</em>(<em>θ</em>)=−<em>m</em>1<em>i</em>=1∑<em>m</em>[<em>y</em>(<em>i</em>)log(<em>h**θ</em>(<em>x</em>(<em>i</em>)))+(1−<em>y</em>(<em>i</em>))log(1−<em>h**θ</em>(<em>x</em>(<em>i</em>)))]</p>
+<p>A vectorized implementation is:</p>
+<p>$h=g(Xθ)​$</p>
+<p>$J(θ)=1/m⋅(-y^Tlog(h)-(1-y)^Tlog(1-h))​$</p>
+<h3 id="Gradient-Descent-1"><a href="#Gradient-Descent-1" class="headerlink" title="Gradient Descent"></a><strong>Gradient Descent</strong></h3><p><img src="http://wx2.sinaimg.cn/mw690/adba74c1ly1fz8hro00ctj20np0dst9b.jpg" alt="image"></p>
+<h2 id="Advanced-Optimization"><a href="#Advanced-Optimization" class="headerlink" title="Advanced Optimization"></a>Advanced Optimization</h2><p>“Conjugate gradient”, “BFGS”, and “L-BFGS” are more sophisticated, faster ways to optimize θ that can be used instead of gradient descent. We suggest that you should not write these more sophisticated algorithms yourself (unless you are an expert in numerical computing) but use the libraries instead, as they’re already tested and highly optimized. Octave provides them.</p>
+<p>We first need to provide a function that evaluates the following two functions for a given input value θ:</p>
+<p>J(θ)</p>
+<p>∂/∂θj J(θ)</p>
+<p>We can write a single function that returns both of these:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function [jVal, gradient] = costFunction(theta)</span><br><span class="line"></span><br><span class="line">  jVal = [...code to compute J(theta)...];</span><br><span class="line"></span><br><span class="line">  gradient = [...code to compute derivative of J(theta)...];</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>Then we can use octave’s “fminunc()” optimization algorithm along with the “optimset()” function that creates an object containing the options we want to send to “fminunc()”. (Note: the value for MaxIter should be an integer, not a character string - errata in the video at 7:30)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);</span><br><span class="line"></span><br><span class="line">initialTheta = zeros(2,1);</span><br><span class="line"></span><br><span class="line">   [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, </span><br><span class="line">     options);</span><br></pre></td></tr></table></figure>
+<p>We give to the function “<strong>fminunc()</strong>“ our cost function, our initial vector of theta values, and the “options” object that we created beforehand.</p>
+<h2 id="Multiclass-Classification-One-vs-all"><a href="#Multiclass-Classification-One-vs-all" class="headerlink" title="Multiclass Classification: One-vs-all"></a>Multiclass Classification: One-vs-all</h2><p>Now we will approach the classification of data when we have more than two categories. Instead of y = {0,1} we will expand our definition so that y = {0,1…n}.</p>
+<p>Since y = {0,1…n}, we divide our problem into n+1 (+1 because the index starts at 0) binary classification problems; in each one, we predict the probability that ‘y’ is a member of one of our classes.</p>
+<p><em>y</em>∈{0,1…<em>n</em>}<em>h</em>(0)<em>θ</em>(<em>x</em>)=<em>P</em>(<em>y</em>=0|<em>x</em>;<em>θ</em>)<em>h</em>(1)<em>θ</em>(<em>x</em>)=<em>P</em>(<em>y</em>=1|<em>x</em>;<em>θ</em>)⋯<em>h</em>(<em>n</em>)<em>θ</em>(<em>x</em>)=<em>P</em>(<em>y</em>=<em>n</em>|<em>x</em>;<em>θ</em>)prediction=max<em>i</em>(<em>h</em>(<em>i</em>)<em>θ</em>(<em>x</em>))</p>
+<p>We are basically choosing one class and then lumping all the others into a single second class. We do this repeatedly, applying binary logistic regression to each case, and then use the hypothesis that returned the highest value as our prediction.</p>
+<p>The following image shows how one could classify 3 classes:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/cqmPjanSEeawbAp5ByfpEg_299fcfbd527b6b5a7440825628339c54_Screenshot-2016-11-13-10.52.29.png?expiry=1547769600000&amp;hmac=FShI1rEquBknKBcbhioau5eg8Cw-GLknpl9rvay9ukY" alt="img"></p>
+<p><strong>To summarize:</strong></p>
+<p>Train a logistic regression classifier $h_\theta(x)​$ for each class￼ to predict the probability that ￼ ￼y = i￼ ￼.</p>
+<p>To make a prediction on a new x, pick the class ￼that maximizes $h_\theta (x)$</p>
+<h2 id="The-Problem-of-Overfitting"><a href="#The-Problem-of-Overfitting" class="headerlink" title="The Problem of Overfitting"></a>The Problem of Overfitting</h2><p>Consider the problem of predicting y from x ∈ R. The leftmost figure below shows the result of fitting a $y = θ_0 + θ_1x$  to a dataset. We see that the data doesn’t really lie on straight line, and so the fit is not very good.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0cOOdKsMEeaCrQqTpeD5ng_2a806eb8d988461f716f4799915ab779_Screenshot-2016-11-15-00.23.30.png?expiry=1547769600000&amp;hmac=TAsGHEDO_6W-LtIWJLsg-lorrVC-KhN5tIdgocmuXHY" alt="img"></p>
+<p>Instead, if we had added an extra feature $x^2$ , and fit $y =  \theta_0 + \theta_1x + \theta_2x^2$  , then we obtain a slightly better fit to the data (See middle figure). Naively, it might seem that the more features we add, the better. However, there is also a danger in adding too many features: The rightmost figure is the result of fitting a $5^{th}$  order polynomial $y = \sum_{j=0} ^5 \theta_j x^j$ . We see that even though the fitted curve passes through the data perfectly, we would not expect this to be a very good predictor of, say, housing prices (y) for different living areas (x). Without formally defining what these terms mean, we’ll say the figure on the left shows an instance of <strong>underfitting</strong>—in which the data clearly shows structure not captured by the model—and the figure on the right is an example of <strong>overfitting</strong>.</p>
+<p>Underfitting, or high bias, is when the form of our hypothesis function h maps poorly to the trend of the data. It is usually caused by a function that is too simple or uses too few features. At the other extreme, overfitting, or high variance, is caused by a hypothesis function that fits the available data but does not generalize well to predict new data. It is usually caused by a complicated function that creates a lot of unnecessary curves and angles unrelated to the data.</p>
+<p>This terminology is applied to both linear and logistic regression. There are two main options to address the issue of overfitting:</p>
+<p>1) Reduce the number of features:</p>
+<ul>
+<li>Manually select which features to keep.</li>
+<li>Use a model selection algorithm (studied later in the course).</li>
+</ul>
+<p>2) Regularization</p>
+<ul>
+<li>Keep all the features, but reduce the magnitude of parameters $\theta_j$ .</li>
+<li>Regularization works well when we have a lot of slightly useful features.</li>
+</ul>
+<h2 id="Cost-Function-1"><a href="#Cost-Function-1" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>If we have overfitting from our hypothesis function, we can reduce the weight that some of the terms in our function carry by increasing their cost.</p>
+<p>Say we wanted to make the following function more quadratic:</p>
+<p>$\theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3 + \theta_4x^4$</p>
+<p>We’ll want to eliminate the influence of $\theta_3x^3$ and $\theta_4x^4$ . Without actually getting rid of these features or changing the form of our hypothesis, we can instead modify our <strong>cost function</strong>:</p>
+<p>$min_\theta\ \dfrac{1}{2m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + 1000\cdot\theta_3^2 + 1000\cdot\theta_4^2$</p>
+<p>We’ve added two extra terms at the end to inflate the cost of $\theta_3$  and $\theta_4$ . Now, in order for the cost function to get close to zero, we will have to reduce the values of $\theta_3$ and $\theta_4$ to near zero. This will in turn greatly reduce the values of $\theta_3x^3$ and $\theta_4x^4$  in our hypothesis function. As a result, we see that the new hypothesis (depicted by the pink curve) looks like a quadratic function but fits the data better due to the extra small terms $\theta_3x^3$ and $\theta_4x^4$.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/j0X9h6tUEeawbAp5ByfpEg_ea3e85af4056c56fa704547770da65a6_Screenshot-2016-11-15-08.53.32.png?expiry=1547769600000&amp;hmac=rMlX6qjNbtqerouP_Go-rJ5PDaHFW2xSdE9X4_kUosM" alt="img"></p>
+<p>We could also regularize all of our theta parameters in a single summation as:</p>
+<p>min_\theta\ \dfrac{1}{2m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2<em>m<strong>i</strong>n**θ</em> 2<em>m</em>1 ∑<em>i</em>=1<em>m</em>(<em>h**θ</em>(<em>x</em>(<em>i</em>))−<em>y</em>(<em>i</em>))2+<em>λ</em> ∑<em>j</em>=1<em>n<strong>θ</strong>j</em>2</p>
+<p>The λ, or lambda, is the <strong>regularization parameter</strong>. It determines how much the costs of our theta parameters are inflated.</p>
+<p>Using the above cost function with the extra summation, we can smooth the output of our hypothesis function to reduce overfitting. If lambda is chosen to be too large, it may smooth out the function too much and cause underfitting. Hence, what would happen if $\lambda = 0​$ or is too small ?</p>
+<h2 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h2><p><strong>Note:</strong> [8:43 - It is said that X is non-invertible if m \leq≤ n. The correct statement should be that X is non-invertible if m &lt; n, and may be non-invertible if m = n.</p>
+<p>We can apply regularization to both linear regression and logistic regression. We will approach linear regression first.</p>
+<h3 id="Gradient-Descent-2"><a href="#Gradient-Descent-2" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><p>We will modify our gradient descent function to separate out \theta_0<em>θ</em>0 from the rest of the parameters because we do not want to penalize \theta_0<em>θ</em>0.</p>
+<p>Repeat {    <em>θ</em>0:=<em>θ</em>0−<em>α</em> 1<em>m</em> ∑<em>i</em>=1<em>m</em>(<em>h**θ</em>(<em>x</em>(<em>i</em>))−<em>y</em>(<em>i</em>))<em>x</em>(<em>i</em>)0    <em>θ**j</em>:=<em>θ**j</em>−<em>α</em> [(1<em>m</em> ∑<em>i</em>=1<em>m</em>(<em>h**θ</em>(<em>x</em>(<em>i</em>))−<em>y</em>(<em>i</em>))<em>x</em>(<em>i</em>)<em>j</em>)+<em>λ<strong>m</strong>θ**j</em>]}          <em>j</em>∈{1,2…<em>n</em>}</p>
+<p>The term $\frac{\lambda}{m}\theta_j$performs our regularization. With some manipulation our update rule can also be represented as:</p>
+<p>$\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}$</p>
+<p>The first term in the above equation, $1 - \alpha\frac{\lambda}{m}$ will always be less than 1. Intuitively you can see it as reducing the value of $\theta_j$  by some amount on every update. Notice that the second term is now exactly the same as it was before.</p>
+<h3 id="Normal-Equation-1"><a href="#Normal-Equation-1" class="headerlink" title="Normal Equation"></a><strong>Normal Equation</strong></h3><p>Now let’s approach regularization using the alternate method of the non-iterative normal equation.</p>
+<p>To add in regularization, the equation is the same as our original, except that we add another term inside the parentheses:</p>
+<p><em>θ</em>=(<em>X<strong>T</strong>X</em>+<em>λ</em>⋅<em>L</em>)−1<em>X<strong>T</strong>y</em>where  <em>L</em>=⎡⎣⎢⎢⎢⎢⎢⎢011⋱1⎤⎦⎥⎥⎥⎥⎥⎥</p>
+<p>L is a matrix with 0 at the top left and 1’s down the diagonal, with 0’s everywhere else. It should have dimension (n+1)×(n+1). Intuitively, this is the identity matrix (though we are not including $x_0$ ), multiplied with a single real number λ.</p>
+<p>Recall that if m &lt; n, then $X^TX$ is non-invertible. However, when we add the term λ⋅L, then $X^TX $+ λ⋅L becomes invertible.</p>
+<h2 id="Regularized-Logistic-Regression"><a href="#Regularized-Logistic-Regression" class="headerlink" title="Regularized Logistic Regression"></a>Regularized Logistic Regression</h2><p>We can regularize logistic regression in a similar way that we regularize linear regression. As a result, we can avoid overfitting. The following image shows how the regularized function, displayed by the pink line, is less likely to overfit than the non-regularized function represented by the blue line:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Od9mobDaEeaCrQqTpeD5ng_4f5e9c71d1aa285c1152ed4262f019c1_Screenshot-2016-11-22-09.31.21.png?expiry=1547769600000&amp;hmac=A7T4qSaj6xflwdiqpZVcD-Sp5FKPUIOLGd0idlepBhY" alt="img"></p>
+<h3 id="Cost-Function-2"><a href="#Cost-Function-2" class="headerlink" title="Cost Function"></a>Cost Function</h3><p>Recall that our cost function for logistic regression was:</p>
+<p>$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)})) \large]$ </p>
+<p>We can regularize this equation by adding a term to the end:</p>
+<p>J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2<em>J</em>(<em>θ</em>)=−<em>m</em>1∑<em>i</em>=1<em>m</em>[<em>y</em>(<em>i</em>) log(<em>h**θ</em>(<em>x</em>(<em>i</em>)))+(1−<em>y</em>(<em>i</em>)) log(1−<em>h**θ</em>(<em>x</em>(<em>i</em>)))]+2<em>m**λ</em>∑<em>j</em>=1<em>n<strong>θ</strong>j</em>2</p>
+<p>The second sum, $\sum_{j=1}^n \theta_j^2$ <strong>means to explicitly exclude</strong> the bias term, $\theta_0$ . I.e. the θ vector is indexed from 0 to n (holding n+1 values, $\theta_0$  through $\theta_n$ ), and this sum explicitly skips $\theta_0$ , by running from 1 to n, skipping 0. Thus, when computing the equation, we should continuously update the two following equations:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dfHLC70SEea4MxKdJPaTxA_306de28804a7467f7d84da0fe3ee9c7b_Screen-Shot-2016-12-07-at-10.49.02-PM.png?expiry=1547769600000&amp;hmac=XZIJfjIAgXVWp_ZG0NiHWdYid1telhe2WfwAMscAo8E" alt="img"></p>
+<h1 id="第四周"><a href="#第四周" class="headerlink" title="第四周"></a>第四周</h1><h2 id="Model-Representation-II"><a href="#Model-Representation-II" class="headerlink" title="Model Representation II"></a>Model Representation II</h2><p>To re-iterate, the following is an example of a neural network:</p>
+<p><em>a</em>(2)1=<em>g</em>(Θ(1)10<em>x</em>0+Θ(1)11<em>x</em>1+Θ(1)12<em>x</em>2+Θ(1)13<em>x</em>3)<em>a</em>(2)2=<em>g</em>(Θ(1)20<em>x</em>0+Θ(1)21<em>x</em>1+Θ(1)22<em>x</em>2+Θ(1)23<em>x</em>3)<em>a</em>(2)3=<em>g</em>(Θ(1)30<em>x</em>0+Θ(1)31<em>x</em>1+Θ(1)32<em>x</em>2+Θ(1)33<em>x</em>3)<em>h</em>Θ(<em>x</em>)=<em>a</em>(3)1=<em>g</em>(Θ(2)10<em>a</em>(2)0+Θ(2)11<em>a</em>(2)1+Θ(2)12<em>a</em>(2)2+Θ(2)13<em>a</em>(2)3)</p>
+<p>In this section we’ll do a vectorized implementation of the above functions. We’re going to define a new variable $z_k^{(j)}$ that encompasses the parameters inside our g function. In our previous example if we replaced by the variable z for all the parameters we would get:</p>
+<p><em>a</em>(2)1=<em>g</em>(<em>z</em>(2)1)<em>a</em>(2)2=<em>g</em>(<em>z</em>(2)2)<em>a</em>(2)3=<em>g</em>(<em>z</em>(2)3)</p>
+<p>In other words, for layer j=2 and node k, the variable z will be:</p>
+<p>z_k^{(2)} = \Theta_{k,0}^{(1)}x_0 + \Theta_{k,1}^{(1)}x_1 + \cdots + \Theta_{k,n}^{(1)}x_n<em>z**k</em>(2)=Θ<em>k</em>,0(1)<em>x</em>0+Θ<em>k</em>,1(1)<em>x</em>1+⋯+Θ<em>k</em>,<em>n</em>(1)<em>x**n</em></p>
+<p>The vector representation of x and $z^{j}$ is:</p>
+<p><em>x</em>=⎡⎣⎢⎢<em>x</em>0<em>x</em>1⋯<em>x**n</em>⎤⎦⎥⎥<em>z</em>(<em>j</em>)=⎡⎣⎢⎢⎢⎢<em>z</em>(<em>j</em>)1<em>z</em>(<em>j</em>)2⋯<em>z</em>(<em>j</em>)<em>n</em>⎤⎦⎥⎥⎥⎥</p>
+<p>Setting $x = a^{(1)}$,  we can rewrite the equation as:</p>
+<p>z^{(j)} = \Theta^{(j-1)}a^{(j-1)}<em>z</em>(<em>j</em>)=Θ(<em>j</em>−1)<em>a</em>(<em>j</em>−1)</p>
+<p>We are multiplying our matrix $\Theta^{(j-1)}​$  with dimensions $s_j\times (n+1)​$ (where $s_j​$  is the number of our activation nodes) by our vector $a^{(j-1)}​$  with height (n+1). This gives us our vector $z^{(j)}​$  with height $s_j​$ . Now we can get a vector of our activation nodes for layer j as follows:</p>
+<p>$a^{(j)} = g(z^{(j)})​$ </p>
+<p>Where our function g can be applied element-wise to our vector $z^{(j)}$.</p>
+<p>We can then add a bias unit (equal to 1) to layer j after we have computed $a^{(j)}$. This will be element $a_0^{(j)}$ and will be equal to 1. To compute our final hypothesis, let’s first compute another z vector:</p>
+<p>$z^{(j+1)} = \Theta^{(j)}a^{(j)}​$ </p>
+<p>We get this final z vector by multiplying the next theta matrix after $\Theta^{(j-1)}​$  with the values of all the activation nodes we just got. This last theta matrix $\Theta^{(j)}​$ will have only <strong>one row</strong> which is multiplied by one column $a^{(j)}​$ so that our result is a single number. We then get our final result with:</p>
+<p>$h_\Theta(x) = a^{(j+1)} = g(z^{(j+1)})​$</p>
+<p>Notice that in this <strong>last step</strong>, between layer j and layer j+1, we are doing <strong>exactly the same thing</strong> as we did in logistic regression. Adding all these intermediate layers in neural networks allows us to more elegantly produce interesting and more complex non-linear hypotheses.</p>
+<h2 id="Examples-and-Intuitions"><a href="#Examples-and-Intuitions" class="headerlink" title="Examples and Intuitions"></a>Examples and Intuitions</h2><p>A simple example of applying neural networks is by predicting $x_1$ AND $x_2$, which is the logical ‘and’ operator and is only true if both $x_1$  and $x_2$ are 1.</p>
+<p>The graph of our functions will look like:</p>
+<p>⎡⎣<em>x</em>0<em>x</em>1<em>x</em>2⎤⎦→[<em>g</em>(<em>z</em>(2))]→<em>h</em>Θ(<em>x</em>)</p>
+<p>Remember that $x_0​$  is our bias variable and is always 1.</p>
+<p>Let’s set our first theta matrix as:</p>
+<p>\Theta^{(1)} =[−302020]Θ(1)=[−302020]</p>
+<p>This will cause the output of our hypothesis to only be positive if both $x_1​$ and $x_2$ are 1. In other words:</p>
+<p><em>h</em>Θ(<em>x</em>)=<em>g</em>(−30+20<em>x</em>1+20<em>x</em>2)<em>x</em>1=0  <em>a<strong>n</strong>d</em>  <em>x</em>2=0  <em>t<strong>h</strong>e**n</em>  <em>g</em>(−30)≈0<em>x</em>1=0  <em>a<strong>n</strong>d</em>  <em>x</em>2=1  <em>t<strong>h</strong>e**n</em>  <em>g</em>(−10)≈0<em>x</em>1=1  <em>a<strong>n</strong>d</em>  <em>x</em>2=0  <em>t<strong>h</strong>e**n</em>  <em>g</em>(−10)≈0<em>x</em>1=1  <em>a<strong>n</strong>d</em>  <em>x</em>2=1  <em>t<strong>h</strong>e**n</em>  <em>g</em>(10)≈1</p>
+<p>So we have constructed one of the fundamental operations in computers by using a small neural network rather than using an actual AND gate. Neural networks can also be used to simulate all the other logical gates. The following is an example of the logical operator ‘OR’, meaning either x_1<em>x</em>1 is true or x_2<em>x</em>2 is true, or both:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/f_ueJLGnEea3qApInhZCFg_a5ff8edc62c9a09900eae075e8502e34_Screenshot-2016-11-23-10.03.48.png?expiry=1547942400000&amp;hmac=JkvOTr36LgHTc1HhLNYMWnLTK--zvIgdb41C2h9oiKo" alt="img"></p>
+<p>Where g(z) is the following:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/wMOiMrGnEeajLxLfjQiSjg_bbbdad80f5c95068bde7c9134babdd77_Screenshot-2016-11-23-10.07.24.png?expiry=1547942400000&amp;hmac=rXQZWvXvOO7yN9J6hqbRn5d8VHvnTqPUB5EPQOpZnOM" alt="img"></p>
+<p>And there we have the XNOR operator using a hidden layer with two nodes! The following summarizes the above algorithm:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/rag_zbGqEeaSmhJaoV5QvA_52c04a987dcb692da8979a2198f3d8d7_Screenshot-2016-11-23-10.28.41.png?expiry=1547942400000&amp;hmac=0jWbW-vJ0f6D-9ZazKJ2YhCQTgv5MMyM5N2unLt4lIk" alt="img"></p>
+<h2 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h2><p>To classify data into multiple classes, we let our hypothesis function return a vector of values. Say we wanted to classify our data into one of four categories. We will use the following example to see how this classification is done. This algorithm takes as input an image and classifies it accordingly:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/9Aeo6bGtEea4MxKdJPaTxA_4febc7ec9ac9dd0e4309bd1778171d36_Screenshot-2016-11-23-10.49.05.png?expiry=1547942400000&amp;hmac=WEhRJ5dd1GPfW5dU-XQBhDNkPQG6dHhmw8N1hKC-E-8" alt="img"></p>
+<h2 id="Cost-Function-3"><a href="#Cost-Function-3" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>Let’s first define a few variables that we will need to use:</p>
+<ul>
+<li>L = total number of layers in the network</li>
+<li>$s_l$ = number of units (not counting bias unit) in layer l</li>
+<li>K = number of output units/classes</li>
+</ul>
+<p>Recall that in neural networks, we may have many output nodes. We denote $h_\Theta(x)_k​$  as being a hypothesis that results in the $k^{th}​$ output. Our cost function for neural networks is going to be a generalization of the one we used for logistic regression. Recall that the cost function for regularized logistic regression was:</p>
+<p>J(\theta) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2<em>J</em>(<em>θ</em>)=−<em>m</em>1∑<em>i</em>=1<em>m</em>[<em>y</em>(<em>i</em>) log(<em>h**θ</em>(<em>x</em>(<em>i</em>)))+(1−<em>y</em>(<em>i</em>)) log(1−<em>h**θ</em>(<em>x</em>(<em>i</em>)))]+2<em>m**λ</em>∑<em>j</em>=1<em>n<strong>θ</strong>j</em>2</p>
+<p>For neural networks, it is going to be slightly more complicated:</p>
+<p><em>J</em>(Θ)=−1<em>m</em>∑<em>i</em>=1<em>m</em>∑<em>k</em>=1<em>K</em>[<em>y</em>(<em>i</em>)<em>k</em>log((<em>h</em>Θ(<em>x</em>(<em>i</em>)))<em>k</em>)+(1−<em>y</em>(<em>i</em>)<em>k</em>)log(1−(<em>h</em>Θ(<em>x</em>(<em>i</em>)))<em>k</em>)]+<em>λ</em>2<em>m</em>∑<em>l</em>=1<em>L</em>−1∑<em>i</em>=1<em>s**l</em>∑<em>j</em>=1<em>s**l</em>+1(Θ(<em>l</em>)<em>j</em>,<em>i</em>)2</p>
+<p>We have added a few nested summations to account for our multiple output nodes. In the first part of the equation, before the square brackets, we have an additional nested summation that loops through the number of output nodes.</p>
+<p>In the regularization part, after the square brackets, we must account for multiple theta matrices. The number of columns in our current theta matrix is equal to the number of nodes in our current layer (including the bias unit). The number of rows in our current theta matrix is equal to the number of nodes in the next layer (excluding the bias unit). As before with logistic regression, we square every term.</p>
+<p>Note:</p>
+<ul>
+<li>the double sum simply adds up the logistic regression costs calculated for each cell in the output layer</li>
+<li>the triple sum simply adds up the squares of all the individual Θs in the entire network.</li>
+<li>the i in the triple sum does <strong>not</strong> refer to training example i</li>
+</ul>
+<h2 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h2><p>“Backpropagation” is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression. Our goal is to compute:</p>
+<p>$\min_\Theta J(\Theta)​$ </p>
+<p>That is, we want to minimize our cost function J using an optimal set of parameters in theta. In this section we’ll look at the equations we use to compute the partial derivative of J(Θ):</p>
+<p>$\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta)$ </p>
+<p>To do so, we use the following algorithm:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ul6i5teoEea1UArqXEX_3g_a36fb24a11c744d7552f0fecf2fdd752_Screenshot-2017-01-10-17.13.27.png?expiry=1547942400000&amp;hmac=QZldoAbXaPD5iOXL7mGoms9SZhFPvU3RKhopNuz73q8" alt="img"></p>
+<p><strong>Back propagation Algorithm</strong></p>
+<p>Given training set $\lbrace (x^{(1)}, y^{(1)}) \cdots (x^{(m)}, y^{(m)})\rbrace$ </p>
+<ul>
+<li>Set $\Delta^{(l)}_{i,j}$  := 0 for all (l,i,j), (hence you end up having a matrix full of zeros)</li>
+</ul>
+<p>For training example t =1 to m:</p>
+<ol>
+<li>Set $ a^{(1)} := x^{(t)}$ </li>
+<li>Perform forward propagation to compute $a^{(l)}$   for l=2,3,…,L</li>
+</ol>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bYLgwteoEeaX9Qr89uJd1A_73f280ff78695f84ae512f19acfa29a3_Screenshot-2017-01-10-18.16.50.png?expiry=1547942400000&amp;hmac=7S9m45Xx1rSF91ytZqrOtpP3IunjDCnxBqEPp_Ibi3E" alt="img"></p>
+<ol start="3">
+<li>Using $y^{(t)}$ , compute $\delta^{(L)} = a^{(L)} - y^{(t)}$</li>
+</ol>
+<p>Where L is our total number of layers and $a^{(L)}$ is the vector of outputs of the activation units for the last layer. So our “error values” for the last layer are simply the differences of our actual results in the last layer and the correct outputs in y. To get the delta values of the layers before the last layer, we can use an equation that steps us back from right to left:</p>
+<ol start="4">
+<li>Compute $\delta^{(L-1)}$, $\delta^{(L-2)},\dots,\delta^{(2)}$ using $\delta^{(l)} = ((\Theta^{(l)})^T \delta^{(l+1)})\ .<em>\ a^{(l)}\ .</em>\ (1 - a^{(l)}) $</li>
+</ol>
+<p>The delta values of layer l are calculated by multiplying the delta values in the next layer with the theta matrix of layer l. We then element-wise multiply that with a function called g’, or g-prime, which is the derivative of the activation function g evaluated with the input values given by z^{(l)}<em>z</em>(<em>l</em>).</p>
+<p>The g-prime derivative terms can also be written out as:</p>
+<p>g’(z^{(l)}) = a^{(l)}\ .<em>\ (1 - a^{(l)})</em>g<em>′(</em>z<em>(</em>l<em>))=</em>a<em>(</em>l<em>) .∗ (1−</em>a<em>(</em>l*))</p>
+<ol start="5">
+<li>$\Delta^{(l)}<em>{i,j} := \Delta^{(l)}</em>{i,j} + a_j^{(l)} \delta_i^{(l+1)}$ or with vectorization, $\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}(a^{(l)})^T$ </li>
+</ol>
+<p>Hence we update our new $\Delta$  matrix.</p>
+<ul>
+<li>$D^{(l)}<em>{i,j} := \dfrac{1}{m}\left(\Delta^{(l)}</em>{i,j} + \lambda\Theta^{(l)}_{i,j}\right)​$ , if j≠0.</li>
+<li>$D^{(l)}<em>{i,j} := \dfrac{1}{m}\Delta^{(l)}</em>{i,j}$  If j=0</li>
+</ul>
+<p>The capital-delta matrix D is used as an “accumulator” to add up our values as we go along and eventually compute our partial derivative. Thus we get $\frac \partial {\partial \Theta_{ij}^{(l)}} J(\Theta)$ </p>
+<h2 id="Backpropagation-Intuition"><a href="#Backpropagation-Intuition" class="headerlink" title="Backpropagation Intuition"></a>Backpropagation Intuition</h2><p>Recall that the cost function for a neural network is:</p>
+<p><em>J</em>(Θ)=−1<em>m</em>∑<em>t</em>=1<em>m</em>∑<em>k</em>=1<em>K</em>[<em>y</em>(<em>t</em>)<em>k</em> log(<em>h</em>Θ(<em>x</em>(<em>t</em>)))<em>k</em>+(1−<em>y</em>(<em>t</em>)<em>k</em>) log(1−<em>h</em>Θ(<em>x</em>(<em>t</em>))<em>k</em>)]+<em>λ</em>2<em>m</em>∑<em>l</em>=1<em>L</em>−1∑<em>i</em>=1<em>s**l</em>∑<em>j</em>=1<em>s**l</em>+1(Θ(<em>l</em>)<em>j</em>,<em>i</em>)2</p>
+<p>If we consider simple non-multiclass classification (k = 1) and disregard regularization, the cost is computed with:</p>
+<p>cost(t) =y^{(t)} \ \log (h_\Theta (x^{(t)})) + (1 - y^{(t)})\ \log (1 - h_\Theta(x^{(t)}))<em>c<strong>o</strong>s**t</em>(<em>t</em>)=<em>y</em>(<em>t</em>) log(<em>h</em>Θ(<em>x</em>(<em>t</em>)))+(1−<em>y</em>(<em>t</em>)) log(1−<em>h</em>Θ(<em>x</em>(<em>t</em>)))</p>
+<p>Intuitively, $\delta_j^{(l)}$ is the “error” for $a^{(l)}_j$  (unit j in layer l). More formally, the delta values are actually the derivative of the cost function:</p>
+<p>\delta_j^{(l)} = \dfrac{\partial}{\partial z_j^{(l)}} cost(t)<em>δ**j</em>(<em>l</em>)=∂<em>z**j</em>(<em>l</em>)∂<em>c<strong>o</strong>s**t</em>(<em>t</em>)</p>
+<p>Recall that our derivative is the slope of a line tangent to the cost function, so the steeper the slope the more incorrect we are. Let us consider the following neural network below and see how we could calculate some $\delta_j^{(l)}$ :</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/qc309rdcEea4MxKdJPaTxA_324034f1a3c3a3be8e7c6cfca90d3445_fixx.png?expiry=1547942400000&amp;hmac=9W09X7txNTLIv74xKQ0J3-10so6-bjsxasOl8q6Ds1E" alt="img"></p>
+<p>In the image above, to calculate $\delta_2^{(2)}$ , we multiply the weights $\Theta_{12}^{(2)}$  and $\Theta_{22}^{(2)} $ by their respective $\delta$  values found to the right of each edge. So we get $\delta_2^{(2)}= \Theta_{12}^{(2)}<em>\delta_1^{(3)} +\Theta_{22}^{(2)} </em>\delta_2^{(3)} $. To calculate every single possible $\delta_j^{(l)}$ , we could start from the right of our diagram. We can think of our edges as our $\Theta_{ij}$ . Going from right to left, to calculate the value of $\delta_j^{(l)}$ , you can just take the over all sum of each weight times the \delta<em>δ</em> it is coming from. Hence, another example would be $\delta_2^{(3)} =\Theta_{12}^{(3)} *\delta_1^{(4)} $.  </p>
+<h2 id="Implementation-Note-Unrolling-Parameters"><a href="#Implementation-Note-Unrolling-Parameters" class="headerlink" title="Implementation Note: Unrolling Parameters"></a>Implementation Note: Unrolling Parameters</h2><p>With neural networks, we are working with sets of matrices:</p>
+<p>Θ(1),Θ(2),Θ(3),…<em>D</em>(1),<em>D</em>(2),<em>D</em>(3),…</p>
+<p>In order to use optimizing functions such as “fminunc()”, we will want to “unroll” all the elements and put them into one long vector:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thetaVector = [ Theta1(:); Theta2(:); Theta3(:); ]</span><br><span class="line">deltaVector = [ D1(:); D2(:); D3(:) ]</span><br></pre></td></tr></table></figure>
+<p>If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11, then we can get back our original matrices from the “unrolled” versions as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Theta1 = reshape(thetaVector(1:110),10,11)</span><br><span class="line">Theta2 = reshape(thetaVector(111:220),10,11)</span><br><span class="line">Theta3 = reshape(thetaVector(221:231),1,11)</span><br></pre></td></tr></table></figure>
+<p>To summarize:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/kdK7ubT2EeajLxLfjQiSjg_d35545b8d6b6940e8577b5a8d75c8657_Screenshot-2016-11-27-15.09.24.png?expiry=1547942400000&amp;hmac=DfCIbxo0s1GPhWBIr90Kn_Y7iQKj_qS61GebrAXtpKU" alt="img"></p>
+<h2 id="Gradient-Checking"><a href="#Gradient-Checking" class="headerlink" title="Gradient Checking"></a>Gradient Checking</h2><p>Gradient checking will assure that our backpropagation works as intended. We can approximate the derivative of our cost function with:</p>
+<p>$\dfrac{\partial}{\partial\Theta}J(\Theta) \approx \dfrac{J(\Theta + \epsilon) - J(\Theta - \epsilon)}{2\epsilon}​$ </p>
+<p>With multiple theta matrices, we can approximate the derivative <strong>with respect to</strong> $Θ_j$  as follows:</p>
+<p>$\dfrac{\partial}{\partial\Theta_j}J(\Theta) \approx \dfrac{J(\Theta_1, \dots, \Theta_j + \epsilon, \dots, \Theta_n) - J(\Theta_1, \dots, \Theta_j - \epsilon, \dots, \Theta_n)}{2\epsilon} ​$</p>
+<p>A small value for ${\epsilon}$ (epsilon) such as ${\epsilon = 10^{-4}}$, guarantees that the math works out properly. If the value for $\epsilon$ is too small, we can end up with numerical problems.</p>
+<p>Hence, we are only adding or subtracting epsilon to the $\Theta_j$  matrix. In octave we can do it as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">epsilon = 1e-4;</span><br><span class="line">for i = 1:n,</span><br><span class="line">  thetaPlus = theta;</span><br><span class="line">  thetaPlus(i) += epsilon;</span><br><span class="line">  thetaMinus = theta;</span><br><span class="line">  thetaMinus(i) -= epsilon;</span><br><span class="line">  gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*epsilon)</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<p>We previously saw how to calculate the deltaVector. So once we compute our gradApprox vector, we can check that gradApprox ≈ deltaVector.</p>
+<p>Once you have verified <strong>once</strong> that your backpropagation algorithm is correct, you don’t need to compute gradApprox again. The code to compute gradApprox can be very slow.</p>
+<h2 id="Random-Initialization"><a href="#Random-Initialization" class="headerlink" title="Random Initialization"></a>Random Initialization</h2><p>Initializing all theta weights to zero does not work with neural networks. When we backpropagate, all nodes will update to the same value repeatedly. Instead we can randomly initialize our weights for our  Θ matrices using the following method:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/y7gaS7pXEeaCrQqTpeD5ng_8868ccda2c387f5d481d0c54ab78a86e_Screen-Shot-2016-12-04-at-11.27.28-AM.png?expiry=1547942400000&amp;hmac=U_IaMoeaz8gW_sdj8_g3thSDAetZgOQ4e2gEzl9xn78" alt="img"></p>
+<p>Hence, we initialize each $\Theta^{(l)}_{ij}$ to a random value between[−<em>ϵ</em>,<em>ϵ</em>]. Using the above formula guarantees that we get the desired bound. The same procedure applies to all the $\Theta​$’s. Below is some working code you could use to experiment.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.</span><br><span class="line"></span><br><span class="line">Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</span><br><span class="line">Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</span><br><span class="line">Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</span><br></pre></td></tr></table></figure>
+<p>rand(x,y) is just a function in octave that will initialize a matrix of random real numbers between 0 and 1.</p>
+<p>(Note: the epsilon used above is unrelated to the epsilon from Gradient Checking)</p>
+<h2 id="Putting-it-Together"><a href="#Putting-it-Together" class="headerlink" title="Putting it Together"></a>Putting it Together</h2><p>First, pick a network architecture; choose the layout of your neural network, including how many hidden units in each layer and how many layers in total you want to have.</p>
+<ul>
+<li>Number of input units = dimension of features $x^{(i)}$</li>
+<li>Number of output units = number of classes</li>
+<li>Number of hidden units per layer = usually more the better (must balance with cost of computation as it increases with more hidden units)</li>
+<li>Defaults: 1 hidden layer. If you have more than 1 hidden layer, then it is recommended that you have the same number of units in every hidden layer.</li>
+</ul>
+<p><strong>Training a Neural Network</strong></p>
+<ol>
+<li>Randomly initialize the weights</li>
+<li>Implement forward propagation to get $h_\Theta(x^{(i)})$  for any $x^{(i)}$ </li>
+<li>Implement the cost function</li>
+<li>Implement backpropagation to compute partial derivatives</li>
+<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking.</li>
+<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta.</li>
+</ol>
+<p>When we perform forward and back propagation, we loop on every training example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i = 1:m,</span><br><span class="line">   Perform forward propagation and backpropagation using example (x(i),y(i))</span><br><span class="line">   (Get activations a(l) and delta terms d(l) for l = 2,...,L</span><br></pre></td></tr></table></figure>
+<p>The following image gives us an intuition of what is happening as we are implementing our neural network:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/hGk18LsaEea7TQ6MHcgMPA_8de173808f362583eb39cdd0c89ef43e_Screen-Shot-2016-12-05-at-10.40.35-AM.png?expiry=1547942400000&amp;hmac=RX0ny1aNs9AXuUCcCuDinDVMEHnC8n-Z9fzSLisf-3s" alt="img"></p>
+<p>Ideally, you want $h_\Theta(x^{(i)}) \approx y^{(i)} $. This will minimize our cost function. However, keep in mind that  <em>J</em>(Θ) is not convex and thus we can end up in a local minimum instead.</p>
+<h1 id="第六周"><a href="#第六周" class="headerlink" title="第六周"></a>第六周</h1><h2 id="Evaluating-a-Hypothesis"><a href="#Evaluating-a-Hypothesis" class="headerlink" title="Evaluating a Hypothesis"></a>Evaluating a Hypothesis</h2><p>Once we have done some trouble shooting for errors in our predictions by:</p>
+<ul>
+<li>Getting more training examples</li>
+<li>Trying smaller sets of features</li>
+<li>Trying additional features</li>
+<li>Trying polynomial features</li>
+<li>Increasing or decreasing λ</li>
+</ul>
+<p>We can move on to evaluate our new hypothesis.</p>
+<p>A hypothesis may have a low error for the training examples but still be inaccurate (because of overfitting). Thus, to evaluate a hypothesis, given a dataset of training examples, we can split up the data into two sets: a <strong>training set</strong> and a <strong>test set</strong>. Typically, the training set consists of 70 % of your data and the test set is the remaining 30 %.</p>
+<p>The new procedure using these two sets is then:</p>
+<ol>
+<li>Learn Θ and minimize $J_{train}(\Theta)$  using the training set</li>
+<li>Compute the test set error $J_{test}(\Theta)​$ </li>
+</ol>
+<h3 id="The-test-set-error"><a href="#The-test-set-error" class="headerlink" title="The test set error"></a>The test set error</h3><ol>
+<li>For linear regression: $J_{test}(\Theta) = \dfrac{1}{2m_{test}} \sum_{i=1}^{m_{test}}(h_\Theta(x^{(i)}<em>{test}) - y^{(i)}</em>{test})^2$</li>
+<li>For classification ~ Misclassification error (aka 0/1 misclassification error):</li>
+</ol>
+<p><em>[Math Processing Error]</em></p>
+<p>This gives us a binary 0 or 1 error result based on a misclassification. The average test error for the test set is:</p>
+<p>$\text{Test Error} = \dfrac{1}{m_{test}} \sum^{m_{test}}<em>{i=1} err(h</em>\Theta(x^{(i)}<em>{test}), y^{(i)}</em>{test})$</p>
+<p>This gives us the proportion of the test data that was misclassified.</p>
+<h2 id="Model-Selection-and-Train-Validation-Test-Sets"><a href="#Model-Selection-and-Train-Validation-Test-Sets" class="headerlink" title="Model Selection and Train/Validation/Test Sets"></a>Model Selection and Train/Validation/Test Sets</h2><p>Just because a learning algorithm fits a training set well, that does not mean it is a good hypothesis. It could over fit and as a result your predictions on the test set would be poor. The error of your hypothesis as measured on the data set with which you trained the parameters will be lower than the error on any other data set.</p>
+<p>Given many models with different polynomial degrees, we can use a systematic approach to identify the ‘best’ function. In order to choose the model of your hypothesis, you can test each degree of polynomial and look at the error result.</p>
+<p>One way to break down our dataset into the three sets is:</p>
+<ul>
+<li>Training set: 60%</li>
+<li>Cross validation set: 20%</li>
+<li>Test set: 20%</li>
+</ul>
+<p>We can now calculate three separate error values for the three different sets using the following method:</p>
+<ol>
+<li>Optimize the parameters in Θ using the training set for each polynomial degree.</li>
+<li>Find the polynomial degree d with the least error using the cross validation set.</li>
+<li>Estimate the generalization error using the test set with $J_{test}(\Theta^{(d)})$ , (d = theta from polynomial with lower error);</li>
+</ol>
+<p>This way, the degree of the polynomial d has not been trained using the test set.</p>
+<h2 id="Diagnosing-Bias-vs-Variance"><a href="#Diagnosing-Bias-vs-Variance" class="headerlink" title="Diagnosing Bias vs. Variance"></a>Diagnosing Bias vs. Variance</h2><p>In this section we examine the relationship between the degree of the polynomial d and the underfitting or overfitting of our hypothesis.</p>
+<ul>
+<li>We need to distinguish whether <strong>bias</strong> or <strong>variance</strong> is the problem contributing to bad predictions.</li>
+<li>High bias is underfitting and high variance is overfitting. Ideally, we need to find a golden mean between these two.</li>
+</ul>
+<p>The training error will tend to <strong>decrease</strong> as we increase the degree d of the polynomial.</p>
+<p>At the same time, the cross validation error will tend to <strong>decrease</strong> as we increase d up to a point, and then it will <strong>increase</strong> as d is increased, forming a convex curve.</p>
+<p><strong>High bias (underfitting)</strong>: both $J_{train}(\Theta)$  and $J_{CV}(\Theta)$  will be high. Also, $J_{CV}(\Theta) \approx J_{train}(\Theta)$ </p>
+<p><strong>High variance (overfitting)</strong>: $J_{train}(\Theta)$  will be low and$ J_{CV}(\Theta)$ will be much greater than $J_{train}(\Theta)$ </p>
+<p>The is summarized in the figure below:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/I4dRkz_pEeeHpAqQsW8qwg_bed7efdd48c13e8f75624c817fb39684_fixed.png?expiry=1548028800000&amp;hmac=gsvJ8uix6E9ki-r6G_cFtU8qicfsffnPMzsjAlLZvVk" alt="img"></p>
+<h2 id="Regularization-and-Bias-Variance"><a href="#Regularization-and-Bias-Variance" class="headerlink" title="Regularization and Bias/Variance"></a>Regularization and Bias/Variance</h2><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/3XyCytntEeataRJ74fuL6g_3b6c06d065d24e0bf8d557e59027e87a_Screenshot-2017-01-13-16.09.36.png?expiry=1548028800000&amp;hmac=iK2Q7ZWg7ZZUeg5KjhWiI8uj-n6icsuaxRo9A5eIitU" alt="img"></p>
+<p>In the figure above, we see that as  <em>λ</em> increases, our fit becomes more rigid. On the other hand, as  λ* approaches 0, we tend to over overfit the data. So how do we choose our parameter $\lambda$to get it ‘just right’ ? In order to choose the model and the regularization term λ, we need to:</p>
+<ol>
+<li>Create a list of lambdas (i.e. λ∈{0,0.01,0.02,0.04,0.08,0.16,0.32,0.64,1.28,2.56,5.12,10.24});</li>
+<li>Create a set of models with different degrees or any other variants.</li>
+<li>Iterate through the $\lambda$s and for each $\lambda$  go through all the models to learn some $\Theta$.</li>
+<li>Compute the cross validation error using the learned Θ (computed with λ) on the $J_{CV}(\Theta)​$ <strong>without</strong> regularization or λ = 0.</li>
+<li>Select the best combo that produces the lowest error on the cross validation set.</li>
+<li>Using the best combo Θ and λ, apply it on$ J_{test}(\Theta)$ to see if it has a good generalization of the problem.</li>
+</ol>
+<h2 id="Learning-Curves"><a href="#Learning-Curves" class="headerlink" title="Learning Curves"></a>Learning Curves</h2><p>Training an algorithm on a very few number of data points (such as 1, 2 or 3) will easily have 0 errors because we can always find a quadratic curve that touches exactly those number of points. Hence:</p>
+<ul>
+<li>As the training set gets larger, the error for a quadratic function increases.</li>
+<li>The error value will plateau out after a certain m, or training set size.</li>
+</ul>
+<p><strong>Experiencing high bias:</strong></p>
+<p><strong>Low training set size</strong>: causes $ J_{train}(\Theta)​$  to be low and $J_{CV}(\Theta)​$ to be high.</p>
+<p><strong>Large training set size</strong>: causes both $J_{train}(\Theta)$ and $J_{CV}(\Theta)$  to be high with $J_{train}(\Theta) ≈J_{CV}(\Theta) .$</p>
+<p>If a learning algorithm is suffering from <strong>high bias</strong>, getting more training data will not <strong>(by itself)</strong> help much.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bpAOvt9uEeaQlg5FcsXQDA_ecad653e01ee824b231ff8b5df7208d9_2-am.png?expiry=1548028800000&amp;hmac=Ea_WV56Wbl0MUHEnX3y3Cy2zsgxpumi2RNH-T-1Fd-I" alt="img"></p>
+<p><strong>Experiencing high variance:</strong></p>
+<p><strong>Low training set size</strong>: $J_{train}(\Theta)$  will be low and $J_{CV}(\Theta)$ will be high.</p>
+<p><strong>Large training set size</strong>: $J_{train}(\Theta)$  increases with training set size and $J_{CV}(\Theta)$ continues to decrease without leveling off. Also, $J_{train}(\Theta)$  &lt; $J_{CV}(\Theta)$  but the difference between them remains significant.</p>
+<p>If a learning algorithm is suffering from <strong>high variance</strong>, getting more training data is likely to help.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/vqlG7t9uEeaizBK307J26A_3e3e9f42b5e3ce9e3466a0416c4368ee_ITu3antfEeam4BLcQYZr8Q_37fe6be97e7b0740d1871ba99d4c2ed9_300px-Learning1.png?expiry=1548028800000&amp;hmac=6p2C-RcNvb1bpDibx4tq1D3prwR8rt_kLVx1TCIetsY" alt="img"></p>
+<h2 id="Deciding-What-to-Do-Next-Revisited"><a href="#Deciding-What-to-Do-Next-Revisited" class="headerlink" title="Deciding What to Do Next Revisited"></a>Deciding What to Do Next Revisited</h2><p>Our decision process can be broken down as follows:</p>
+<ul>
+<li><p><strong>Getting more training examples:</strong> Fixes high variance</p>
+</li>
+<li><p><strong>Trying smaller sets of features:</strong> Fixes high variance</p>
+</li>
+<li><p><strong>Adding features:</strong> Fixes high bias</p>
+</li>
+<li><p><strong>Adding polynomial features:</strong> Fixes high bias</p>
+</li>
+<li><p><strong>Decreasing λ:</strong> Fixes high bias</p>
+</li>
+<li><p><strong>Increasing λ:</strong> Fixes high variance.</p>
+</li>
+</ul>
+<h3 id="Diagnosing-Neural-Networks"><a href="#Diagnosing-Neural-Networks" class="headerlink" title="Diagnosing Neural Networks"></a><strong>Diagnosing Neural Networks</strong></h3><ul>
+<li>A neural network with fewer parameters is <strong>prone to underfitting</strong>. It is also <strong>computationally cheaper</strong>.</li>
+<li>A large neural network with more parameters is <strong>prone to overfitting</strong>. It is also <strong>computationally expensive</strong>. In this case you can use regularization (increase λ) to address the overfitting.</li>
+</ul>
+<p>Using a single hidden layer is a good starting default. You can train your neural network on a number of hidden layers using your cross validation set. You can then select the one that performs best.</p>
+<p><strong>Model Complexity Effects:</strong></p>
+<ul>
+<li>Lower-order polynomials (low model complexity) have high bias and low variance. In this case, the model fits poorly consistently.</li>
+<li>Higher-order polynomials (high model complexity) fit the training data extremely well and the test data extremely poorly. These have low bias on the training data, but very high variance.</li>
+<li>In reality, we would want to choose a model somewhere in between, that can generalize well but also fits the data reasonably well.</li>
+</ul>
+<h2 id="Building-a-Spam-Classifier"><a href="#Building-a-Spam-Classifier" class="headerlink" title="Building a Spam Classifier"></a>Building a Spam Classifier</h2><h3 id="Prioritizing-What-to-Work-On"><a href="#Prioritizing-What-to-Work-On" class="headerlink" title="Prioritizing What to Work On"></a>Prioritizing What to Work On</h3><p><strong>System Design Example:</strong></p>
+<p>Given a data set of emails, we could construct a vector for each email. Each entry in this vector represents a word. The vector normally contains 10,000 to 50,000 entries gathered by finding the most frequently used words in our data set. If a word is to be found in the email, we would assign its respective entry a 1, else if it is not found, that entry would be a 0. Once we have all our x vectors ready, we train our algorithm and finally, we could use it to classify if an email is a spam or not.</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ys5NKOLJEeaPWBJZo44gSg_aba93cf4ce4507175d7e47ab5f9b7ce4_Screenshot-2017-01-24-22.29.45.png?expiry=1548028800000&amp;hmac=Y9thbF3VNy5CuAn6C9x3uEUOgM8qd7WBUte0rT1qr1M" alt="img"></p>
+<p>So how could you spend your time to improve the accuracy of this classifier?</p>
+<ul>
+<li>Collect lots of data (for example “honeypot” project but doesn’t always work)</li>
+<li>Develop sophisticated features (for example: using email header data in spam emails)</li>
+<li>Develop algorithms to process your input in different ways (recognizing misspellings in spam).</li>
+</ul>
+<p>It is difficult to tell which of the options will be most helpful.</p>
+<h2 id="Error-Analysis"><a href="#Error-Analysis" class="headerlink" title="Error Analysis"></a>Error Analysis</h2><p>The recommended approach to solving machine learning problems is to:</p>
+<ul>
+<li>Start with a simple algorithm, implement it quickly, and test it early on your cross validation data.</li>
+<li>Plot learning curves to decide if more data, more features, etc. are likely to help.</li>
+<li>Manually examine the errors on examples in the cross validation set and try to spot a trend where most of the errors were made.</li>
+</ul>
+<p>For example, assume that we have 500 emails and our algorithm misclassifies a 100 of them. We could manually analyze the 100 emails and categorize them based on what type of emails they are. We could then try to come up with new cues and features that would help us classify these 100 emails correctly. Hence, if most of our misclassified emails are those which try to steal passwords, then we could find some features that are particular to those emails and add them to our model. We could also see how classifying each word according to its root changes our error rate:</p>
+<p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/kky-ouM6EeacbA6ydECl3A_01b1fa64fcc9a7eb5da8e946f6a12636_Screenshot-2017-01-25-12.08.23.png?expiry=1548028800000&amp;hmac=1o9pxek1pIwohLfdIFT5_pj8P2GzBKTf6oMU3HKv2h0" alt="img"></p>
+<p>It is very important to get error results as a single, numerical value. Otherwise it is difficult to assess your algorithm’s performance. For example if we use stemming, which is the process of treating the same word with different forms (fail/failing/failed) as one word (fail), and get a 3% error rate instead of 5%, then we should definitely add it to our model. However, if we try to distinguish between upper case and lower case letters and end up getting a 3.2% error rate instead of 3%, then we should avoid using this new feature. Hence, we should try new things, get a numerical value for our error rate, and based on our result decide whether we want to keep the new feature or not.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/17769/" rel="next" title="MySQL性能优化">
+                <i class="fa fa-chevron-left"></i> MySQL性能优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/24199/" rel="prev" title="面向对象分析与设计Lab1">
+                面向对象分析与设计Lab1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wx4.sinaimg.cn/mw690/adba74c1gy1fy3qlbnbpoj20fi08cq34.jpg" alt="Fang Hantao">
+            
+              <p class="site-author-name" itemprop="name">Fang Hantao</p>
+              <p class="site-description motion-element" itemprop="description">share something</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llitost" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=3950239&auto=1&height=66"></iframe>
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一周"><span class="nav-number">1.</span> <span class="nav-text">第一周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">What is Machine Learning?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">1.2.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unsupervised-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">Unsupervised Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Representation"><span class="nav-number">1.4.</span> <span class="nav-text">Model Representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.5.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二周"><span class="nav-number">2.</span> <span class="nav-text">第二周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent-for-Multiple-Variables"><span class="nav-number">2.1.</span> <span class="nav-text">Gradient Descent for Multiple Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent-in-Practice-I-Feature-Scaling"><span class="nav-number">2.2.</span> <span class="nav-text">Gradient Descent in Practice I - Feature Scaling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent-in-Practice-II-Learning-Rate"><span class="nav-number">2.3.</span> <span class="nav-text">Gradient Descent in Practice II - Learning Rate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polynomial-Regression"><span class="nav-number">2.4.</span> <span class="nav-text">Polynomial Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normal-Equation"><span class="nav-number">2.5.</span> <span class="nav-text">Normal Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normal-Equation-Noninvertibility"><span class="nav-number">2.6.</span> <span class="nav-text">Normal Equation Noninvertibility</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三周"><span class="nav-number">3.</span> <span class="nav-text">第三周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification"><span class="nav-number">3.1.</span> <span class="nav-text">Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hypothesis-Representation"><span class="nav-number">3.2.</span> <span class="nav-text">Hypothesis Representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost-Function"><span class="nav-number">3.3.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simplified-Cost-Function-and-Gradient-Descent"><span class="nav-number">3.4.</span> <span class="nav-text">Simplified Cost Function and Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Optimization"><span class="nav-number">3.5.</span> <span class="nav-text">Advanced Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiclass-Classification-One-vs-all"><span class="nav-number">3.6.</span> <span class="nav-text">Multiclass Classification: One-vs-all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Problem-of-Overfitting"><span class="nav-number">3.7.</span> <span class="nav-text">The Problem of Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost-Function-1"><span class="nav-number">3.8.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularized-Linear-Regression"><span class="nav-number">3.9.</span> <span class="nav-text">Regularized Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-2"><span class="nav-number">3.9.1.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation-1"><span class="nav-number">3.9.2.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularized-Logistic-Regression"><span class="nav-number">3.10.</span> <span class="nav-text">Regularized Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-Function-2"><span class="nav-number">3.10.1.</span> <span class="nav-text">Cost Function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四周"><span class="nav-number">4.</span> <span class="nav-text">第四周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Representation-II"><span class="nav-number">4.1.</span> <span class="nav-text">Model Representation II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples-and-Intuitions"><span class="nav-number">4.2.</span> <span class="nav-text">Examples and Intuitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiclass-Classification"><span class="nav-number">4.3.</span> <span class="nav-text">Multiclass Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost-Function-3"><span class="nav-number">4.4.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">4.5.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Intuition"><span class="nav-number">4.6.</span> <span class="nav-text">Backpropagation Intuition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-Note-Unrolling-Parameters"><span class="nav-number">4.7.</span> <span class="nav-text">Implementation Note: Unrolling Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Checking"><span class="nav-number">4.8.</span> <span class="nav-text">Gradient Checking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">4.9.</span> <span class="nav-text">Random Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Putting-it-Together"><span class="nav-number">4.10.</span> <span class="nav-text">Putting it Together</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六周"><span class="nav-number">5.</span> <span class="nav-text">第六周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-a-Hypothesis"><span class="nav-number">5.1.</span> <span class="nav-text">Evaluating a Hypothesis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-test-set-error"><span class="nav-number">5.1.1.</span> <span class="nav-text">The test set error</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Selection-and-Train-Validation-Test-Sets"><span class="nav-number">5.2.</span> <span class="nav-text">Model Selection and Train/Validation/Test Sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diagnosing-Bias-vs-Variance"><span class="nav-number">5.3.</span> <span class="nav-text">Diagnosing Bias vs. Variance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularization-and-Bias-Variance"><span class="nav-number">5.4.</span> <span class="nav-text">Regularization and Bias/Variance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-Curves"><span class="nav-number">5.5.</span> <span class="nav-text">Learning Curves</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deciding-What-to-Do-Next-Revisited"><span class="nav-number">5.6.</span> <span class="nav-text">Deciding What to Do Next Revisited</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Diagnosing-Neural-Networks"><span class="nav-number">5.6.1.</span> <span class="nav-text">Diagnosing Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-Spam-Classifier"><span class="nav-number">5.7.</span> <span class="nav-text">Building a Spam Classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prioritizing-What-to-Work-On"><span class="nav-number">5.7.1.</span> <span class="nav-text">Prioritizing What to Work On</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-Analysis"><span class="nav-number">5.8.</span> <span class="nav-text">Error Analysis</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Hantao</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共175.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://litost-fht.top/posts/49569/';
+          this.page.identifier = 'posts/49569/';
+          this.page.title = 'Machine Learning笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
