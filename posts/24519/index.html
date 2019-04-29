@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="acm,hdu,LCA,">
+  <meta name="keywords" content="课程,">
 
 
 
@@ -80,18 +80,20 @@
 
 
 
-<meta name="description" content="分析：一开始以为是图。。。事实上这是一个n-1条边的树。那么，假设B和C的最近公共祖先是A，那么对于整个树的根节点D，都有：|BD|+|CD|-|AD|*2=|BC|。所以只要事先求出所有点到D的距离，然后运用上面的公式。至于LCA，大神的文章解释的很清楚。 链接：http://blog.csdn.net/nameofcsdn/article/details/52230548 以下为鄙人的练习：">
-<meta name="keywords" content="acm,hdu,LCA">
+<meta name="description" content="实验一：http://www.litost-fht.top/posts/24199/ 一、图形文档 二、文字说明1.  用况图描述通过使用用况图，可以使读者对整个线上购物系统的参与者，用况，以及这些元素之间关系更加清晰，也可以更加清楚不同的参与者在这个系统里所能实现的不同的操作和功能，使得整个系统的结构一目了然。 2.  参与者描述顾客：在本系统中注册、登录，并且可能在本系统购买商品的对象。 商品">
+<meta name="keywords" content="课程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HDU 2586 How far away？(LCA)">
-<meta property="og:url" content="http://litost-fht.top/posts/46889/index.html">
+<meta property="og:title" content="面向对象分析与设计Lab2">
+<meta property="og:url" content="http://litost-fht.top/posts/24519/index.html">
 <meta property="og:site_name" content="Litost&#39;s Blog">
-<meta property="og:description" content="分析：一开始以为是图。。。事实上这是一个n-1条边的树。那么，假设B和C的最近公共祖先是A，那么对于整个树的根节点D，都有：|BD|+|CD|-|AD|*2=|BC|。所以只要事先求出所有点到D的距离，然后运用上面的公式。至于LCA，大神的文章解释的很清楚。 链接：http://blog.csdn.net/nameofcsdn/article/details/52230548 以下为鄙人的练习：">
+<meta property="og:description" content="实验一：http://www.litost-fht.top/posts/24199/ 一、图形文档 二、文字说明1.  用况图描述通过使用用况图，可以使读者对整个线上购物系统的参与者，用况，以及这些元素之间关系更加清晰，也可以更加清楚不同的参与者在这个系统里所能实现的不同的操作和功能，使得整个系统的结构一目了然。 2.  参与者描述顾客：在本系统中注册、登录，并且可能在本系统购买商品的对象。 商品">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T17:00:45.217Z">
+<meta property="og:image" content="http://ws4.sinaimg.cn/mw690/007JrrP7ly1g2jgnib152j30ef0gxt90.jpg">
+<meta property="og:updated_time" content="2019-04-29T06:04:26.344Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HDU 2586 How far away？(LCA)">
-<meta name="twitter:description" content="分析：一开始以为是图。。。事实上这是一个n-1条边的树。那么，假设B和C的最近公共祖先是A，那么对于整个树的根节点D，都有：|BD|+|CD|-|AD|*2=|BC|。所以只要事先求出所有点到D的距离，然后运用上面的公式。至于LCA，大神的文章解释的很清楚。 链接：http://blog.csdn.net/nameofcsdn/article/details/52230548 以下为鄙人的练习：">
+<meta name="twitter:title" content="面向对象分析与设计Lab2">
+<meta name="twitter:description" content="实验一：http://www.litost-fht.top/posts/24199/ 一、图形文档 二、文字说明1.  用况图描述通过使用用况图，可以使读者对整个线上购物系统的参与者，用况，以及这些元素之间关系更加清晰，也可以更加清楚不同的参与者在这个系统里所能实现的不同的操作和功能，使得整个系统的结构一目了然。 2.  参与者描述顾客：在本系统中注册、登录，并且可能在本系统购买商品的对象。 商品">
+<meta name="twitter:image" content="http://ws4.sinaimg.cn/mw690/007JrrP7ly1g2jgnib152j30ef0gxt90.jpg">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://litost-fht.top/posts/46889/">
+  <link rel="canonical" href="http://litost-fht.top/posts/24519/">
 
 
 
 
 
-  <title>HDU 2586 How far away？(LCA) | Litost's Blog</title>
+  <title>面向对象分析与设计Lab2 | Litost's Blog</title>
   
 
 
@@ -266,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/posts/46889/">
+    <link itemprop="mainEntityOfPage" href="http://litost-fht.top/posts/24519/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fang Hantao">
@@ -283,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HDU 2586 How far away？(LCA)</h1>
+          <h1 class="post-title" itemprop="name headline">面向对象分析与设计Lab2</h1>
         
 
         <div class="post-meta">
@@ -295,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T21:35:50+08:00">
-                2017-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T13:59:00+08:00">
+                2019-04-29
               </time>
             
 
@@ -318,19 +320,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
+                  <a href="/categories/面向对象分析设计/" itemprop="url" rel="index">
+                    <span itemprop="name">面向对象分析设计</span>
                   </a>
                 </span>
 
@@ -347,8 +338,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/46889/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/46889/" itemprop="commentCount"></span>
+                <a href="/posts/24519/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/24519/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  488
+                  1.6k
                 </span>
               
 
@@ -386,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -407,7 +398,87 @@
       
 
       
-        <p> 分析：一开始以为是图。。。事实上这是一个n-1条边的树。那么，假设B和C的最近公共祖先是A，那么对于整个树的根节点D，<br>都有：|BD|+|CD|-|AD|*2=|BC|。<br>所以只要事先求出所有点到D的距离，然后运用上面的公式。至于LCA，大神的文章解释的很清楚。<br> 链接：<a href="http://blog.csdn.net/nameofcsdn/article/details/52230548" target="_blank" rel="noopener">http://blog.csdn.net/nameofcsdn/article/details/52230548</a><br> 以下为鄙人的练习：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> son,dist;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">40005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">vector</span>&lt;node&gt;v[maxn];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> deep[maxn],visitnum[<span class="number">2</span>*maxn],visitn[maxn],dist[maxn],mins[<span class="number">2</span>*maxn][<span class="number">20</span>],fa[maxn];</span><br><span class="line"><span class="keyword">int</span> vnum;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">int</span> m,<span class="keyword">int</span> d,<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;node&gt;::iterator p;</span><br><span class="line">    deep[m]=d;</span><br><span class="line">    dist[m]=dis;</span><br><span class="line">    <span class="keyword">for</span>(p=v[m].begin();p!=v[m].end();p++)&#123;</span><br><span class="line">        visitn[m]=vnum;</span><br><span class="line">        visitnum[vnum++]=m;</span><br><span class="line">        visit((*p).son,d+<span class="number">1</span>,dis+(*p).dist);</span><br><span class="line">    &#125;</span><br><span class="line">    visitn[m]=vnum;</span><br><span class="line">    visitnum[vnum++]=m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rmq</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n<span class="number">-1</span>;i++) mins[i][<span class="number">0</span>]=visitnum[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;j)&lt;=<span class="number">2</span>*n<span class="number">-1</span>;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i+(<span class="number">1</span>&lt;&lt;j)<span class="number">-1</span> &lt;= <span class="number">2</span>*n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">            mins[i][j]=mins[i][j<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">if</span>(deep[mins[i][j]] &gt; deep[mins[i+ (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>]]);</span><br><span class="line">                mins[i][j]=mins[i+ (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>)) &lt;= y-x+<span class="number">1</span>) k++;</span><br><span class="line">    <span class="keyword">if</span>(deep[mins[x][k]]&gt;deep[mins[y-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k]]) <span class="keyword">return</span> mins[y-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span>  mins[x][k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        fa[i]=i;</span><br><span class="line">        v[i].clear();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t,m,x,y,l;</span><br><span class="line">    node no;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;l;</span><br><span class="line">            no.dist=l;</span><br><span class="line">            no.son=y;</span><br><span class="line">            v[x].push_back(no);</span><br><span class="line">            fa[y]=x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(fa[x]!=x) x=fa[x];</span><br><span class="line">        visit(x,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        rmq();</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">            <span class="keyword">if</span>(visitn[x]&lt;=visitn[y]) l=lca(visitn[x],visitn[y]);</span><br><span class="line">            <span class="keyword">else</span> l=lca(visitn[y],visitn[x]);</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;dist[y]+dist[x]<span class="number">-2</span>*dist[l]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p><strong>实验一</strong>：<a href="http://www.litost-fht.top/posts/24199/" target="_blank" rel="noopener">http://www.litost-fht.top/posts/24199/</a></p>
+<h2 id="一、图形文档"><a href="#一、图形文档" class="headerlink" title="一、图形文档"></a>一、图形文档</h2><p><img src="//ws4.sinaimg.cn/mw690/007JrrP7ly1g2jgnib152j30ef0gxt90.jpg" alt="23"></p>
+<h2 id="二、文字说明"><a href="#二、文字说明" class="headerlink" title="二、文字说明"></a><strong>二、文字说明</strong></h2><h3 id="1-用况图描述"><a href="#1-用况图描述" class="headerlink" title="1.  用况图描述"></a><strong>1.</strong>  <strong>用况图描述</strong></h3><p>通过使用用况图，可以使读者对整个线上购物系统的参与者，用况，以及这些元素之间关系更加清晰，也可以更加清楚不同的参与者在这个系统里所能实现的不同的操作和功能，使得整个系统的结构一目了然。</p>
+<h3 id="2-参与者描述"><a href="#2-参与者描述" class="headerlink" title="2.  参与者描述"></a><strong>2.</strong>  <strong>参与者描述</strong></h3><p><strong>顾客：</strong>在本系统中注册、登录，并且可能在本系统购买商品的对象。</p>
+<p><strong>商品仓库：</strong>存储商品的地方，负责供货。</p>
+<p><strong>商品管理员：</strong>负责管理该系统上的商品信息的人，拥有上架，下架，修改商品权限。</p>
+<p><strong>订单处理员：</strong>负责接受订单，并把订单发给仓库，和接受发货员的发货信息而修改订单货物的发货情况。</p>
+<p><strong>物流系统：</strong>负责在订单付款后对商品进行传送到顾客指定的地址。</p>
+<h3 id="3-用况描述"><a href="#3-用况描述" class="headerlink" title="3.  用况描述"></a><strong>3.</strong>  <strong>用况描述</strong></h3><h4 id="1）"><a href="#1）" class="headerlink" title="1）"></a><strong>1）</strong></h4><p><strong>用况名</strong>：注册。</p>
+<p><strong>简述</strong>：这个用例描述了顾客注册账号的行为过程。</p>
+<p><strong>参与者</strong>：顾客。</p>
+<p><strong>前置条件</strong>：顾客进入系统注册页面。</p>
+<p><strong>细节</strong>：顾客进入注册页面，输入注册的顾客信息，提交注册请求；系统通过查找数据库中是否有存在同样的用户名，如果有，则返回注册失败信息，提示用户名已存在信息，顾客可重新填写注册信息提交；重复上述过程，当数据库中不存在与提交的用户名相同时且其他注册信息符合规范，则注册成功。</p>
+<p><strong>后置条件</strong>：跳转至浏览商品页面。</p>
+<p><strong>例外</strong>：无。</p>
+<p><strong>限制</strong>：用户名及密码的格式。</p>
+<p><strong>注释</strong>：无。</p>
+<h4 id="2）"><a href="#2）" class="headerlink" title="2）"></a><strong>2）</strong></h4><p><strong>用况名</strong>：登录。</p>
+<p><strong>简述</strong>：这个用例描述了用户或商家注册系统的行为过程。</p>
+<p><strong>参与者</strong>：顾客、订单处理员、商品管理员。</p>
+<p><strong>前置条件</strong>：参与者已注册且进入了登录页面。</p>
+<p><strong>细节</strong>：参与者进入登录页面，填写账号密码后提交登录请求；系统查找数据库，如果找到账号跟密码都一致，返回登录成功；否则返回登录失败，提示用户名不存在或者密码错误；参与者可反复填写直到登录成功为止。</p>
+<p><strong>后置条件</strong>：跳转至浏览商品页面。</p>
+<p><strong>例外</strong>：无。</p>
+<p><strong>限制</strong>：无。</p>
+<p><strong>注释</strong>：无。</p>
+<h4 id="3）"><a href="#3）" class="headerlink" title="3）"></a><strong>3）</strong></h4><p><strong>用况名</strong>：维护购物车</p>
+<p><strong>简述</strong>：这个用况描述了顾客对购物车的内容修改，包括将商品加入到购物车，对购物车中的商品进行删除或修改购物车中某件商品数量的行为</p>
+<p><strong>参与者</strong>：顾客</p>
+<p><strong>前置条件</strong>：顾客已进入登录状态</p>
+<p><strong>细节</strong>：</p>
+<p>（1）顾客在商品详情信息浏览页中，点击加入购物车则将该商品加入购物车中；</p>
+<p>（2）顾客进入购物车页面，查看购物车的商品及数量，可同时删除一件或多件商品，也可调整单类商品的数量（但修改的数量不可小于1）；</p>
+<p>（3）保存顾客对购物车的修改。</p>
+<p><strong>后置条件</strong>：顾客对购物车的修改都能被完整正确的保存</p>
+<p><strong>例外</strong>：在顾客将商品加入购物车或修改单类商品数量时，若商品数量大于该类商品库存量时，</p>
+<p>应作出相应提示</p>
+<p><strong>限制</strong>：顾客添加到购物车的商品必须为系统已上架商品</p>
+<p><strong>注释</strong>：无</p>
+<h4 id="4）"><a href="#4）" class="headerlink" title="4）"></a><strong>4）</strong></h4><p><strong>用况名</strong>：购买商品</p>
+<p><strong>简述</strong>：这个用况提供用户支付商品费用，生成商品订单的功能</p>
+<p><strong>参与者</strong>：顾客</p>
+<p><strong>前置条件</strong>：顾客已进入登录状态，并已获取了欲购买商品的信息（位于该商品的信息详情页面或该商品在购物车中处于勾选状态）</p>
+<p><strong>细节</strong>：</p>
+<p>（1）点击立即购买，调整至订单生成页面；</p>
+<p>（2）填写个人信息及收货地址，提交</p>
+<p>（3）顾客对商品进行支付，支付成功跳转至（4），支付失败跳转至（5）</p>
+<p>（4）生成订单，结束</p>
+<p>（5）不生成订单，结束</p>
+<p><strong>后置条件</strong>：跳转至订单处理页面</p>
+<p><strong>例外</strong>：</p>
+<p>（1）顾客在商品详情页直接购买商品时，若商品数量大于该类商品库存量时，</p>
+<p>应作出相应提示。</p>
+<p>（2）顾客在商品支付时，若支付失败，如余额不足，网络连接失败等，应作出相应提示。</p>
+<p><strong>限制</strong>：顾客购买的商品必须为系统已上架商品</p>
+<p><strong>注释</strong>：无</p>
+<h4 id="5）"><a href="#5）" class="headerlink" title="5）"></a><strong>5）</strong></h4><p><strong>用况名</strong>：管理商品</p>
+<p><strong>简述</strong>：这个用况描述了商品管理员对商品的信息进行修改和管理</p>
+<p><strong>参与者</strong>：商品管理员</p>
+<p><strong>前置条件</strong>：商品管理员已登录系统，具有管理员权限</p>
+<p><strong>细节</strong>：</p>
+<p>（1）商品管理员在商品商品管理界面，对相应的商品点击编辑即可对商品进行相应的修改；</p>
+<p>（2）商品管理员可以修改商品信息，将商品下架，新增商品等</p>
+<p>（3）新增商品信息说明有新品上市，商品下架将不再出售，对商品的变化（包括商品价格，库存信息，商品供应商地址等）可以修改商品信息</p>
+<p>（4）保存商品管理员对商品信息的操作</p>
+<p><strong>后置条件</strong>：商品管理员对商品信息的修改保存成功</p>
+<p>例外：商品信息都有相应的必填项，必填项必须填写完整，未填写不予通过</p>
+<p><strong>限制</strong>：对于删除操作必须二次确认，或者弹出警示框，重复确认后才对商品信息进行删除</p>
+<p><strong>注释</strong>：无</p>
+<h4 id="6）"><a href="#6）" class="headerlink" title="6）"></a>6）</h4><p><strong>用况名</strong>：设置个人信息</p>
+<p><strong>简述</strong>：这个用况提供顾客对个人信息的查询</p>
+<p><strong>参与者</strong>：顾客</p>
+<p><strong>前置条件</strong>：顾客已进入登录状态</p>
+<p><strong>细节</strong>：</p>
+<p>（1）点击个人信息，即可查看个人信息，也可对个人信息进行修改；</p>
+<p>（2）个人信息可修改项包括昵称，收货地址，联系电话等</p>
+<p>（3）修改完成跳转至主页面</p>
+<p><strong>后置条件</strong>：修改完成跳转至主页面</p>
+<p><strong>例外</strong>：无</p>
+<p><strong>限制</strong>：无</p>
+<p><strong>注释</strong>：无</p>
 
       
     </div>
@@ -435,11 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/acm/" rel="tag"><i class="fa fa-tag"></i> acm</a>
-          
-            <a href="/tags/hdu/" rel="tag"><i class="fa fa-tag"></i> hdu</a>
-          
-            <a href="/tags/LCA/" rel="tag"><i class="fa fa-tag"></i> LCA</a>
+            <a href="/tags/课程/" rel="tag"><i class="fa fa-tag"></i> 课程</a>
           
         </div>
       
@@ -452,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/2321/" rel="next" title="codeforces 341d (二维树状数组区间操作)">
-                <i class="fa fa-chevron-left"></i> codeforces 341d (二维树状数组区间操作)
+              <a href="/posts/34589/" rel="next" title="Hexo生成永久链接">
+                <i class="fa fa-chevron-left"></i> Hexo生成永久链接
               </a>
             
           </div>
@@ -461,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/41440/" rel="prev" title="HDU 5950	Recursive sequence（矩阵快速幂）">
-                HDU 5950	Recursive sequence（矩阵快速幂） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -552,8 +615,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -651,6 +723,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、图形文档"><span class="nav-number">1.</span> <span class="nav-text">一、图形文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、文字说明"><span class="nav-number">2.</span> <span class="nav-text">二、文字说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用况图描述"><span class="nav-number">2.1.</span> <span class="nav-text">1.  用况图描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-参与者描述"><span class="nav-number">2.2.</span> <span class="nav-text">2.  参与者描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用况描述"><span class="nav-number">2.3.</span> <span class="nav-text">3.  用况描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）"><span class="nav-number">2.3.1.</span> <span class="nav-text">1）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）"><span class="nav-number">2.3.2.</span> <span class="nav-text">2）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）"><span class="nav-number">2.3.3.</span> <span class="nav-text">3）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）"><span class="nav-number">2.3.4.</span> <span class="nav-text">4）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5）"><span class="nav-number">2.3.5.</span> <span class="nav-text">5）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6）"><span class="nav-number">2.3.6.</span> <span class="nav-text">6）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -826,9 +914,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://litost-fht.top/posts/46889/';
-          this.page.identifier = 'posts/46889/';
-          this.page.title = 'HDU 2586 How far away？(LCA)';
+          this.page.url = 'http://litost-fht.top/posts/24519/';
+          this.page.identifier = 'posts/24519/';
+          this.page.title = '面向对象分析与设计Lab2';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
